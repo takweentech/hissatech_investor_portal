@@ -1,0 +1,27 @@
+@import './_override';
+@import './custom/utilities';
+
+
+@import 'bootstrap/scss/bootstrap.scss';
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Inter", sans-serif;
+    min-height: 100vh;
+}
+
+.lang-link {
+    top: 1rem;
+    right: 1rem;
+}
+
+hr {
+    opacity: .1;
+}

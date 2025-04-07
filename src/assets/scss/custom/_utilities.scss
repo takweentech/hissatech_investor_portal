@@ -1,0 +1,16 @@
+$utilities: (
+    "opacity": (property: opacity,
+        values: (0: 0,
+            25: .25,
+            50: .5,
+            75: .75,
+            100: 1,
+        )),
+    "top": (property: top,
+        values: (0: 0,
+            25: .25rem,
+            50: .5rem,
+            75: .75rem,
+            100: 1rem)),
+
+);

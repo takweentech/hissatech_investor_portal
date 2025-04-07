@@ -1,0 +1,38 @@
+<section class="container d-flex flex-column align-items-center justify-content-center gap-4 h-100">
+
+    <form action=""
+          class="col-12 col-lg-7 d-flex flex-column gap-4">
+
+        <div class="d-flex flex-column gap-2">
+            <img src="/assets/images/logo.svg"
+                 alt="">
+            <h1 class="fw-bold">Login</h1>
+            <p>Welcome back! Sign in to continue</p>
+        </div>
+        <div class="form-group">
+            <label for="email"
+                   class="form-label">Email address</label>
+            <input type="email"
+                   class="form-control"
+                   id="email">
+        </div>
+
+        <div class="form-group">
+            <label for="password"
+                   class="form-label">Password</label>
+            <input type="password"
+                   class="form-control"
+                   id="password">
+        </div>
+
+        <div class="d-flex flex-column gap-2">
+            <button class="btn btn-primary">Sign in</button>
+
+            <hr>
+            <a [routerLink]="'/' + ROUTES.AUTH.ROOT + '/' + ROUTES.AUTH.SIGN_UP"
+               class="text-center">
+                Sign up
+            </a>
+        </div>
+    </form>
+</section>
