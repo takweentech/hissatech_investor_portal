@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BrandingComponent } from "./components/branding/branding.component";
+import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
   selector: 'app-auth',
@@ -10,13 +11,17 @@ import { BrandingComponent } from "./components/branding/branding.component";
       <app-branding></app-branding>
   </div>
   <div class="col-12 col-lg-7 p-0 position-relative">
-    <a href="" class="text-primary position-absolute lang-link">
-      Arabic
+    <a href="javascript:void(0)" (click)="onLangChange()" class="text-decoration-none cursor-pointer text-primary position-absolute lang-link">
+    <i class="fa-solid fa-globe"></i>
+      {{translationService.language === 'en' ? 'Arabic' : 'English'}}
     </a>
       <router-outlet />
   </div>
 </div>`
 })
 export class AuthComponent {
-
+  translationService = inject(TranslationService);
+  onLangChange(): void {
+    this.translationService.onLangChange();
+  }
 }

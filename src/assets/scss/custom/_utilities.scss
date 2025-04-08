@@ -6,6 +6,8 @@ $utilities: (
             75: .75,
             100: 1,
         )),
+    "cursor": (property: cursor,
+        values: (pointer: pointer)),
     "top": (property: top,
         values: (0: 0,
             25: .25rem,

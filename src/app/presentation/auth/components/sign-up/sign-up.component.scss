@@ -4,4 +4,11 @@ section {
         max-width: 200px;
     }
 
+
+    .step.active {
+        .bs-stepper-circle {
+            background-color: var(--primary-color) !important;
+        }
+    }
+
 }
