@@ -68,6 +68,7 @@
                                        id="id">
                             </div>
                             <button type="button"
+                                    [disabled]="loading()"
                                     (click)="onNext(1)"
                                     class="btn btn-primary">Continue with Nafath</button>
                         </div>
@@ -86,8 +87,8 @@
                                     <label for="id"
                                            class="form-label">Full name</label>
                                     <input type="email"
+                                           formControlName="fullName"
                                            readonly
-                                           disabled
                                            class="form-control"
                                            id="id">
                                 </div>
@@ -114,11 +115,11 @@
                                     <label for="id"
                                            class="form-label">What is your primary source of income?</label>
                                     <select class="form-select"
+                                            formControlName="sourceIncome"
                                             aria-label="Default select example">
-
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        @for (item of PRIMARY_INCOME_SOURCES; track $index) {
+                                        <option [value]="item.value">{{item.name}}</option>
+                                        }
                                     </select>
                                 </div>
 
@@ -127,11 +128,11 @@
                                     <label for="id"
                                            class="form-label">What is your primary income amout?</label>
                                     <select class="form-select"
+                                            formControlName="incomeAmount"
                                             aria-label="Default select example">
-
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        @for (item of PRIMARY_INCOME_AMOUNTS; track $index) {
+                                        <option [value]="item.value">{{item.name}}</option>
+                                        }
                                     </select>
                                 </div>
 
@@ -154,21 +155,57 @@
                                 <div class="form-group">
                                     <label for="id"
                                            class="form-label">Password</label>
-                                    <input type="password"
-                                           class="form-control"
-                                           id="id">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i
+                                               class="fa-solid fa-lock text-primary"></i></span>
+                                        <input type="password"
+                                               #password
+                                               formControlName="password"
+                                               class="form-control"
+                                               id="id">
+                                        <span class="input-group-text">
+                                            @if (password.type === 'password') {
+                                            <i (click)="password.type = 'text'"
+                                               class="fa-solid fa-eye text-primary cursor-pointer"></i>
+                                            }@else {
+                                            <i (click)="password.type = 'password'"
+                                               class="fa-solid fa-eye-slash text-primary cursor-pointer"></i>
+                                            }
+                                        </span>
+                                    </div>
                                 </div>
                                 <!-- Password Confirmation -->
                                 <div class="form-group">
                                     <label for="id"
                                            class="form-label">Password Confirmation</label>
-                                    <input type="password"
-                                           class="form-control"
-                                           id="id">
+                                    <div class="input-group">
+
+                                        <span class="input-group-text"><i
+                                               class="fa-solid fa-lock text-primary"></i></span>
+                                        <input type="password"
+                                               #passwordConfirm
+                                               formControlName="confirmPassword"
+                                               class="form-control"
+                                               id="id">
+                                        <span class="input-group-text">
+                                            @if (passwordConfirm.type === 'password') {
+                                            <i (click)="passwordConfirm.type = 'text'"
+                                               class="fa-solid fa-eye text-primary cursor-pointer"></i>
+                                            }@else {
+                                            <i (click)="passwordConfirm.type = 'password'"
+                                               class="fa-solid fa-eye-slash text-primary cursor-pointer"></i>
+                                            }
+                                        </span>
+                                    </div>
                                 </div>
+
+                                <ul>
+                                    <li></li>
+                                </ul>
                             </div>
                             <button type="button"
-                                    (click)="onFinishRegistration()"
+                                    [disabled]="loading()"
+                                    (click)="onNext(3)"
                                     class="btn btn-primary">Finish Registration</button>
                         </div>
 
