@@ -44,7 +44,7 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     if (this.signInForm.valid) {
       this.loading.set(true)
-      this.authService.signIn({ ...this.signInForm.value, userName: '966' + this.signInForm.value.userName }).pipe(
+      this.authService.signIn({ ...this.signInForm.value, userName: this.signInForm.value.userName }).pipe(
         finalize(() => this.loading.set(false))
       ).subscribe({
         next: (response) => {

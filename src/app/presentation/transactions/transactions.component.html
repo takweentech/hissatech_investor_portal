@@ -3,27 +3,46 @@
         <h4>Transactions (35)</h4>
     </div>
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Opportunity</th>
-                <th scope="col">Date</th>
-                <th scope="col">Total Paid</th>
-                <th scope="col">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (item of [1,2,3,4,5,6,7,8,9,10]; track $index) {
-            <tr class="cursor-pointer ">
-                <th scope="row">1</th>
-                <td class="text-primary fw-regular">Mark</td>
-                <td>Otto</td>
-                <td>{{'@'}}mdo</td>
-                <td>{{'@'}}mdo</td>
-            </tr>
-            }
-        </tbody>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="card bg-secondary p-2 d-flex flex-column justify-content-center align-items-center gap-2">
+                <h5 class="text-primary fw-bold mb-0">Total</h5>
+                <span>200</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card bg-secondary p-2 d-flex flex-column justify-content-center align-items-center gap-2">
+                <h5 class="text-primary fw-bold mb-0">Deposit</h5>
+                <span>200</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card bg-secondary p-2 d-flex flex-column justify-content-center align-items-center gap-2">
+                <h5 class="text-primary fw-bold mb-0">Withdraw</h5>
+                <span>200</span>
+            </div>
+        </div>
 
-    </table>
+    </div>
+
+    <ul class="list-group">
+        @for (item of [1,2,3,4,5,6,7,8,9,9]; track $index) {
+        <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+                <div class="col d-flex align-items-center gap-4">
+                    <i class="fa-solid fa-arrow-down"></i>
+                    <div>
+                        <h6 class="mb-0 d-flex gap-2">Opportunity title goes here <span
+                                  class="badge bg-success">Approved</span></h6>
+                        <small>Deposit</small>
+                    </div>
+                </div>
+                <div class="col d-flex flex-column align-items-end">
+                    <span class="text-success">$100</span>
+                    <span class="">10/10/2018</span>
+                </div>
+            </div>
+        </li>
+        }
+    </ul>
 </section>
