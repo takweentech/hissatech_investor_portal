@@ -105,10 +105,15 @@
                                 <div class="form-group">
                                     <label for="id"
                                            class="form-label">Phone number</label>
-                                    <input type="tel"
-                                           class="form-control"
-                                           formControlName="phoneNumber"
-                                           id="id">
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            +966
+                                        </span>
+                                        <input type="tel"
+                                               class="form-control"
+                                               formControlName="phoneNumber"
+                                               id="id">
+                                    </div>
                                 </div>
                                 <!-- What is your primary source of income? -->
                                 <div class="form-group">
@@ -199,9 +204,28 @@
                                     </div>
                                 </div>
 
-                                <ul>
-                                    <li></li>
-                                </ul>
+                                <!-- Password feedback -->
+                                <div class="col-12">
+                                    <ul class="password-feedback-list">
+                                        <li [class.completed]="form['step_3'].value?.password.match('^(?=.*[A-Z])')">
+                                            Must contain at least one uppercase letter.
+                                        </li>
+                                        <li [class.completed]="form['step_3'].value?.password.match('(?=.*[a-z])')">
+                                            Must contain at least one lowercase letter.
+                                        </li>
+                                        <li [class.completed]="form['step_3'].value?.password.match('(.*[0-9].*)')">
+                                            Must contain at least one number.
+                                        </li>
+                                        <li
+                                            [class.completed]="form['step_3'].value?.password.match('(?=.*[!@#$%^&*])')">
+                                            Must contain at least one special character.
+                                        </li>
+                                        <li [class.completed]="form['step_3'].value.password">
+                                            Must be at least 8 characters long.
+                                        </li>
+                                    </ul>
+                                </div>
+
                             </div>
                             <button type="button"
                                     [disabled]="loading()"

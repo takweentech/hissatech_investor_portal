@@ -11,4 +11,23 @@ section {
         }
     }
 
+    .password-feedback-list {
+        padding: 0;
+        list-style-position: inside;
+
+        li {
+            font-size: 0.75rem;
+            position: relative;
+            color: #A5A5A5;
+
+            &.completed {
+                color: var(--primary-color);
+
+                &::marker {
+                    content: '✓';
+                }
+            }
+        }
+    }
+
 }

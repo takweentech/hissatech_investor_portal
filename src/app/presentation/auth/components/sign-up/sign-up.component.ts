@@ -2,12 +2,13 @@ import { AfterViewInit, Component, ElementRef, inject, OnInit, signal, ViewChild
 import { RouterLink } from '@angular/router';
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
 import Stepper from 'bs-stepper';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../../core/services/auth.service';
 import { AblyService } from '../../../../core/services/ably.service';
 import { InvestorSignUp } from '../../../../core/models/investor.model';
 import { LookupService } from '../../../../core/services/lookup.service';
 import { finalize } from 'rxjs';
+import { ToastService } from '../../../../shared/components/toast/toast.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,6 +17,7 @@ import { finalize } from 'rxjs';
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent implements AfterViewInit, OnInit {
+  private toastService = inject(ToastService);
   private authService = inject(AuthService);
   private ablyService = inject(AblyService);
   private lookupService = inject(LookupService);
@@ -39,7 +41,7 @@ export class SignUpComponent implements AfterViewInit, OnInit {
       step_2: this.fb.group({
         fullName: [''],
         email: ['',],
-        phoneNumber: ['',],
+        phoneNumber: ['', [Validators.pattern(/^5\d{8}$/)]],
         sourceIncome: [null,],
         incomeAmount: [null,]
       }),
@@ -62,10 +64,17 @@ export class SignUpComponent implements AfterViewInit, OnInit {
       // Handle step one submission
       if (step == 1) {
         this.loading.set(true);
-        this.authService.nafathRequest(stepControl.value.idNumber).subscribe({
+        this.authService.nafathRequest(stepControl.value.idNumber).pipe(
+          finalize(() => this.loading.set(false))
+        ).subscribe({
           next: (response: any) => {
+            if (response.status !== 200) {
+              this.toastService.show({ text: response.message, classname: 'bg-danger text-light' })
+              return
+            };
+            this.loading.set(true);
             // Integrate Ably once Nafath integration is approved
-            this.authService.nafathCallback(response.data.transId).pipe(
+            this.authService.nafathCallback(response?.data?.transId).pipe(
               finalize(() => this.loading.set(false))
             ).subscribe({
               next: (nafathData) => {
@@ -100,11 +109,17 @@ export class SignUpComponent implements AfterViewInit, OnInit {
       ...this.signUpForm.controls['step_' + 2].value,
       ...this.signUpForm.controls['step_' + 3].value,
     }
+
+    investor.phoneNumber = '966' + investor.phoneNumber
     this.authService.signupInvestor(investor).pipe(
       finalize(() => this.loading.set(false))
     ).subscribe({
-      next: () => {
-
+      next: (response) => {
+        if (response.status == 200) {
+          this.toastService.show({ text: response.message, classname: 'bg-primary text-light' })
+        } else {
+          this.toastService.show({ text: response.message, classname: 'bg-danger text-light' })
+        }
       },
       error: () => {
 
