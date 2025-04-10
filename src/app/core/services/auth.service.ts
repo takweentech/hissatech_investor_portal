@@ -16,8 +16,11 @@ export class AuthService {
   private readonly http = inject(HttpClient);
 
   signIn(investor: InvestorSignIn): Observable<CustomHttpResponse<Token>> {
-    console.log(investor)
     return this.http.post<CustomHttpResponse<Token>>(environment.apiUrl + '/Accounts/ValidateLogin', investor)
+  }
+
+  sendPhoneOtp() {
+
   }
 
   nafathRequest(nationalId: number): Observable<CustomHttpResponse> {

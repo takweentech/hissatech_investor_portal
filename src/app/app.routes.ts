@@ -3,6 +3,7 @@ import { WEB_ROUTES } from './core/constants/routes.constants';
 import { AUTH_ROUTES } from './presentation/auth/auth.routes';
 import { authGuard, noAuthGuard } from './core/guards/auth.guard';
 import { AdminComponent } from './layout/admin/admin.component';
+import { OPPORTUNITIES_ROUTES } from './presentation/opportunities/opportunities.routes';
 
 export const routes: Routes = [
     {
@@ -20,17 +21,45 @@ export const routes: Routes = [
         children: AUTH_ROUTES
     },
     {
-        path: WEB_ROUTES.DASHBOARD.ROOT,
+        path: "",
         canActivate: [authGuard],
         component: AdminComponent,
         children: [
             {
-                path: "",
+                path: WEB_ROUTES.DASHBOARD.ROOT,
+                children: [
+                    {
+                        path: "",
+                        loadComponent: () =>
+                            import("./presentation/dashboard/dashboard.component").then(
+                                (m) => m.DashboardComponent
+                            ),
+                    }
+                ]
+            },
+            {
+                path: WEB_ROUTES.TRANSACTIONS.ROOT,
+                canActivate: [authGuard],
+                children: [
+                    {
+                        path: "",
+                        loadComponent: () =>
+                            import("./presentation/transactions/transactions.component").then(
+                                (m) => m.TransactionsComponent
+                            ),
+                    }
+                ]
+            },
+            {
+                path: WEB_ROUTES.OPPORTUNITIES.ROOT,
+                canActivate: [authGuard],
                 loadComponent: () =>
-                    import("./presentation/dashboard/dashboard.component").then(
-                        (m) => m.DashboardComponent
+                    import("./presentation/opportunities/opportunities.component").then(
+                        (m) => m.OpportunitiesComponent
                     ),
-            }
+                children: OPPORTUNITIES_ROUTES
+            },
         ]
     }
+
 ];

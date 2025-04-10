@@ -7,4 +7,14 @@ export const WEB_ROUTES = {
     DASHBOARD: {
         ROOT: "dashboard",
     },
+    OPPORTUNITIES: {
+        ROOT: "opportunities",
+        DETAILS: "details",
+    },
+    TRANSACTIONS: {
+        ROOT: "transactions",
+    },
+    POSRTFOLIO: {
+        ROOT: "portfolio",
+    },
 };

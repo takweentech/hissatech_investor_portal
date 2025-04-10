@@ -1,1 +1,71 @@
-<p>dashboard works!</p>
+<div class="row h-100 flex-column">
+    <div class="col-12">
+        <!-- Greeting -->
+        <app-greeting></app-greeting>
+    </div>
+
+    <div class="col-12 flex-fill d-flex flex-column">
+        <section class="main h-100 py-5 px-5 d-flex flex-column gap-4">
+            <!-- Recent Transactions -->
+            <div class="d-flex flex-column gap-2">
+                <h5>Recent Transactions (25)</h5>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Opportunity</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Total Paid</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cursor-pointer ">
+                            <th scope="row">1</th>
+                            <td class="text-primary fw-regular">Mark</td>
+                            <td>Otto</td>
+                            <td>{{'@'}}mdo</td>
+                            <td>{{'@'}}mdo</td>
+                        </tr>
+                        <tr class="cursor-pointer ">
+                            <th scope="row">2</th>
+                            <td class="text-primary fw-regular">Jacob</td>
+                            <td>Thornton</td>
+                            <td>{{'@'}}fat</td>
+                            <td>{{'@'}}fat</td>
+                        </tr>
+                        <tr class="cursor-pointer ">
+                            <th scope="row">3</th>
+                            <td class="text-primary fw-regular">John</td>
+                            <td>Doe</td>
+                            <td>{{'@'}}social</td>
+                            <td>{{'@'}}social</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- Opportunities -->
+            <div class="d-flex flex-column gap-2">
+                <h5>Recent Opportunities (25)</h5>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            Opportunity 1
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            Opportunity 1
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            Opportunity 1
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

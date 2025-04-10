@@ -1,0 +1,29 @@
+<section class=" py-4 px-4">
+    <div class="d-flex mb-4">
+        <h4>Transactions (35)</h4>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Opportunity</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total Paid</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of [1,2,3,4,5,6,7,8,9,10]; track $index) {
+            <tr class="cursor-pointer ">
+                <th scope="row">1</th>
+                <td class="text-primary fw-regular">Mark</td>
+                <td>Otto</td>
+                <td>{{'@'}}mdo</td>
+                <td>{{'@'}}mdo</td>
+            </tr>
+            }
+        </tbody>
+
+    </table>
+</section>

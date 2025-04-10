@@ -39,30 +39,20 @@
             </ul>
         </div>
     </section>
-    <section class="bg-white py-4 shadow">
+    <section class="bg-white py-3 shadow">
         <div class="container d-flex align-items-center">
             <ul class="d-flex align-items-center gap-4 p-0 m-0">
+                @for (item of menu; track $index) {
                 <li>
-                    <a href=""
+                    <a [routerLink]="'/' + item.routerLink"
+                       [routerLinkActiveOptions]="{ exact: true }"
+                       routerLinkActive="text-primary"
                        class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-house"></i>
-                        Dashboard
+                        <i [class]="item.icon"></i>
+                        {{item.title}}
                     </a>
                 </li>
-                <li>
-                    <a href=""
-                       class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        Investments
-                    </a>
-                </li>
-                <li>
-                    <a href=""
-                       class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-user"></i>
-                        Profile
-                    </a>
-                </li>
+                }
             </ul>
         </div>
     </section>
