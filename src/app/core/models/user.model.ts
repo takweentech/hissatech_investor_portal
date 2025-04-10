@@ -1,5 +1,35 @@
 
 
+export interface User {
+    id: number
+    userId: string
+    name: string
+    email: string
+    phone: string
+    birthDay: number
+    birthMonth: number
+    birthYear: number
+    idNumber: string
+    idExpiryDay: number
+    idExpiryMonth: number
+    idExpiryYear: number
+    gender: number
+    iban: string
+    personalIBAN: any
+    ibanBalance: number
+    bankTitle: string
+    image: any
+    isForeign: boolean
+    nationalityAr: string
+    nationalityEn: any
+    nationalityCode: number
+    locked: boolean
+    sourceIncome: number
+    incomeAmount: number
+    bankId: any
+    bankName: any
+}
+
 export interface NafathData {
     sub: string;
     fatherName: string;
@@ -66,3 +96,4 @@ interface NationalAddress {
     isActive: boolean;
     ipAddress: any;
 }
+

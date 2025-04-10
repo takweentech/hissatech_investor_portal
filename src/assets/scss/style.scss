@@ -1,4 +1,5 @@
 @import './_override';
+@import './rtl';
 @import './custom/utilities';
 @import './abstract/variables';
 @import './components/input';
@@ -17,6 +18,20 @@
 body {
     font-family: "Inter", sans-serif;
     min-height: 100vh;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        opacity: .8;
+    }
 }
 
 .lang-link {

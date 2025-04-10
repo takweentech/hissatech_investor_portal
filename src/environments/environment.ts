@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    defaultLang: 'ar',
+    defaultLang: 'en',
     apiUrl: 'https://hissatech.paramej.com/api/v1',
     cmsUrl: 'https://sharikekcms.paramej.com/api',
     cmsAssetsUrl: 'https://sharikekcms.paramej.com/',

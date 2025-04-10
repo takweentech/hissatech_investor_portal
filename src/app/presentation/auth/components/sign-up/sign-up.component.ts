@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
 import Stepper from 'bs-stepper';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -9,18 +9,24 @@ import { InvestorSignUp } from '../../../../core/models/investor.model';
 import { LookupService } from '../../../../core/services/lookup.service';
 import { finalize } from 'rxjs';
 import { ToastService } from '../../../../shared/components/toast/toast.service';
+import { TokenService } from '../../../../core/services/token.service';
+import { TranslatePipe } from '@ngx-translate/core';
+import { TranslationService } from '../../../../core/services/translation.service';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, TranslatePipe],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent implements AfterViewInit, OnInit {
+  private router = inject(Router);
+  private tokenService = inject(TokenService);
   private toastService = inject(ToastService);
   private authService = inject(AuthService);
   private ablyService = inject(AblyService);
   private lookupService = inject(LookupService);
+  public traslationService = inject(TranslationService);
   PRIMARY_INCOME_SOURCES = this.lookupService.getIncomeSources();
   PRIMARY_INCOME_AMOUNTS = this.lookupService.getIncomeAmounts();
   private fb = inject(FormBuilder);
@@ -36,18 +42,18 @@ export class SignUpComponent implements AfterViewInit, OnInit {
   initForm() {
     this.signUpForm = this.fb.group({
       step_1: this.fb.group({
-        idNumber: ['1532626785',],
+        idNumber: ['1532626785', [Validators.required]],
       }),
       step_2: this.fb.group({
         fullName: [''],
-        email: ['',],
-        phoneNumber: ['', [Validators.pattern(/^5\d{8}$/)]],
-        sourceIncome: [null,],
-        incomeAmount: [null,]
+        email: ['', Validators.required],
+        phoneNumber: ['', [Validators.pattern(/^5\d{8}$/), Validators.required]],
+        sourceIncome: [null, Validators.required],
+        incomeAmount: [null, Validators.required]
       }),
       step_3: this.fb.group({
-        password: ['',],
-        confirmPassword: ['',],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
       })
     }) as FormGroup;
   }
@@ -64,16 +70,15 @@ export class SignUpComponent implements AfterViewInit, OnInit {
       // Handle step one submission
       if (step == 1) {
         this.loading.set(true);
-        this.authService.nafathRequest(stepControl.value.idNumber).pipe(
-          finalize(() => this.loading.set(false))
-        ).subscribe({
+        this.authService.nafathRequest(stepControl.value.idNumber).subscribe({
           next: (response: any) => {
             if (response.status !== 200) {
-              this.toastService.show({ text: response.message, classname: 'bg-danger text-light' })
+              this.toastService.show({ text: response.message, classname: 'bg-danger text-light' });
+              this.loading.set(false)
               return
             };
-            this.loading.set(true);
             // Integrate Ably once Nafath integration is approved
+            this.loading.set(true);
             this.authService.nafathCallback(response?.data?.transId).pipe(
               finalize(() => this.loading.set(false))
             ).subscribe({
@@ -116,7 +121,9 @@ export class SignUpComponent implements AfterViewInit, OnInit {
     ).subscribe({
       next: (response) => {
         if (response.status == 200) {
-          this.toastService.show({ text: response.message, classname: 'bg-primary text-light' })
+          this.tokenService.setToken(response.data?.token);
+          this.tokenService.setUser(response.data?.profileInfo);
+          this.router.navigate(['/' + WEB_ROUTES.DASHBOARD.ROOT])
         } else {
           this.toastService.show({ text: response.message, classname: 'bg-danger text-light' })
         }

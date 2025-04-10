@@ -1,0 +1,44 @@
+{
+    "AUTH": {
+        "BANNER": {
+            "TITLE": "The fractional ownership platform for income-generating real estate.",
+            "DESC": "Whether you're targeting residential or commercial properties, we offer a wide range of options that align with your goals. Join now and take advantage of exclusive offers to achieve the highest returns on your investments."
+        },
+        "FORM": {
+            "SIGN_IN": {
+                "TITLE": "Sign In",
+                "SUB_TITLE": "Welcome back! Sign in to continue",
+                "USERNAME": "Phone number",
+                "PASSWORD": "Password",
+                "REMEMBER_ME": "Remember me",
+                "SIGN_IN": "Sign In",
+                "NO_ACCOUNT": "Don't have an account?",
+                "SIGN_UP": "Sign Up"
+            },
+            "SIGN_UP": {
+                "TITLE": "Sign Up",
+                "SUB_TITLE": "Create your account to start your investment journey. Fill in the information below to register a new account.",
+                "NATIONAL_ID": "National ID / Residency Number",
+                "STEP_1_BUTTON": "Continue with Nafath",
+                "STEP_2_BUTTON": "Next",
+                "STEP_3_BUTTON": "Finish Registration",
+                "FULL_NAME": "Full Name",
+                "EMAIL": "Email",
+                "PHONE_NUMBER": "Phone Number",
+                "PRIMARY_INCOME": "What is your primary source of income?",
+                "PRIMARY_AMOUNT": "What is your primary income amount?",
+                "PASSWORD": "Password",
+                "PASSWORD_CONFIRMATION": "Confirm Password",
+                "FEEDBACK": {
+                    "FEEDBACK_1": "Must contain at least one uppercase letter.",
+                    "FEEDBACK_2": "Must contain at least one lowercase letter.",
+                    "FEEDBACK_3": "Must contain at least one number.",
+                    "FEEDBACK_4": "Must contain at least one special character.",
+                    "FEEDBACK_5": "Must be at least 8 characters long."
+                },
+                "NO_ACCOUNT": "Already have an account?",
+                "SIGN_IN": "Sign In"
+            }
+        }
+    }
+}

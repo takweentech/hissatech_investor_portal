@@ -1,1 +1,69 @@
-<p>header works!</p>
+<header>
+    <section class="bg-primary  py-3">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="">
+                <img src="assets/images/logo-white.svg"
+                     alt="">
+            </a>
+
+            <ul>
+                <li>
+                    <div ngbDropdown
+                         placement="bottom-end"
+                         class="d-inline-block">
+                        <button type="button"
+                                class="btn btn-light"
+                                id="dropdownBasic1"
+                                ngbDropdownToggle>
+                            AA
+                        </button>
+                        <div ngbDropdownMenu
+                             aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem
+                                    class="d-flex align-items-center gap-2">
+                                <i class="fa-solid fa-user"></i>
+                                Profile</button>
+                            <button ngbDropdownItem
+                                    class="d-flex align-items-center gap-2">
+                                <i class="fa-solid fa-gear"></i>
+                                Settings</button>
+                            <button (click)="onLogout()"
+                                    ngbDropdownItem
+                                    class="d-flex align-items-center gap-2 text-danger"
+                                    text-danger>
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Logout</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="bg-white py-4 shadow">
+        <div class="container d-flex align-items-center">
+            <ul class="d-flex align-items-center gap-4 p-0 m-0">
+                <li>
+                    <a href=""
+                       class="d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href=""
+                       class="d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        Investments
+                    </a>
+                </li>
+                <li>
+                    <a href=""
+                       class="d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-user"></i>
+                        Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</header>

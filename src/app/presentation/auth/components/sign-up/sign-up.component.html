@@ -1,17 +1,12 @@
 <section class="container d-flex flex-column align-items-center justify-content-center gap-4 h-100">
-
     <form [formGroup]="signUpForm"
           class="col-12 col-lg-7 d-flex flex-column gap-4">
-
         <div class="d-flex flex-column gap-2">
             <img src="/assets/images/logo.svg"
                  alt="">
-            <h1 class="fw-bold">Sign up</h1>
-            <p>Create your account to start your investment journey. Fill in the information below to register a new
-                account. </p>
+            <h1 class="fw-bold">{{ 'AUTH.FORM.SIGN_UP.TITLE' | translate }}</h1>
+            <p>{{ 'AUTH.FORM.SIGN_UP.SUB_TITLE' | translate }}</p>
         </div>
-
-
 
         <div class="d-flex flex-column gap-2">
             <div class="bs-stepper"
@@ -51,6 +46,7 @@
                         </button>
                     </div>
                 </div>
+
                 <div class="bs-stepper-content mt-4 p-0">
                     <!-- Step 1 -->
                     <div id="step-1"
@@ -61,8 +57,9 @@
                         <div class="d-flex flex-column gap-4">
                             <div class="form-group">
                                 <label for="id"
-                                       class="form-label">National ID number / residence number</label>
+                                       class="form-label">{{ 'AUTH.FORM.SIGN_UP.NATIONAL_ID' | translate }}</label>
                                 <input type="text"
+                                       dir="ltr"
                                        class="form-control"
                                        formControlName="idNumber"
                                        id="id">
@@ -70,84 +67,88 @@
                             <button type="button"
                                     [disabled]="loading()"
                                     (click)="onNext(1)"
-                                    class="btn btn-primary">Continue with Nafath</button>
+                                    class="btn btn-primary">
+                                {{ 'AUTH.FORM.SIGN_UP.STEP_1_BUTTON' | translate }}
+                            </button>
                         </div>
                     </div>
+
                     <!-- Step 2 -->
                     <div id="step-2"
                          class="content"
                          role="tabpanel"
                          aria-labelledby="step-2-trigger"
                          formGroupName="step_2">
-
                         <div class="d-flex flex-column gap-4">
                             <div class="row gy-3">
-                                <!-- Fullname -->
                                 <div class="form-group">
-                                    <label for="id"
-                                           class="form-label">Full name</label>
+                                    <label for="fullName"
+                                           class="form-label">{{ 'AUTH.FORM.SIGN_UP.FULL_NAME' | translate }}</label>
                                     <input type="email"
                                            formControlName="fullName"
                                            readonly
                                            class="form-control"
-                                           id="id">
+                                           id="fullName">
                                 </div>
-                                <!-- Email -->
                                 <div class="form-group">
-                                    <label for="id"
-                                           class="form-label">Email</label>
+                                    <label for="email"
+                                           class="form-label">{{ 'AUTH.FORM.SIGN_UP.EMAIL' | translate }}</label>
                                     <input type="email"
                                            class="form-control"
                                            formControlName="email"
-                                           id="id">
+                                           id="email">
                                 </div>
-                                <!-- Phone number -->
                                 <div class="form-group">
-                                    <label for="id"
-                                           class="form-label">Phone number</label>
+                                    <label for="phoneNumber"
+                                           class="form-label">{{ 'AUTH.FORM.SIGN_UP.PHONE_NUMBER' | translate }}</label>
                                     <div class="input-group">
-                                        <span class="input-group-text">
-                                            +966
-                                        </span>
+                                        @if (traslationService.language === 'en') {
+                                        <span class="input-group-text"
+                                              dir="ltr">+966</span>
+                                        }
+
                                         <input type="tel"
+                                               dir="ltr"
                                                class="form-control"
                                                formControlName="phoneNumber"
-                                               id="id">
+                                               id="phoneNumber">
+
+                                        @if (traslationService.language === 'ar') {
+                                        <span class="input-group-text"
+                                              dir="ltr">+966</span>
+                                        }
+
                                     </div>
                                 </div>
-                                <!-- What is your primary source of income? -->
                                 <div class="form-group">
-                                    <label for="id"
-                                           class="form-label">What is your primary source of income?</label>
+                                    <label class="form-label">{{ 'AUTH.FORM.SIGN_UP.PRIMARY_INCOME' | translate
+                                        }}</label>
                                     <select class="form-select"
-                                            formControlName="sourceIncome"
-                                            aria-label="Default select example">
+                                            formControlName="sourceIncome">
                                         @for (item of PRIMARY_INCOME_SOURCES; track $index) {
-                                        <option [value]="item.value">{{item.name}}</option>
+                                        <option [value]="item.value">{{ item.name }}</option>
                                         }
                                     </select>
                                 </div>
-
-                                <!-- What is your primary income amout? -->
                                 <div class="form-group">
-                                    <label for="id"
-                                           class="form-label">What is your primary income amout?</label>
+                                    <label class="form-label">{{ 'AUTH.FORM.SIGN_UP.PRIMARY_AMOUNT' | translate
+                                        }}</label>
                                     <select class="form-select"
-                                            formControlName="incomeAmount"
-                                            aria-label="Default select example">
+                                            formControlName="incomeAmount">
                                         @for (item of PRIMARY_INCOME_AMOUNTS; track $index) {
-                                        <option [value]="item.value">{{item.name}}</option>
+                                        <option [value]="item.value">{{ item.name }}</option>
                                         }
                                     </select>
                                 </div>
-
-
                             </div>
                             <button type="button"
                                     (click)="onNext(2)"
-                                    class="btn btn-primary">Next</button>
+                                    class="btn btn-primary">
+                                {{ 'AUTH.FORM.SIGN_UP.STEP_2_BUTTON' | translate }}
+                            </button>
                         </div>
                     </div>
+
                     <!-- Step 3 -->
                     <div id="step-3"
                          class="content"
@@ -156,47 +157,42 @@
                          formGroupName="step_3">
                         <div class="d-flex flex-column gap-4">
                             <div class="row gy-3">
-                                <!-- Password -->
                                 <div class="form-group">
-                                    <label for="id"
-                                           class="form-label">Password</label>
+                                    <label class="form-label">{{ 'AUTH.FORM.SIGN_UP.PASSWORD' | translate }}</label>
                                     <div class="input-group">
                                         <span class="input-group-text"><i
                                                class="fa-solid fa-lock text-primary"></i></span>
                                         <input type="password"
                                                #password
                                                formControlName="password"
-                                               class="form-control"
-                                               id="id">
+                                               class="form-control">
                                         <span class="input-group-text">
                                             @if (password.type === 'password') {
                                             <i (click)="password.type = 'text'"
                                                class="fa-solid fa-eye text-primary cursor-pointer"></i>
-                                            }@else {
+                                            } @else {
                                             <i (click)="password.type = 'password'"
                                                class="fa-solid fa-eye-slash text-primary cursor-pointer"></i>
                                             }
                                         </span>
                                     </div>
                                 </div>
-                                <!-- Password Confirmation -->
-                                <div class="form-group">
-                                    <label for="id"
-                                           class="form-label">Password Confirmation</label>
-                                    <div class="input-group">
 
+                                <div class="form-group">
+                                    <label class="form-label">{{ 'AUTH.FORM.SIGN_UP.PASSWORD_CONFIRMATION' | translate
+                                        }}</label>
+                                    <div class="input-group">
                                         <span class="input-group-text"><i
                                                class="fa-solid fa-lock text-primary"></i></span>
                                         <input type="password"
                                                #passwordConfirm
                                                formControlName="confirmPassword"
-                                               class="form-control"
-                                               id="id">
+                                               class="form-control">
                                         <span class="input-group-text">
                                             @if (passwordConfirm.type === 'password') {
                                             <i (click)="passwordConfirm.type = 'text'"
                                                class="fa-solid fa-eye text-primary cursor-pointer"></i>
-                                            }@else {
+                                            } @else {
                                             <i (click)="passwordConfirm.type = 'password'"
                                                class="fa-solid fa-eye-slash text-primary cursor-pointer"></i>
                                             }
@@ -204,45 +200,43 @@
                                     </div>
                                 </div>
 
-                                <!-- Password feedback -->
                                 <div class="col-12">
                                     <ul class="password-feedback-list">
                                         <li [class.completed]="form['step_3'].value?.password.match('^(?=.*[A-Z])')">
-                                            Must contain at least one uppercase letter.
+                                            {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_1' | translate }}
                                         </li>
                                         <li [class.completed]="form['step_3'].value?.password.match('(?=.*[a-z])')">
-                                            Must contain at least one lowercase letter.
+                                            {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_2' | translate }}
                                         </li>
                                         <li [class.completed]="form['step_3'].value?.password.match('(.*[0-9].*)')">
-                                            Must contain at least one number.
+                                            {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_3' | translate }}
                                         </li>
                                         <li
                                             [class.completed]="form['step_3'].value?.password.match('(?=.*[!@#$%^&*])')">
-                                            Must contain at least one special character.
+                                            {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_4' | translate }}
                                         </li>
                                         <li [class.completed]="form['step_3'].value.password">
-                                            Must be at least 8 characters long.
+                                            {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_5' | translate }}
                                         </li>
                                     </ul>
                                 </div>
-
                             </div>
                             <button type="button"
                                     [disabled]="loading()"
                                     (click)="onNext(3)"
-                                    class="btn btn-primary">Finish Registration</button>
+                                    class="btn btn-primary">
+                                {{ 'AUTH.FORM.SIGN_UP.STEP_3_BUTTON' | translate }}
+                            </button>
                         </div>
-
                     </div>
                 </div>
             </div>
             <hr>
-
             <div class="d-flex justify-content-center gap-2">
-                Already have an account?
+                {{ 'AUTH.FORM.SIGN_UP.NO_ACCOUNT' | translate }}
                 <a [routerLink]="'/' + ROUTES.AUTH.ROOT + '/' + ROUTES.AUTH.SIGN_IN"
                    class="text-center text-decoration-none">
-                    Sign In
+                    {{ 'AUTH.FORM.SIGN_UP.SIGN_IN' | translate }}
                 </a>
             </div>
         </div>
