@@ -52,7 +52,6 @@ export class SignInComponent implements OnInit {
             // Set token
             this.tokenService.setToken(response.data?.token);
             this.tokenService.setUser(response.data?.profileInfo);
-            this.toastService.show({ text: 'Successfully logged in', classname: 'bg-primary text-light' });
             this.router.navigate(['/' + WEB_ROUTES.DASHBOARD.ROOT])
           } else {
             this.toastService.show({ text: response.message, classname: 'bg-danger text-light' });

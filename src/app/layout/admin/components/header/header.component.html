@@ -19,20 +19,26 @@
                         </button>
                         <div ngbDropdownMenu
                              aria-labelledby="dropdownBasic1">
-                            <button ngbDropdownItem
-                                    class="d-flex align-items-center gap-2">
+                            <a ngbDropdownItem
+                               class="d-flex align-items-center gap-2"
+                               href="">
                                 <i class="fa-solid fa-user"></i>
-                                Profile</button>
-                            <button ngbDropdownItem
-                                    class="d-flex align-items-center gap-2">
+                                Profile
+                            </a>
+                            <a ngbDropdownItem
+                               class="d-flex align-items-center gap-2"
+                               [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT">
                                 <i class="fa-solid fa-gear"></i>
-                                Settings</button>
-                            <button (click)="onLogout()"
-                                    ngbDropdownItem
-                                    class="d-flex align-items-center gap-2 text-danger"
-                                    text-danger>
+                                Settings
+                            </a>
+
+                            <a ngbDropdownItem
+                               href="javascript:void(0)"
+                               (click)="onLogout()"
+                               class="d-flex align-items-center gap-2 text-danger">
                                 <i class="fa-solid fa-right-from-bracket"></i>
-                                Logout</button>
+                                Logout
+                            </a>
                         </div>
                     </div>
                 </li>

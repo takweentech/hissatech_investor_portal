@@ -14,7 +14,13 @@ export const WEB_ROUTES = {
     TRANSACTIONS: {
         ROOT: "transactions",
     },
-    POSRTFOLIO: {
+    PORTFOLIO: {
         ROOT: "portfolio",
+    },
+    SETTINGS: {
+        ROOT: "settings",
+        BANKING: "banking",
+        ACCOUNT: "account",
+        SECURITY: "security",
     },
 };

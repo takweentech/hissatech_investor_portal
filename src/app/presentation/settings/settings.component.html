@@ -1,0 +1,49 @@
+<section class="row g-0 h-100">
+    <div class="col-4 border-right">
+        <div class="d-flex flex-column">
+            <div class="p-4 d-flex align-items-center ">
+                <h2 class="m-0">Settings</h2>
+            </div>
+            <ul>
+                <li class="border-bottom">
+                    <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.ACCOUNT"
+                       routerLinkActive="body-bg-grey"
+                       class="d-flex gap-3 p-4 ">
+                        <i class="fs-5 fa-solid fa-user"></i>
+                        <div>
+                            <h6>Account</h6>
+                            <p class="m-0">Manage your public profile and private information</p>
+                        </div>
+                    </a>
+                </li>
+                <li class=" border-bottom">
+                    <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.BANKING"
+                       routerLinkActive="body-bg-grey"
+                       class="d-flex gap-3 p-4">
+                        <i class="fs-5 fa-solid fa-bank"></i>
+                        <div>
+                            <h6>Banking</h6>
+                            <p class="m-0">Manage your public profile and private information</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.SECURITY"
+                       routerLinkActive="body-bg-grey"
+                       class="d-flex gap-3 p-4">
+                        <i class="fs-5 fa-solid fa-lock"></i>
+                        <div>
+                            <h6>Security</h6>
+                            <p class="m-0">Manage your public profile and private information</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-8 body-bg-grey">
+        <div class="p-4">
+            <router-outlet />
+        </div>
+    </div>
+</section>

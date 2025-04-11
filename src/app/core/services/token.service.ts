@@ -12,6 +12,10 @@ export class TokenService {
     localStorage.setItem(this.USER_KEY, JSON.stringify(user))
   }
 
+  public getUser(): User {
+    return JSON.parse(localStorage.getItem(this.USER_KEY) as string)
+  }
+
   // Store token securely
   public setToken(token: string | undefined): void {
     localStorage.setItem(this.TOKEN_KEY, token as string);

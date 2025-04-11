@@ -4,6 +4,7 @@ import { AUTH_ROUTES } from './presentation/auth/auth.routes';
 import { authGuard, noAuthGuard } from './core/guards/auth.guard';
 import { AdminComponent } from './layout/admin/admin.component';
 import { OPPORTUNITIES_ROUTES } from './presentation/opportunities/opportunities.routes';
+import { SETTINGS_ROUTES } from './presentation/settings/settings.routes';
 
 export const routes: Routes = [
     {
@@ -58,6 +59,16 @@ export const routes: Routes = [
                         (m) => m.OpportunitiesComponent
                     ),
                 children: OPPORTUNITIES_ROUTES
+            },
+            {
+                path: WEB_ROUTES.SETTINGS.ROOT,
+                canActivate: [authGuard],
+                loadComponent: () =>
+                    import("./presentation/settings/settings.component").then(
+                        (m) => m.SettingsComponent
+                    ),
+                children: SETTINGS_ROUTES
+
             },
         ]
     }

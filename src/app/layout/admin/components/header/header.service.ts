@@ -30,7 +30,7 @@ export class HeaderService {
     {
       title: "Portfolio",
       icon: "fa-solid fa-chart-simple",
-      routerLink: WEB_ROUTES.POSRTFOLIO.ROOT
+      routerLink: WEB_ROUTES.PORTFOLIO.ROOT
     },
   ];
 
