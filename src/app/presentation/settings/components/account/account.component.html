@@ -1,1 +1,45 @@
-<p>account works!</p>
+<form action="">
+    <h4>Account information</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti architecto si</p>
+    <div class="form-group mb-2">
+        <label for="password"
+               class="form-label">{{'Email'}}</label>
+        <div class="input-group">
+            <input type="email"
+                   class="form-control"
+                   id="password">
+        </div>
+    </div>
+    <div class="form-group mb-2">
+        <label for="userName"
+               class="form-label">{{'Phone number'}}</label>
+        <div class="input-group">
+
+
+            @if (traslationService.language === 'en') {
+            <span class="input-group-text"
+                  dir="ltr">+966</span>
+            }
+
+            <input type="tel"
+                   dir="ltr"
+                   formControlName="userName"
+                   class="form-control"
+                   id="userName">
+
+            @if (traslationService.language === 'ar') {
+            <span class="input-group-text"
+                  dir="ltr">+966</span>
+            }
+        </div>
+    </div>
+
+
+    <hr class="my-4">
+
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary">
+            Save
+        </button>
+    </div>
+</form>

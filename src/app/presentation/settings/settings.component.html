@@ -7,6 +7,7 @@
             <ul>
                 <li class="border-bottom">
                     <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.ACCOUNT"
+                       [routerLinkActiveOptions]="{ exact: true }"
                        routerLinkActive="body-bg-grey"
                        class="d-flex gap-3 p-4 ">
                         <i class="fs-5 fa-solid fa-user"></i>
@@ -18,6 +19,7 @@
                 </li>
                 <li class=" border-bottom">
                     <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.BANKING"
+                       [routerLinkActiveOptions]="{ exact: true }"
                        routerLinkActive="body-bg-grey"
                        class="d-flex gap-3 p-4">
                         <i class="fs-5 fa-solid fa-bank"></i>
@@ -29,6 +31,7 @@
                 </li>
                 <li>
                     <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.SECURITY"
+                       [routerLinkActiveOptions]="{ exact: true }"
                        routerLinkActive="body-bg-grey"
                        class="d-flex gap-3 p-4">
                         <i class="fs-5 fa-solid fa-lock"></i>

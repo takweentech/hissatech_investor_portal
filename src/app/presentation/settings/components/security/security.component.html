@@ -1,7 +1,7 @@
-<form action="">
-    <h4>Security</h4>
+<form [formGroup]="form">
+    <h4>Security Information</h4>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti architecto si</p>
-    <div class="form-group mb-4">
+    <div class="form-group mb-2">
         <label for="password"
                class="form-label">{{'Current Password'}}</label>
         <div class="input-group">
@@ -45,7 +45,27 @@
         </div>
     </div>
 
-    <hr class="mb-4">
+    <div class="col-12 ">
+        <ul class="password-feedback-list">
+            <li [class.completed]="form.value?.password?.match('^(?=.*[A-Z])')">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_1' }}
+            </li>
+            <li [class.completed]="form.value?.password?.match('(?=.*[a-z])')">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_2' }}
+            </li>
+            <li [class.completed]="form.value?.password?.match('(.*[0-9].*)')">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_3' }}
+            </li>
+            <li [class.completed]="form.value?.password?.match('(?=.*[!@#$%^&*])')">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_4' }}
+            </li>
+            <li [class.completed]="form.value?.password">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_5' }}
+            </li>
+        </ul>
+    </div>
+
+    <hr class="my-4">
 
     <div class="d-flex justify-content-end">
         <button class="btn btn-primary">
