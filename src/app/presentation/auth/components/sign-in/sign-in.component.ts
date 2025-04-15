@@ -1,13 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../../core/services/auth.service';
 import { ToastService } from '../../../../shared/components/toast/toast.service';
 import { finalize } from 'rxjs';
-import { TokenService } from '../../../../core/services/token.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { TranslationService } from '../../../../core/services/translation.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { OtpComponent } from '../otp/otp.component';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,13 +17,14 @@ import { TranslationService } from '../../../../core/services/translation.servic
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent implements OnInit {
-  private router = inject(Router);
-  private tokenService = inject(TokenService);
   private toastService = inject(ToastService);
   private authService = inject(AuthService);
   public traslationService = inject(TranslationService);
   loading = signal<boolean>(false);
   private fb = inject(FormBuilder);
+
+  private modalService = inject(NgbModal);
+
 
   ROUTES = WEB_ROUTES;
   signInForm!: FormGroup;
@@ -44,15 +46,12 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     if (this.signInForm.valid) {
       this.loading.set(true)
-      this.authService.signIn({ ...this.signInForm.value, userName: this.signInForm.value.userName }).pipe(
+      this.authService.validateSignIn({ ...this.signInForm.value, userName: this.signInForm.value.userName }).pipe(
         finalize(() => this.loading.set(false))
       ).subscribe({
         next: (response) => {
           if (response.status === 200) {
-            // Set token
-            this.tokenService.setToken(response.data?.token);
-            this.tokenService.setUser(response.data?.profileInfo);
-            this.router.navigate(['/' + WEB_ROUTES.DASHBOARD.ROOT])
+            this.openOtp(response.data?.token);
           } else {
             this.toastService.show({ text: response.message, classname: 'bg-danger text-light' });
           }
@@ -64,5 +63,11 @@ export class SignInComponent implements OnInit {
     } else {
       this.signInForm.markAllAsTouched()
     }
+  }
+
+
+  openOtp(token: string | undefined) {
+    const modalRef = this.modalService.open(OtpComponent, { centered: true });
+    modalRef.componentInstance.token = token;
   }
 }

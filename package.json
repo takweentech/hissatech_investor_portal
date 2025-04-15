@@ -25,6 +25,7 @@
     "ably": "^2.6.5",
     "bootstrap": "^5.3.5",
     "bs-stepper": "^1.7.0",
+    "ng-otp-input": "^2.0.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

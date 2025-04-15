@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title"
+        id="modal-basic-title">OTP</h4>
+    <button type="button"
+            class="btn-close"
+            (click)="onClose()"
+            aria-label="Close"></button>
+</div>
+<div class="modal-body py-5">
+    <div class="d-flex flex-column gap-4 align-items-center justify-content-center">
+        <ng-otp-input [formControl]="otp"
+                      [config]="{ length: 4 }"></ng-otp-input>
+        <a href="">Resend OTP</a>
+    </div>
+
+</div>

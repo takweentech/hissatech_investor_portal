@@ -15,9 +15,15 @@ const NAFATH_TOKEN: string = "eyJraWQiOiJlbG0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxM
 export class AuthService {
   private readonly http = inject(HttpClient);
 
-  signIn(investor: InvestorSignIn): Observable<CustomHttpResponse<Token>> {
+  validateSignIn(investor: InvestorSignIn): Observable<CustomHttpResponse<Token>> {
     return this.http.post<CustomHttpResponse<Token>>(environment.apiUrl + '/Accounts/ValidateLogin', investor)
   }
+
+  checkOtpLogin(otp: string | number, token: string): Observable<CustomHttpResponse<Token>> {
+    return this.http.get<CustomHttpResponse<Token>>(environment.apiUrl + '/Accounts/CheckOtpLogin?otp=' + otp, { headers: { 'Authorization': 'Bearer ' + token } })
+  }
+
+
 
   sendPhoneOtp() {
 
