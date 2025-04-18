@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { WEB_ROUTES } from '../../core/constants/routes.constants';
+import { propertyResolver } from './property.resolver';
 
 export const OPPORTUNITIES_ROUTES: Routes = [
     {
@@ -12,6 +13,7 @@ export const OPPORTUNITIES_ROUTES: Routes = [
     },
     {
         path: WEB_ROUTES.OPPORTUNITIES.DETAILS,
+        resolve: { property: propertyResolver },
         loadComponent: () =>
             import("./components/details/details.component").then(
                 (m) => m.DetailsComponent

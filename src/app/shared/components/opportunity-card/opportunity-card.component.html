@@ -101,13 +101,13 @@
     </div>
 
     }@else {
-    <div class="row">
-        <div class="col-4 h-100">
-            <ngb-carousel>
+    <div class="row h-100">
+        <div class="col-4">
+            <ngb-carousel class="h-100">
                 @for (item of property.sliderImages; track $index) {
                 <ng-template ngbSlide>
                     <div>
-                        <img class="card-img"
+                        <img class="v-2-card-img"
                              [src]="item.path"
                              alt="Random first slide" />
                     </div>
