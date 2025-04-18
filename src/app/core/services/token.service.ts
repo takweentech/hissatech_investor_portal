@@ -16,6 +16,10 @@ export class TokenService {
     return JSON.parse(localStorage.getItem(this.USER_KEY) as string)
   }
 
+  public getUserInitials(): string {
+    return this.getUser().name.split(" ").map((n) => n[0]).join(" ").substring(0, 3);
+  }
+
   // Store token securely
   public setToken(token: string | undefined): void {
     localStorage.setItem(this.TOKEN_KEY, token as string);

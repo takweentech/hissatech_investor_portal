@@ -1,4 +1,4 @@
-<form action="">
+<form [formGroup]="form">
     <h4>Account information</h4>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti architecto si</p>
     <div class="form-group mb-2">
@@ -6,6 +6,7 @@
                class="form-label">{{'Email'}}</label>
         <div class="input-group">
             <input type="email"
+                   formControlName="newEmail"
                    class="form-control"
                    id="password">
         </div>
@@ -23,7 +24,7 @@
 
             <input type="tel"
                    dir="ltr"
-                   formControlName="userName"
+                   formControlName="phoneNumber"
                    class="form-control"
                    id="userName">
 

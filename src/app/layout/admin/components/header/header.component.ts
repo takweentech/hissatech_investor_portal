@@ -17,6 +17,7 @@ export class HeaderComponent {
   router = inject(Router);
   menu = this.headerService.getMenu;
   WEB_ROUTES = WEB_ROUTES;
+  userInitials: string = this.tokenService.getUserInitials();
   onLogout() {
     this.tokenService.clearSession();
     this.router.navigate(['/' + WEB_ROUTES.AUTH.ROOT])
