@@ -10,6 +10,6 @@ import { TokenService } from '../../../../core/services/token.service';
   styleUrl: './greeting.component.scss'
 })
 export class GreetingComponent {
-  // private readonly tokenService = inject(TokenService);
-  // user: User = this.tokenService.getUser();
+  private readonly tokenService = inject(TokenService);
+  user: User = this.tokenService.getUser();
 }

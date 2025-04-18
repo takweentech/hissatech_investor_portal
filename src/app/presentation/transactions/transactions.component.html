@@ -1,6 +1,6 @@
 <section class=" py-4 px-4">
     <div class="d-flex mb-4">
-        <h4>Transactions (35)</h4>
+        <h4>Transactions ({{total()}})</h4>
     </div>
     <!-- 
     <div class="row mb-4">
@@ -26,44 +26,27 @@
     </div> -->
 
     <ul class="list-group">
-
-        <li class="list-group-item">
-            <div class="d-flex justify-content-between">
-                <div class="col d-flex align-items-center gap-4">
-                    <i class="fa-solid fa-arrow-up"></i>
-                    <div>
-                        <h6 class="mb-0 d-flex gap-2">Opportunity title goes here <span
-                                  class="badge bg-success">Approved</span></h6>
-                        <small>Withdraw</small>
-                    </div>
-                </div>
-                <div class="col d-flex flex-column align-items-end">
-                    <span class="text-success">$100</span>
-                    <span class="">10/10/2018</span>
-                </div>
-            </div>
-        </li>
-        @for (item of [1,2,3,4,5,6,7,8,9,9]; track $index) {
+        @for (item of transactions(); track $index) {
         <li class="list-group-item">
             <div class="d-flex justify-content-between">
                 <div class="col d-flex align-items-center gap-4">
                     <i class="fa-solid fa-arrow-down"></i>
                     <div>
-                        <h6 class="mb-0 d-flex gap-2">Opportunity title goes here <span
-                                  class="badge bg-success">Approved</span></h6>
+                        <h6 class="mb-0 d-flex gap-2">{{item.propertyName}} <span
+                                  class="badge bg-success">{{item.statusName }}</span></h6>
                         <small>Deposit</small>
                     </div>
                 </div>
                 <div class="col d-flex flex-column align-items-end">
-                    <span class="text-success">$100</span>
-                    <span class="">10/10/2018</span>
+                    <span class="text-success">${{item.amount}}</span>
+                    <span class="">{{item.createdDate | date }}</span>
                 </div>
             </div>
         </li>
         }
 
         <div class="mt-4 d-flex justify-content-end">
-            <ngb-pagination [collectionSize]="70"
+            <ngb-pagination [collectionSize]="total()"
                             [page]="1"
                             aria-label="Default pagination" />
         </div>
