@@ -51,7 +51,7 @@
                 @for (item of menu; track $index) {
                 <li>
                     <a [routerLink]="'/' + item.routerLink"
-                       [routerLinkActiveOptions]="{ exact: true }"
+                       [routerLinkActiveOptions]="{ exact: false }"
                        routerLinkActive="text-primary fw-bold"
                        class="d-flex align-items-center gap-2">
                         <i [class]="item.icon"></i>

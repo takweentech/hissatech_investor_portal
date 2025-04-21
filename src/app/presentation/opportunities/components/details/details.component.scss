@@ -1,0 +1,7 @@
+.card-grid-lg {
+    height: 400px;
+}
+
+.card-grid-sm {
+    height: calc(200px - calc(var(--bs-gutter-y) / 2));
+}

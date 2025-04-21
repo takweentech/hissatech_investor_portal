@@ -12,7 +12,7 @@ export const OPPORTUNITIES_ROUTES: Routes = [
         providers: [],
     },
     {
-        path: WEB_ROUTES.OPPORTUNITIES.DETAILS,
+        path: WEB_ROUTES.OPPORTUNITIES.DETAILS + '/:id',
         resolve: { property: propertyResolver },
         loadComponent: () =>
             import("./components/details/details.component").then(

@@ -16,8 +16,8 @@ export class PropertyService {
     return this.http.post<CustomHttpResponse<PagedResponse<Property>>>(environment.apiUrl + '/Property/GetPaged', filter)
   }
 
-  getById(id: number | string) {
-    return this.http.get(environment.apiUrl + '/Property/Get/' + id)
+  getById(id: number | string): Observable<CustomHttpResponse<Property>> {
+    return this.http.get<CustomHttpResponse<Property>>(environment.apiUrl + '/Property/Get/' + id)
   }
 
   getAll() {
