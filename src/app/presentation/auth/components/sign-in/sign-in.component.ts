@@ -20,10 +20,10 @@ export class SignInComponent implements OnInit {
   private toastService = inject(ToastService);
   private authService = inject(AuthService);
   public traslationService = inject(TranslationService);
-  loading = signal<boolean>(false);
-  private fb = inject(FormBuilder);
-
   private modalService = inject(NgbModal);
+  private fb = inject(FormBuilder);
+  loading = signal<boolean>(false);
+
 
 
   ROUTES = WEB_ROUTES;

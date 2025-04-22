@@ -15,6 +15,21 @@ export interface Investment {
 }
 
 
+export interface InvestementCreation {
+    id?: number,
+    amount: number,
+    refId?: string,
+    statusId?: number,
+    propertyId: number,
+    investorId?: number,
+    iban?: string,
+    dividendsEquity?: number,
+    netEquity?: number,
+    paymentType?: string,
+    language?: string
+}
+
+
 export interface InvestmentFilter {
     id?: number;
     amount?: number;

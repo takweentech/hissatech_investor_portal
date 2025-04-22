@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { CustomHttpResponse, PagedResponse } from '../../core/models/httpResponse.model';
-import { Investment, InvestmentFilterRequest } from './investment';
+import { InvestementCreation, Investment, InvestmentFilterRequest } from './investment';
 
 
 
@@ -12,6 +12,10 @@ import { Investment, InvestmentFilterRequest } from './investment';
 })
 export class InvestmentService {
     private readonly http = inject(HttpClient);
+
+    add(investment: InvestementCreation): Observable<CustomHttpResponse> {
+        return this.http.post<CustomHttpResponse>(environment.apiUrl + '/Investments/Add', investment)
+    }
 
     getPaged(filter: InvestmentFilterRequest): Observable<CustomHttpResponse<PagedResponse<Investment>>> {
         return this.http.post<CustomHttpResponse<PagedResponse<Investment>>>(environment.apiUrl + '/Investments/GetPaged', filter)

@@ -10,6 +10,7 @@ export const WEB_ROUTES = {
     OPPORTUNITIES: {
         ROOT: "opportunities",
         DETAILS: "details",
+        APPLICATION: "application",
     },
     TRANSACTIONS: {
         ROOT: "transactions",

@@ -1,0 +1,65 @@
+<div class="modal-header">
+    <h4 class="modal-title"
+        id="modal-basic-title">Northen Realestate Company</h4>
+    <button type="button"
+            class="btn-close"
+            aria-label="Close"></button>
+</div>
+<div class="modal-body py-4">
+    <div class="d-flex flex-column gap-4 align-items-center justify-content-center">
+        <div class="bs-stepper w-100"
+             #stepperRef>
+            <div class="bs-stepper-header"
+                 role="tablist">
+                @for (item of steps; track $index) {
+                <div class="step"
+                     [attr.data-target]="'#step-' + item.id">
+                    <button type="button"
+                            class="step-trigger p-0"
+                            role="tab"
+                            [attr.aria-controls]="'step-' + item.id"
+                            [attr.id]="'step-' + item.id + '-trigger'">
+                        <span class="bs-stepper-circle">{{$index + 1}}</span>
+                        <span class="bs-stepper-label">{{item.title}}</span>
+                    </button>
+                </div>
+                @if (($index + 1) !== steps.length) {
+                <div class="line"></div>
+                }
+                }
+
+            </div>
+            <div class="bs-stepper-content mt-4 p-0">
+                @for (item of steps; track $index) {
+                <div [attr.id]="'step-' + item.id"
+                     class="content"
+                     role="tabpanel"
+                     [attr.aria-labelledby]="'step-' + item.id + '-trigger'">
+                    <div class="d-flex flex-column gap-4">
+                        <!-- STEP {{ $index + 1 }} -->
+                        <div class="pb-4 d-flex flex-column gap-2">
+                            <h5>{{item.description}}</h5>
+                            <ng-container *ngComponentOutlet="item.component;"></ng-container>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-auto">
+                            <button (click)="onPrev()"
+                                    type="button"
+                                    class="btn btn-outline-primary col-2">
+                                Prev
+                            </button>
+                            <button (click)="onNext(item)"
+                                    type="button"
+                                    class="btn btn-primary col-2">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -20,4 +20,13 @@ export const OPPORTUNITIES_ROUTES: Routes = [
             ),
         providers: [],
     },
+    {
+        path: WEB_ROUTES.OPPORTUNITIES.APPLICATION + '/:id',
+        resolve: { property: propertyResolver },
+        loadComponent: () =>
+            import("./components/application/application.component").then(
+                (m) => m.ApplicationComponent
+            ),
+        providers: [],
+    },
 ];

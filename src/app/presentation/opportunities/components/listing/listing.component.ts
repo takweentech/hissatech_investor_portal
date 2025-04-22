@@ -4,10 +4,11 @@ import { BaseComponent } from '../../../../core/base/base.component';
 import { Property } from '../../../../data/property/property';
 import { PropertyService } from '../../../../data/property/property.service';
 import { takeUntil } from 'rxjs';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-listing',
-  imports: [OpportunityCardComponent],
+  imports: [OpportunityCardComponent, NgbPaginationModule],
   templateUrl: './listing.component.html',
   styleUrl: './listing.component.scss'
 })
