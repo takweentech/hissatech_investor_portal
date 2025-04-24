@@ -1,15 +1,18 @@
 import { AfterViewInit, Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
 import Stepper from 'bs-stepper';
-import { AmountComponent } from './amount/amount.component';
+import { AmountComponent } from './components/amount/amount.component';
 import { NgComponentOutlet } from '@angular/common';
 import { InvestmentService } from '../../../../data/investment/investment.service';
 import { BaseComponent } from '../../../../core/base/base.component';
 import { takeUntil } from 'rxjs';
 import { Property } from '../../../../data/property/property';
+import { AgreementComponent } from './components/agreement/agreement.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 interface Step {
   title: string,
   description: string,
+  buttonLabel: string,
   id: number,
   component?: any,
   nextHandler?: Function
@@ -33,12 +36,17 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
       description: "Specify the investment amount",
       id: 1,
       component: AmountComponent,
+      buttonLabel: "Next"
+
     },
 
     {
       title: "Agreement",
       description: "",
       id: 3,
+      component: AgreementComponent,
+      buttonLabel: "Agree"
+
 
     },
 
@@ -46,6 +54,8 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
       title: "Payment",
       description: "",
       id: 2,
+      component: PaymentComponent,
+      buttonLabel: "Confirm"
 
     },
   ];

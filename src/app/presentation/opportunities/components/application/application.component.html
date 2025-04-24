@@ -1,6 +1,6 @@
 <div class="modal-header">
     <h4 class="modal-title"
-        id="modal-basic-title">Northen Realestate Company</h4>
+        id="modal-basic-title">{{property.displayName}}</h4>
     <button type="button"
             class="btn-close"
             aria-label="Close"></button>
@@ -36,7 +36,6 @@
                      role="tabpanel"
                      [attr.aria-labelledby]="'step-' + item.id + '-trigger'">
                     <div class="d-flex flex-column gap-4">
-                        <!-- STEP {{ $index + 1 }} -->
                         <div class="pb-4 d-flex flex-column gap-2">
                             <h5>{{item.description}}</h5>
                             <ng-container *ngComponentOutlet="item.component;"></ng-container>
@@ -51,7 +50,7 @@
                             <button (click)="onNext(item)"
                                     type="button"
                                     class="btn btn-primary col-2">
-                                Next
+                                {{item.buttonLabel}}
                             </button>
                         </div>
                     </div>
