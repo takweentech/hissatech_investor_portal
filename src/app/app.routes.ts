@@ -39,14 +39,14 @@ export const routes: Routes = [
                 ]
             },
             {
-                path: WEB_ROUTES.TRANSACTIONS.ROOT,
+                path: WEB_ROUTES.INVESTMENTS.ROOT,
                 canActivate: [authGuard],
                 children: [
                     {
                         path: "",
                         loadComponent: () =>
-                            import("./presentation/transactions/transactions.component").then(
-                                (m) => m.TransactionsComponent
+                            import("./presentation/investments/investments.component").then(
+                                (m) => m.InvestmentsComponent
                             ),
                     }
                 ]

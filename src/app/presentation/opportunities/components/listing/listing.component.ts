@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { OpportunityCardComponent } from "../../../../shared/components/opportunity-card/opportunity-card.component";
 import { BaseComponent } from '../../../../core/base/base.component';
-import { Property } from '../../../../data/property/property';
+import { Property, PropertyRequestFilter } from '../../../../data/property/property';
 import { PropertyService } from '../../../../data/property/property.service';
 import { takeUntil } from 'rxjs';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +17,15 @@ export class ListingComponent extends BaseComponent implements OnInit {
   private readonly propertyService = inject(PropertyService);
   properties = signal<Property[]>([]);
   total = signal<number>(0);
+  filter: PropertyRequestFilter = {
+    pageNumber: 1, pageSize: 10, filter: {},
+    orderByValue: [
+      {
+        colId: 'Id',
+        sort: 'desc'
+      }
+    ]
+  }
 
 
   ngOnInit(): void {
@@ -25,7 +34,7 @@ export class ListingComponent extends BaseComponent implements OnInit {
 
 
   getProperties(): void {
-    this.propertyService.getPaged({ pageNumber: 1, pageSize: 5, filter: {} }).pipe(
+    this.propertyService.getPaged(this.filter).pipe(
       takeUntil(this.destroy$),
     ).subscribe({
       next: (response) => {

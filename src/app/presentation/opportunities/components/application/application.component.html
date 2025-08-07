@@ -29,7 +29,8 @@
                 }
 
             </div>
-            <div class="bs-stepper-content mt-4 p-0">
+            <form [formGroup]="form"
+                  class="bs-stepper-content mt-4 p-0">
                 @for (item of steps; track $index) {
                 <div [attr.id]="'step-' + item.id"
                      class="content"
@@ -38,7 +39,8 @@
                     <div class="d-flex flex-column gap-4">
                         <div class="pb-4 d-flex flex-column gap-2">
                             <h5>{{item.description}}</h5>
-                            <ng-container *ngComponentOutlet="item.component;"></ng-container>
+                            <ng-container
+                                          *ngComponentOutlet="item.component; inputs: {formGroup: form.get(item.key)}"></ng-container>
                         </div>
 
                         <div class="d-flex justify-content-between mt-auto">
@@ -56,7 +58,7 @@
                     </div>
                 </div>
                 }
-            </div>
+            </form>
 
         </div>
     </div>

@@ -23,14 +23,9 @@ export class HeaderService {
       routerLink: WEB_ROUTES.OPPORTUNITIES.ROOT
     },
     {
-      title: "Transactions",
-      icon: "fa-solid fa-folder-tree",
-      routerLink: WEB_ROUTES.TRANSACTIONS.ROOT
-    },
-    {
-      title: "Portfolio",
+      title: "Investments",
       icon: "fa-solid fa-chart-simple",
-      routerLink: WEB_ROUTES.PORTFOLIO.ROOT
+      routerLink: WEB_ROUTES.INVESTMENTS.ROOT
     },
   ];
 

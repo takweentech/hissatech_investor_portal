@@ -11,10 +11,10 @@
                 <div class="col-md-6">
                     <a data-glightbox
                        data-gallery="gallery"
-                       [href]="property.sliderImages[0].path">
+                       [href]="property.sliderImages[0]?.path">
                         <div class="card card-grid-lg card-element-hover card-overlay-hover overflow-hidden"
                              [ngStyle]="{
-                        'background-image': 'url(' + property.sliderImages[0].path + ')',
+                        'background-image': 'url(' + property.sliderImages[0]?.path + ')',
                         'background-position': 'center left',
                         'background-size': 'cover'
                       }">
@@ -31,10 +31,10 @@
                         <div class="col-12">
                             <a data-glightbox
                                data-gallery="gallery"
-                               [href]="property.sliderImages[1].path">
+                               [href]="property.sliderImages[1]?.path">
                                 <div class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden"
                                      [ngStyle]="{
-                                    'background-image': 'url(' + property.sliderImages[1].path + ')',
+                                    'background-image': 'url(' + property.sliderImages[1]?.path + ')',
                                     'background-position': 'center left',
                                     'background-size': 'cover'
                                   }">
@@ -184,14 +184,17 @@
                         </div>
                     </div>
                     <div class="d-flex gap-2">
-                        <button class="btn btn-lg btn-outline-primary  fw-semibold col-6">
+                        <!-- <button class="btn btn-lg btn-outline-primary  fw-semibold col-6">
                             Save for later
-                        </button>
+                        </button> -->
                         <button (click)="onInvest()"
-                                class="btn btn-lg btn-primary  fw-semibold col-6">
+                                [disabled]="!investment.canInvest"
+                                class="btn btn-lg btn-primary  fw-semibold col">
                             Invest now
                         </button>
                     </div>
+
+                    <p>{{investment.message}}</p>
                 </div>
             </div>
 

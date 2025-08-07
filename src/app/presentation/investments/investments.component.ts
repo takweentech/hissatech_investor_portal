@@ -7,12 +7,12 @@ import { Investment } from '../../data/investment/investment';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-transactions',
+  selector: 'app-investments',
   imports: [NgbPaginationModule, DatePipe],
-  templateUrl: './transactions.component.html',
-  styleUrl: './transactions.component.scss'
+  templateUrl: './investments.component.html',
+  styleUrl: './investments.component.scss'
 })
-export class TransactionsComponent extends BaseComponent implements OnInit {
+export class InvestmentsComponent extends BaseComponent implements OnInit {
   private readonly investmentService = inject(InvestmentService);
   transactions = signal<Investment[]>([]);
   total = signal<number>(0);
@@ -22,7 +22,15 @@ export class TransactionsComponent extends BaseComponent implements OnInit {
   }
 
   getTransactions(): void {
-    this.investmentService.getPaged({ pageNumber: 1, pageSize: 5, filter: {} }).pipe(
+    this.investmentService.getPaged({
+      pageNumber: 1, pageSize: 5, filter: {
+      }, "orderByValue": [
+        {
+          colId: 'Id',
+          sort: 'desc'
+        }
+      ]
+    }).pipe(
       takeUntil(this.destroy$),
     ).subscribe({
       next: (response) => {

@@ -15,8 +15,8 @@ export const WEB_ROUTES = {
     TRANSACTIONS: {
         ROOT: "transactions",
     },
-    PORTFOLIO: {
-        ROOT: "portfolio",
+    INVESTMENTS: {
+        ROOT: "investments",
     },
     SETTINGS: {
         ROOT: "settings",

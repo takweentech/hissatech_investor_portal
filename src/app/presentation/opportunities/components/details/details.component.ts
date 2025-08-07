@@ -5,6 +5,7 @@ import { NgStyle } from '@angular/common';
 import { LightgalleryModule } from 'lightgallery/angular';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApplicationComponent } from '../application/application.component';
+import { InvestData } from '../../../../data/investment/investment';
 
 @Component({
   selector: 'app-details',
@@ -17,6 +18,7 @@ export class DetailsComponent {
 
   private readonly activatedRoute = inject(ActivatedRoute);
   property: Property = this.activatedRoute.snapshot.data['property']?.data;
+  investment: InvestData = this.activatedRoute.snapshot.data['investment']?.data;
 
 
   settings = {

@@ -1,6 +1,6 @@
 <section class=" py-4 px-4">
     <div class="d-flex mb-4">
-        <h4>Transactions ({{total()}})</h4>
+        <h4>Investments ({{total()}})</h4>
     </div>
     <!-- 
     <div class="row mb-4">
@@ -26,6 +26,7 @@
     </div> -->
 
     <ul class="list-group">
+        @if (transactions().length) {
         @for (item of transactions(); track $index) {
         <li class="list-group-item">
             <div class="d-flex justify-content-between">
@@ -43,12 +44,18 @@
                 </div>
             </div>
         </li>
-        }
-
         <div class="mt-4 d-flex justify-content-end">
             <ngb-pagination [collectionSize]="total()"
                             [page]="1"
                             aria-label="Default pagination" />
         </div>
+        }
+        }@else {
+        <div class="d-flex justify-content-center align-items-center">
+            <p>No investments yet.</p>
+        </div>
+        }
+
+
     </ul>
 </section>

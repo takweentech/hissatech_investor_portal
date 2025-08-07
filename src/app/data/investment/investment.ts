@@ -54,3 +54,38 @@ export interface InvestmentFilterRequest {
     filter?: InvestmentFilter;
     orderByValue?: OrderByValue[];
 }
+
+
+export interface InvestData {
+    id: number;
+    miniNumberofUnits: number;
+    maxNumberofUnits: number;
+    canInvest: boolean;
+    message: string;
+    referralCode: string;
+    totalCashback: number;
+    usedCount: number;
+}
+
+export interface InvestmentCheck {
+    id: number;
+    amount: number;
+    message: string;
+    walletBalance: number;
+    walletBalanceAfterInvest: number;
+    propertyName: string;
+    imagePath: string | null;
+    isSuccess: boolean;
+    isNew: boolean;
+    iban: string;
+    refId: string;
+    referralCode: string;
+    totalCashback: number;
+    usedCount: number;
+    amountBeforeDeduction: number;
+    amountAfterDeduction: number;
+    deductedValue: number;
+    referralCashback: number | null;
+    promoCashBack: number;
+    isRealEstatePromoCode: boolean;
+}
