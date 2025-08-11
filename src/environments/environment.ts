@@ -5,5 +5,6 @@ export const environment = {
     apiUrlV2: 'https://hissatech.paramej.com/api/v2',
     cmsUrl: 'https://sharikekcms.paramej.com/api',
     cmsAssetsUrl: 'https://sharikekcms.paramej.com/',
-    ablyAuthKey: 'GmOqAg.mIyZOQ:j4vnzHqplsqeVu2SewMmJHUC9mCJdlupPtHVTpIn6j0'
+    ablyAuthKey: 'GmOqAg.mIyZOQ:j4vnzHqplsqeVu2SewMmJHUC9mCJdlupPtHVTpIn6j0',
+    version: 1.0
 } as const;
