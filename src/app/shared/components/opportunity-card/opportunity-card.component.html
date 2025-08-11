@@ -41,7 +41,7 @@
              aria-valuemin="0"
              aria-valuemax="100">
             <div class="progress-bar text-bg-primary"
-                 [ngStyle]="{width: property.collectedValue + '%'}">{{property.collectedValue}}%</div>
+                 [ngStyle]="{width: (property.collectedValue || 0) + '%'}">{{(property.collectedValue || 0)}}%</div>
         </div>
 
     </div>

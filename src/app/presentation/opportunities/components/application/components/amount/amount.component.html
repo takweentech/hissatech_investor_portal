@@ -1,25 +1,38 @@
 <form action=""
       [formGroup]="formGroup"
       class="d-flex flex-column gap-2">
-    <div class="form-group">
-        <label for="amount"
-               class="form-label">Amount</label>
-        <div class="input-group">
-            <span class="input-group-text">SAR</span>
+       <div class="form-group">
+              <label for="amount"
+                     class="form-label">Amount</label>
+              <div class="input-group">
+                     <span class="input-group-text">SAR</span>
 
-            <input type="number"
-                   dir="ltr"
-                   formControlName="amount"
-                   class="form-control"
-                   id="amount">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="promoCode"
-               class="form-label">Promo code</label>
-        <input type="text"
-               formControlName="promoCode"
-               class="form-control"
-               id="promoCode">
-    </div>
+                     <input type="number"
+                            dir="ltr"
+                            formControlName="amount"
+                            class="form-control"
+                            id="amount">
+              </div>
+
+              @if (formGroup.get('amount')?.errors?.['required'] && formGroup.get('amount')?.touched) {
+              <small class="text-danger d-flex gap-2 align-items-center mt-2">
+                     <i class="fa-solid fa-circle-exclamation"></i>
+                     This field is required
+              </small>
+              }
+              @if (formGroup.get('amount')?.errors?.['min'] && formGroup.get('amount')?.touched) {
+              <small class="text-danger d-flex gap-2 align-items-center mt-2">
+                     <i class="fa-solid fa-circle-exclamation"></i>
+                     Minimum allowed amount is : {{ property && property.miniSubscription | currency: 'SAR '}}
+              </small>
+              }
+       </div>
+       <div class="form-group">
+              <label for="promoCode"
+                     class="form-label">Promo code</label>
+              <input type="text"
+                     formControlName="promoCode"
+                     class="form-control"
+                     id="promoCode">
+       </div>
 </form>

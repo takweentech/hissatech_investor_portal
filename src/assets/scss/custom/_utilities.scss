@@ -14,5 +14,14 @@ $utilities: (
             50: .5rem,
             75: .75rem,
             100: 1rem)),
-
+    "width": (property: width,
+        values: (auto: auto,
+            fit: fit-content,
+            25: 25%,
+            50: 50%,
+            75: 75%,
+            100: 100%,
+            1rem: 1rem,
+            2rem: 2rem,
+            3rem: 3rem))
 );

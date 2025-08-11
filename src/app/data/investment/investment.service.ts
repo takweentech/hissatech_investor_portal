@@ -24,8 +24,8 @@ export class InvestmentService {
         return this.http.post<CustomHttpResponse<PagedResponse<Investment>>>(environment.apiUrl + `/${this.baseUrl}/GetPaged`, filter)
     }
 
-    getById(id: number | string) {
-        return this.http.get(environment.apiUrl + `/${this.baseUrl}/Get` + id)
+    getById(id: number | string): Observable<CustomHttpResponse<Investment>> {
+        return this.http.get<CustomHttpResponse<Investment>>(environment.apiUrl + `/${this.baseUrl}/Get/` + id)
     }
 
     getAll() {
@@ -45,7 +45,7 @@ export class InvestmentService {
     }
 
     confirmInvestment(investmentId: number, investorId: number): Observable<CustomHttpResponse<{}>> {
-        return this.http.post<CustomHttpResponse<{}>>(environment.apiUrlV2 + `/${this.baseUrl}/ChickInvestment`, {}, { params: { investmentId, investorId } })
+        return this.http.post<CustomHttpResponse<{}>>(environment.apiUrlV2 + `/${this.baseUrl}/ConfirmInvestment`, {}, { params: { investmentId, investorId } })
     }
 
 

@@ -66,7 +66,7 @@ export interface Property {
 
 
 export interface PropertyRequestFilter {
-    pageNumber?: number,
+    pageNumber: number,
     pageSize?: number,
     filter?: {
         id?: number,

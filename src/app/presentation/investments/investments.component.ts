@@ -1,45 +1,11 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-import { BaseComponent } from '../../core/base/base.component';
-import { takeUntil } from 'rxjs';
-import { InvestmentService } from '../../data/investment/investment.service';
-import { Investment } from '../../data/investment/investment';
-import { DatePipe } from '@angular/common';
+import { Component, } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'app-investments',
-  imports: [NgbPaginationModule, DatePipe],
-  templateUrl: './investments.component.html',
-  styleUrl: './investments.component.scss'
+  imports: [RouterOutlet],
+  template: `<router-outlet/>`
 })
-export class InvestmentsComponent extends BaseComponent implements OnInit {
-  private readonly investmentService = inject(InvestmentService);
-  transactions = signal<Investment[]>([]);
-  total = signal<number>(0);
-
-  ngOnInit(): void {
-    this.getTransactions();
-  }
-
-  getTransactions(): void {
-    this.investmentService.getPaged({
-      pageNumber: 1, pageSize: 5, filter: {
-      }, "orderByValue": [
-        {
-          colId: 'Id',
-          sort: 'desc'
-        }
-      ]
-    }).pipe(
-      takeUntil(this.destroy$),
-    ).subscribe({
-      next: (response) => {
-        this.transactions.set(response.data?.data as Investment[])
-        this.total.set(response.data?.totalCount)
-      },
-      error: (err) => {
-
-      }
-    });
-  }
+export class InvestmentsComponent {
 }

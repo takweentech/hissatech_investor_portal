@@ -1,0 +1,59 @@
+import { Component, inject, signal } from '@angular/core';
+import { takeUntil } from 'rxjs';
+import { Investment, InvestmentFilter, InvestmentFilterRequest } from '../../../../data/investment/investment';
+import { InvestmentService } from '../../../../data/investment/investment.service';
+import { DatePipe } from '@angular/common';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { BaseComponent } from '../../../../core/base/base.component';
+import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
+import { RouterLink } from '@angular/router';
+import { InvestmentStatusEnum } from '../../../../core/enums/investment.enum';
+
+@Component({
+  selector: 'app-listing',
+  imports: [NgbPaginationModule, DatePipe, RouterLink],
+  templateUrl: './listing.component.html',
+  styleUrl: './listing.component.scss',
+
+})
+export class ListingComponent extends BaseComponent {
+  private readonly investmentService = inject(InvestmentService);
+  transactions = signal<Investment[]>([]);
+  total = signal<number>(0);
+  WEB_ROUTES = WEB_ROUTES;
+  InvestmentStatusEnum = InvestmentStatusEnum;
+  filter: InvestmentFilterRequest = {
+    pageNumber: 1, pageSize: 10, filter: {
+    },
+    orderByValue: [
+      {
+        colId: 'Id',
+        sort: 'desc'
+      }
+    ]
+  }
+  ngOnInit(): void {
+    this.getTransactions();
+  }
+
+  getTransactions(): void {
+    this.investmentService.getPaged(this.filter).pipe(
+      takeUntil(this.destroy$),
+    ).subscribe({
+      next: (response) => {
+        this.transactions.set(response.data?.data as Investment[])
+        this.total.set(response.data?.totalCount)
+      },
+      error: (err) => {
+
+      }
+    });
+  }
+
+  onPageChange(event: number) {
+    this.filter.pageNumber = event;
+    this.getTransactions();
+  }
+
+
+}

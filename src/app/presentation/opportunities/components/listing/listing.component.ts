@@ -18,7 +18,7 @@ export class ListingComponent extends BaseComponent implements OnInit {
   properties = signal<Property[]>([]);
   total = signal<number>(0);
   filter: PropertyRequestFilter = {
-    pageNumber: 1, pageSize: 10, filter: {},
+    pageNumber: 1, pageSize: 5, filter: {},
     orderByValue: [
       {
         colId: 'Id',
@@ -46,4 +46,11 @@ export class ListingComponent extends BaseComponent implements OnInit {
       }
     });
   }
+
+
+  onPageChange(event: number) {
+    this.filter.pageNumber = event;
+    this.getProperties();
+  }
+
 }

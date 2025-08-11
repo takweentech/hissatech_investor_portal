@@ -5,6 +5,7 @@ import { authGuard, noAuthGuard } from './core/guards/auth.guard';
 import { AdminComponent } from './layout/admin/admin.component';
 import { OPPORTUNITIES_ROUTES } from './presentation/opportunities/opportunities.routes';
 import { SETTINGS_ROUTES } from './presentation/settings/settings.routes';
+import { INVESTMENTS_ROUTES } from './presentation/investments/investments.routes';
 
 export const routes: Routes = [
     {
@@ -41,15 +42,7 @@ export const routes: Routes = [
             {
                 path: WEB_ROUTES.INVESTMENTS.ROOT,
                 canActivate: [authGuard],
-                children: [
-                    {
-                        path: "",
-                        loadComponent: () =>
-                            import("./presentation/investments/investments.component").then(
-                                (m) => m.InvestmentsComponent
-                            ),
-                    }
-                ]
+                children: INVESTMENTS_ROUTES
             },
             {
                 path: WEB_ROUTES.OPPORTUNITIES.ROOT,

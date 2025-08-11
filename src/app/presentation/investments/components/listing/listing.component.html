@@ -2,8 +2,8 @@
     <div class="d-flex mb-4">
         <h4>Investments ({{total()}})</h4>
     </div>
-    <!-- 
-    <div class="row mb-4">
+
+    <!-- <div class="row mb-4">
         <div class="col">
             <div class="card bg-secondary p-2 d-flex flex-column justify-content-center align-items-center gap-2">
                 <h5 class="text-primary fw-bold mb-0">Total</h5>
@@ -33,8 +33,19 @@
                 <div class="col d-flex align-items-center gap-4">
                     <i class="fa-solid fa-arrow-down"></i>
                     <div>
-                        <h6 class="mb-0 d-flex gap-2">{{item.propertyName}} <span
-                                  class="badge bg-success">{{item.statusName }}</span></h6>
+                        <div class="d-flex gap-2">
+                            <a
+                               [routerLink]=" '/' + WEB_ROUTES.INVESTMENTS.ROOT + '/' + WEB_ROUTES.INVESTMENTS.DETAILS + '/' + item.id ">
+                                <h6 class="mb-0 d-flex gap-2">{{item.propertyName}}
+                                </h6>
+                            </a>
+                            @if(item.statusName === InvestmentStatusEnum.PENDING_TRANSFER){
+                            <span class="badge bg-warning">{{item.statusName }}</span>
+                            }
+                            @if(item.statusName === InvestmentStatusEnum.COMPLETED){
+                            <span class="badge bg-success">{{item.statusName }}</span>
+                            }
+                        </div>
                         <small>Deposit</small>
                     </div>
                 </div>
@@ -44,12 +55,14 @@
                 </div>
             </div>
         </li>
+
+        }
         <div class="mt-4 d-flex justify-content-end">
             <ngb-pagination [collectionSize]="total()"
-                            [page]="1"
+                            [page]="filter.pageNumber"
+                            (pageChange)="onPageChange($event)"
                             aria-label="Default pagination" />
         </div>
-        }
         }@else {
         <div class="d-flex justify-content-center align-items-center">
             <p>No investments yet.</p>

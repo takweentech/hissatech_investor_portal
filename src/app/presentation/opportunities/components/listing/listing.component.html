@@ -3,7 +3,7 @@
         <h4>Opportunities ({{total()}})</h4>
     </div>
 
-
+    <!-- 
     <div class="mb-4 bg-body-tertiary p-3 rounded">
         <form action=""
               class="row">
@@ -35,7 +35,7 @@
             </div>
 
         </form>
-    </div>
+    </div> -->
 
 
     <div class="row g-4 mb-4">
@@ -51,7 +51,8 @@
 
     <div class="mt-4 d-flex justify-content-end">
         <ngb-pagination [collectionSize]="total()"
-                        [page]="1"
+                        [page]="filter.pageNumber"
+                        (pageChange)="onPageChange($event)"
                         aria-label="Default pagination" />
     </div>
 

@@ -6,6 +6,7 @@
             aria-label="Close"></button>
 </div>
 <div class="modal-body py-4">
+    @if (mode === modes.STEPPER) {
     <div class="d-flex flex-column gap-4 align-items-center justify-content-center">
         <div class="bs-stepper w-100"
              #stepperRef>
@@ -40,9 +41,8 @@
                         <div class="pb-4 d-flex flex-column gap-2">
                             <h5>{{item.description}}</h5>
                             <ng-container
-                                          *ngComponentOutlet="item.component; inputs: {formGroup: form.get(item.key)}"></ng-container>
+                                          *ngComponentOutlet="item.component; inputs: {formGroup: form.get(item.key), property: property}"></ng-container>
                         </div>
-
                         <div class="d-flex justify-content-between mt-auto">
                             <button (click)="onPrev()"
                                     type="button"
@@ -62,5 +62,12 @@
 
         </div>
     </div>
+    }
+
+    @if (mode === modes.SUCCESS) {
+    <app-success [investmentId]="investmentId"></app-success>
+    }
+
+
 
 </div>
