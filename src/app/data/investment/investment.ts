@@ -1,3 +1,5 @@
+import { Property } from "../property/property";
+
 export interface Investment {
     id: number;
     amount: number;
@@ -10,8 +12,12 @@ export interface Investment {
     netEquity: number;
     collectedValue: number;
     earnedRent: number;
+    lastEarnedRent: number;
+    excpectPercentRent: number;
+    ownerPerccent: number;
     createdDate: string; // ISO string, e.g., "2025-04-16T16:51:05.5801642"
     paymentType: string;
+    property: Property
 }
 
 

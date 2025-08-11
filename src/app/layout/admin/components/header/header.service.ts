@@ -27,6 +27,11 @@ export class HeaderService {
       icon: "fa-solid fa-chart-simple",
       routerLink: WEB_ROUTES.INVESTMENTS.ROOT
     },
+    {
+      title: "Profile",
+      icon: "fa-solid fa-user",
+      routerLink: WEB_ROUTES.SETTINGS.ROOT
+    },
   ];
 
 
