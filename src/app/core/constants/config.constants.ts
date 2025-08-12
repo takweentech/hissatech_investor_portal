@@ -1,3 +1,3 @@
 export const CONFIG = {
-    OTP_INTERVAL: 5
+    OTP_INTERVAL: 15
 };
