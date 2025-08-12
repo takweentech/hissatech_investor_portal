@@ -7,5 +7,5 @@ export const environment = {
     cmsUrl: 'https://sharikekcms.paramej.com/api',
     cmsAssetsUrl: 'https://sharikekcms.paramej.com/',
     ablyAuthKey: 'GmOqAg.mIyZOQ:j4vnzHqplsqeVu2SewMmJHUC9mCJdlupPtHVTpIn6j0',
-    version: '1.0.8'
+    version: '1.0.9'
 } as const;

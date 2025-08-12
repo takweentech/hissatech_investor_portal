@@ -1,7 +1,14 @@
-<app-header></app-header>
-<div class="container col d-flex">
-    <div class="bg-white shadow rounded flex-grow-1">
-        <router-outlet></router-outlet>
+<div class="d-flex overflow-y-hidden">
+    <div class="sidebar">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="col">
+        <app-header></app-header>
+        <div class="p-5 overflow-y-auto content-container">
+            <div class="bg-white shadow rounded flex-grow-1">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
     </div>
 </div>
-<app-footer></app-footer>

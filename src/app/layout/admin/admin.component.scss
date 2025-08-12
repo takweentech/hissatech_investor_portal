@@ -3,6 +3,10 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
-    background-color: #e6e6e6;
+    background-color: #fafafa;
     gap: 2rem;
+
+    .content-container {
+        height: 100vh;
+    }
 }

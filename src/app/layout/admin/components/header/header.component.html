@@ -1,64 +1,20 @@
-<header>
-    <section class="bg-primary  py-3">
-        <div class="container d-flex align-items-center justify-content-between">
-            <a href="">
-                <img src="assets/images/logo-white.svg"
-                     alt="">
-            </a>
+<header class="border-bottom">
+    <section class="bg-white py-4">
+        <div class="d-flex align-items-center justify-content-between px-5">
 
-            <ul>
-                <li>
-                    <div ngbDropdown
-                         placement="bottom-end"
-                         class="d-inline-block">
-                        <button type="button"
-                                class="btn btn-light"
-                                id="dropdownBasic1"
-                                ngbDropdownToggle>
-                            {{userInitials}}
-                        </button>
-                        <div ngbDropdownMenu
-                             aria-labelledby="dropdownBasic1">
-                            <a ngbDropdownItem
-                               class="d-flex align-items-center gap-2"
-                               [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.ACCOUNT">
-                                <i class="fa-solid fa-user"></i>
-                                Profile
-                            </a>
-                            <a ngbDropdownItem
-                               class="d-flex align-items-center gap-2"
-                               [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT">
-                                <i class="fa-solid fa-gear"></i>
-                                Settings
-                            </a>
+            <div class="d-flex gap-2 align-items-center text-primary">
+                <i [class]="module.icon"></i>
+                <h6 class="mb-0  fw-bold">{{module.title}}</h6>
+            </div>
 
-                            <a ngbDropdownItem
-                               href="javascript:void(0)"
-                               (click)="onLogout()"
-                               class="d-flex align-items-center gap-2 text-danger">
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                                Logout
-                            </a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <section class="bg-white py-3 shadow">
-        <div class="container d-flex align-items-center">
-            <ul class="d-flex align-items-center gap-4 p-0 m-0">
-                @for (item of menu; track $index) {
+            <ul class="d-flex align-items-center gap-2">
                 <li>
-                    <a [routerLink]="'/' + item.routerLink"
-                       [routerLinkActiveOptions]="{ exact: false }"
-                       routerLinkActive="text-primary fw-bold"
-                       class="d-flex align-items-center gap-2">
-                        <i [class]="item.icon"></i>
-                        {{item.title}}
-                    </a>
+                    <a target="_blank"
+                       [routerLink]="'/' + WEB_ROUTES.OPPORTUNITIES.ROOT "
+                       class="btn text-white btn-primary d-flex gap-2 align-items-center">
+                        <i class="fa-solid fa-list"></i>
+                        Browse Properties</a>
                 </li>
-                }
             </ul>
         </div>
     </section>

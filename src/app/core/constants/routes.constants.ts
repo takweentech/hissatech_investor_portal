@@ -20,6 +20,11 @@ export const WEB_ROUTES = {
         DETAILS: "details",
 
     },
+    PORTFOLIO: {
+        ROOT: "portfolio",
+        DETAILS: "details",
+
+    },
     SETTINGS: {
         ROOT: "settings",
         BANKING: "banking",

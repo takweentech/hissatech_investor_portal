@@ -1,0 +1,75 @@
+<aside class="bg-primary h-100 px-3 border-end">
+    <div class="d-flex justify-content-between align-items-center">
+        <a href=""
+           class="d-flex  py-4">
+            <img src="assets/images/logo-white.svg"
+                 alt="">
+        </a>
+
+        <ul>
+            <li>
+                <div ngbDropdown
+                     placement="bottom-end"
+                     class="d-inline-block">
+                    <button type="button"
+                            class="btn btn-light profile-btn"
+                            id="dropdownBasic1"
+                            ngbDropdownToggle>
+                        <i class="fa-solid fa-circle-user text-primary fs-3"></i>
+                    </button>
+                    <div ngbDropdownMenu
+                         aria-labelledby="dropdownBasic1">
+                        <a ngbDropdownItem
+                           class="d-flex align-items-center gap-2"
+                           [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.ACCOUNT">
+                            <i class="fa-solid fa-user"></i>
+                            Profile
+                        </a>
+                        <a ngbDropdownItem
+                           class="d-flex align-items-center gap-2"
+                           [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT">
+                            <i class="fa-solid fa-gear"></i>
+                            Settings
+                        </a>
+
+                        <a ngbDropdownItem
+                           href="javascript:void(0)"
+                           (click)="onLogout()"
+                           class="d-flex align-items-center gap-2 text-danger">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="mt-4 d-flex flex-column gap-3">
+        <div class="d-flex flex-column align-items-center gap-2">
+            <span class="bg-white initials fw-bold text-primary">{{userInitials}}</span>
+            <div class="d-flex flex-column  align-items-center text-white">
+                <span class="fw-semibold">{{user.name}}</span>
+                <small class="opacity-75">{{user.email}}</small>
+            </div>
+        </div>
+        <ul class="d-flex flex-column p-0 m-0 gap-1 ">
+            @for (item of menu; track $index) {
+            <li>
+                <a [routerLink]="'/' + item.routerLink"
+                   [routerLinkActiveOptions]="{ exact: false }"
+                   routerLinkActive="active rounded"
+                   class="d-flex align-items-center text-white gap-2">
+                    <i [class]="item.icon"></i>
+                    {{item.title}}
+                </a>
+            </li>
+            }
+        </ul>
+
+    </div>
+
+
+
+
+
+</aside>

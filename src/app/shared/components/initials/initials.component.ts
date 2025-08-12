@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TokenService } from '../../../core/services/token.service';
 
 @Component({
   selector: 'app-initials',
@@ -7,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './initials.component.scss'
 })
 export class InitialsComponent {
+  tokenService = inject(TokenService);
+
+  userInitials: string = this.tokenService.getUserInitials();
 
 }

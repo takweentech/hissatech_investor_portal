@@ -37,12 +37,15 @@ export const routes: Routes = [
                                 (m) => m.DashboardComponent
                             ),
                     }
-                ]
+                ],
+                data: { title: "Home", icon: "fa-house fa-solid" }
             },
             {
                 path: WEB_ROUTES.INVESTMENTS.ROOT,
                 canActivate: [authGuard],
-                children: INVESTMENTS_ROUTES
+                children: INVESTMENTS_ROUTES,
+                data: { title: "Investments", icon: "fa-solid fa-chart-simple" }
+
             },
             {
                 path: WEB_ROUTES.OPPORTUNITIES.ROOT,
@@ -60,8 +63,8 @@ export const routes: Routes = [
                     import("./presentation/settings/settings.component").then(
                         (m) => m.SettingsComponent
                     ),
-                children: SETTINGS_ROUTES
-
+                children: SETTINGS_ROUTES,
+                data: { title: "Profile", icon: "fa-solid fa-user", }
             },
         ]
     }

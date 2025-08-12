@@ -17,15 +17,20 @@ export class HeaderService {
       icon: "fa-solid fa-house",
       routerLink: WEB_ROUTES.DASHBOARD.ROOT
     },
-    {
-      title: "Opportunities",
-      icon: "fa-solid fa-list",
-      routerLink: WEB_ROUTES.OPPORTUNITIES.ROOT
-    },
+    // {
+    //   title: "Opportunities",
+    //   icon: "fa-solid fa-list",
+    //   routerLink: WEB_ROUTES.OPPORTUNITIES.ROOT
+    // },
     {
       title: "Investments",
       icon: "fa-solid fa-chart-simple",
       routerLink: WEB_ROUTES.INVESTMENTS.ROOT
+    },
+    {
+      title: "Portfolio",
+      icon: "fa-solid fa-briefcase",
+      routerLink: WEB_ROUTES.PORTFOLIO.ROOT
     },
     {
       title: "Profile",
