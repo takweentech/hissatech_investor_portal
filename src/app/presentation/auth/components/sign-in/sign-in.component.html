@@ -10,6 +10,7 @@
             <h1 class="fw-bold">{{'AUTH.FORM.SIGN_IN.TITLE' | translate}}</h1>
             <p>{{'AUTH.FORM.SIGN_IN.SUB_TITLE' | translate}}</p>
         </div>
+        @if (mode == modes.FORM) {
         <div class="form-group">
             <label for="userName"
                    class="form-label">{{'AUTH.FORM.SIGN_IN.USERNAME' | translate}}</label>
@@ -63,9 +64,22 @@
             <label for="rememberMe">{{'AUTH.FORM.SIGN_IN.REMEMBER_ME' | translate}}</label>
         </div>
 
+        <button [disabled]="loading()"
+                class="btn btn-primary">{{'AUTH.FORM.SIGN_IN.SIGN_IN' | translate}}</button>
+
+
+
+        }
+
+
+
+        @if (mode == modes.OTP) {
+        <app-otp [token]="tempToken"
+                 (resendOtp)="onSubmit()"></app-otp>
+        }
+
+
         <div class="d-flex flex-column gap-2">
-            <button [disabled]="loading()"
-                    class="btn btn-primary">{{'AUTH.FORM.SIGN_IN.SIGN_IN' | translate}}</button>
 
             <hr>
 

@@ -10,9 +10,14 @@ import { TranslationService } from '../../../../core/services/translation.servic
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OtpComponent } from '../otp/otp.component';
 
+enum Modes {
+  FORM = 'form',
+  OTP = 'otp'
+}
+
 @Component({
   selector: 'app-sign-in',
-  imports: [RouterLink, ReactiveFormsModule, TranslatePipe],
+  imports: [RouterLink, ReactiveFormsModule, TranslatePipe, OtpComponent],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss'
 })
@@ -23,11 +28,13 @@ export class SignInComponent implements OnInit {
   private modalService = inject(NgbModal);
   private fb = inject(FormBuilder);
   loading = signal<boolean>(false);
-
+  modes = Modes;
+  mode: Modes = Modes.FORM;
 
 
   ROUTES = WEB_ROUTES;
   signInForm!: FormGroup;
+  tempToken!: string;
 
 
   ngOnInit(): void {
@@ -51,7 +58,9 @@ export class SignInComponent implements OnInit {
       ).subscribe({
         next: (response) => {
           if (response.status === 200) {
-            this.openOtp(response.data?.token);
+            // this.openOtp(response.data?.token);
+            this.mode = this.modes.OTP;
+            this.tempToken = response.data?.token
           } else {
             this.toastService.show({ text: response.message, classname: 'bg-danger text-light' });
           }
@@ -65,9 +74,4 @@ export class SignInComponent implements OnInit {
     }
   }
 
-
-  openOtp(token: string | undefined) {
-    const modalRef = this.modalService.open(OtpComponent, { centered: true });
-    modalRef.componentInstance.token = token;
-  }
 }
