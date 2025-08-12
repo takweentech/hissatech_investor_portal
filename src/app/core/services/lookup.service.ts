@@ -31,4 +31,8 @@ export class LookupService {
       { name: "More than 50,000,000 | أكثر من 50,000,000", value: "8" }
     ]
   }
+
+  getBankInfo(): { beneficiaryName: string, bankName: string, IBAN: string } {
+    return { beneficiaryName: "hissaTechCompany", bankName: "Arab National Bank", IBAN: "SA6730100761310000002384" }
+  }
 }

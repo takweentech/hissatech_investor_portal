@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Property } from '../../../../../../data/property/property';
+import { LookupService } from '../../../../../../core/services/lookup.service';
 
 @Component({
   selector: 'app-payment',
@@ -11,5 +12,9 @@ import { Property } from '../../../../../../data/property/property';
 export class PaymentComponent {
   @Input() property!: Property;
   @Input() formGroup!: FormGroup;
+  private readonly lookupService = inject(LookupService);
+  bankInfo = this.lookupService.getBankInfo();
+  constructor() {
+  }
 
 }

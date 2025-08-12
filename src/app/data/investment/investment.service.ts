@@ -48,6 +48,13 @@ export class InvestmentService {
         return this.http.post<CustomHttpResponse<{}>>(environment.apiUrlV2 + `/${this.baseUrl}/ConfirmInvestment`, {}, { params: { investmentId, investorId } })
     }
 
+    downloadAgreement(id: number): Observable<Blob> {
+        return this.http.get(
+            environment.apiUrl + `/${this.baseUrl}/GetCertificate/${id}`,
+            { responseType: 'blob' }
+        );
+    }
+
 
 
 

@@ -8,6 +8,7 @@ import { InvestData } from '../../../../data/investment/investment';
 import { PropertyService } from '../../../../data/property/property.service';
 import { InvestmentService } from '../../../../data/investment/investment.service';
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-details',
@@ -32,6 +33,8 @@ export class DetailsComponent {
     selector: 'a',
     loop: false,
   };
+
+  ASSETS_URL = environment.assetsUrl;
 
 
   onInvest() {

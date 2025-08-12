@@ -42,6 +42,7 @@
                     <div class="d-flex flex-column gap-4">
                         <div class="pb-4 d-flex flex-column gap-2">
                             <h5>{{item.description}}</h5>
+                            <p>{{item.subDescription}}</p>
                             <ng-container
                                           *ngComponentOutlet="item.component; inputs: {formGroup: form.get(item.key), property: property}"></ng-container>
                         </div>

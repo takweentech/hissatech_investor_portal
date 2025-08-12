@@ -56,7 +56,7 @@
 
         <div>
             <div class="row">
-
+                <!-- About -->
                 <div class="col-6 d-flex gap-4 flex-column">
                     <div>
                         <h3 class="mb-0">About this property</h3>
@@ -64,6 +64,7 @@
                     </div>
                     <p>{{property.about}}</p>
 
+                    @if (property.featureValues.length) {
 
                     <div class="bg-body-tertiary rounded row gx-3 p-2 py-3 mx-0">
                         @for (item of property.featureValues; track $index) {
@@ -78,8 +79,30 @@
                         </div>
                         }
                     </div>
+                    }
+
+                    <!-- Documents -->
+                    @if(property.documents.length){
+                    <ul class="d-flex flex-column gap-2">
+                        @for (item of property.documents; track $index) {
+                        <li>
+                            <a [href]="ASSETS_URL + '/' +item.path"
+                               target="_blank"
+                               class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-regular fa-file-pdf"></i>
+                                    {{item.name}}
+                                </div>
+                                <i class="fa-solid fa-download"></i>
+
+                            </a>
+                        </li>
+                        }
+                    </ul>
+                    }
 
 
+                    <!-- Map -->
                     <div>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26441.350223329482!2d-6.8022898!3d34.065187449999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76971cdbf2da1%3A0xea3c7736bfdf2fd5!2scarrefour!5e0!3m2!1sen!2sma!4v1745234881370!5m2!1sen!2sma"
                                 width="100%"
@@ -89,6 +112,11 @@
                                 loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
+
+
+
+
+
 
 
 
@@ -172,13 +200,13 @@
                             Save for later
                         </button>
                         <button [routerLink]="'/'  + WEB_ROUTES.OPPORTUNITIES.ROOT + '/' + WEB_ROUTES.OPPORTUNITIES.APPLICATION + '/' + property.id"
-                                [disabled]="!investment.canInvest"
+                                [disabled]="!investment?.canInvest"
                                 class="btn btn-lg btn-primary  fw-semibold col">
                             Invest now
                         </button>
                     </div>
 
-                    <p>{{investment.message}}</p>
+                    <p>{{investment?.message}}</p>
                 </div>
             </div>
 

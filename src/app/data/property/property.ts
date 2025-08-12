@@ -58,7 +58,10 @@ export interface Property {
     isSavedProperty: boolean;
     closeDate: string | null;
     tourLink: string;
-    documents: any[]; // You can replace `any` with a more specific type if you know the document structure
+    documents: {
+        name: string,
+        path: string,
+    }[];
     sliderImages: SliderImage[];
     featureValues: FeatureValue[];
     marketTrackers: MarketTracker[];

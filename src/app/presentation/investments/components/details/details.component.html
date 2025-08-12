@@ -16,9 +16,17 @@
             }
         </div>
 
-        <div>
+        <div class="d-flex gap-2 align-items-center">
+
             <button class="btn btn-danger btn-sm">
                 Cancel Investment
+            </button>
+
+            <button (click)="onDownloadAgreement()"
+                    [disabled]="loading()"
+                    class="btn btn-primary btn-sm d-flex gap-2 align-items-center">
+                <i class="fa-solid fa-download"></i>
+                Download Agreement
             </button>
         </div>
     </div>

@@ -28,6 +28,7 @@ interface Control {
 interface Step {
   title: string,
   description: string,
+  subDescription?: string,
   buttonLabel: string,
   key: string,
   id: number,
@@ -65,6 +66,7 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
         title: "Amount",
         key: 'amount',
         description: "Specify the investment amount",
+        subDescription: "Enter the amount you wish to invest in this opportunity. You can adjust it based on your budget and the available investment slots.",
         id: 1,
         component: AmountComponent,
         buttonLabel: "Next",
@@ -79,18 +81,20 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
           },
         ]
       },
-      {
-        title: "Agreement",
-        key: '',
-        description: "",
-        id: 3,
-        component: AgreementComponent,
-        buttonLabel: "Agree"
-      },
+      // {
+      //   title: "Agreement",
+      //   key: '',
+      //   description: "Review & Accept the Agreement",
+      //   subDescription: "Please read the investment terms carefully. By accepting, you confirm that you understand the risks, potential returns, and conditions associated with this opportunity.",
+      //   id: 3,
+      //   component: AgreementComponent,
+      //   buttonLabel: "Agree"
+      // },
       {
         title: "Payment",
         key: '',
-        description: "",
+        description: "Complete Your Payment",
+        subDescription: "Select your preferred payment method to finalize your investment. Once payment is processed, you will receive a confirmation and proof of your investment.",
         id: 2,
         component: PaymentComponent,
         buttonLabel: "Confirm",

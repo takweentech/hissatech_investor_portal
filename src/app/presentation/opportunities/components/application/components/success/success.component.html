@@ -5,7 +5,17 @@
 
     <p> To complete your investment, please proceed with the payment using your chosen method.</p>
 
-    <button (click)="onNavigateToInvestment()"
-            class="btn btn-primary w-fit">View investment details </button>
+    <div class="d-flex gap-2 align-items center">
 
+        <button (click)="onNavigateToInvestment()"
+                class="btn btn-outline-primary w-fit">View investment details </button>
+
+        <button (click)="onDownloadAgreement()"
+                [disabled]="loading()"
+                class="btn btn-primary btn-sm d-flex gap-2 align-items-center">
+            <i class="fa-solid fa-download"></i>
+            Download Agreement
+        </button>
+
+    </div>
 </div>
