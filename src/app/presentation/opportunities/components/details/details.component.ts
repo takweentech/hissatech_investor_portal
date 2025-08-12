@@ -1,10 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Property } from '../../../../data/property/property';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgStyle } from '@angular/common';
 import { LightgalleryModule } from 'lightgallery/angular';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ApplicationComponent } from '../application/application.component';
 import { InvestData } from '../../../../data/investment/investment';
 import { PropertyService } from '../../../../data/property/property.service';
 import { InvestmentService } from '../../../../data/investment/investment.service';
@@ -12,7 +11,7 @@ import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
 
 @Component({
   selector: 'app-details',
-  imports: [LightgalleryModule, NgStyle],
+  imports: [LightgalleryModule, NgStyle, RouterLink],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
@@ -26,7 +25,7 @@ export class DetailsComponent {
   property: Property = this.activatedRoute.snapshot.data['property']?.data;
   investment: InvestData = this.activatedRoute.snapshot.data['investment']?.data;
 
-
+  WEB_ROUTES = WEB_ROUTES;
   settings = {
     counter: false,
     download: false,
@@ -36,12 +35,12 @@ export class DetailsComponent {
 
 
   onInvest() {
-    const modalRef = this.modalService.open(ApplicationComponent, { centered: true, size: 'lg' });
-    modalRef.componentInstance.property = this.property;
-    modalRef.result.then(result => {
-      if (result) {
-        this.router.navigateByUrl('/' + WEB_ROUTES.INVESTMENTS.ROOT + '/' + WEB_ROUTES.INVESTMENTS.DETAILS + '/' + result)
-      }
-    })
+    // const modalRef = this.modalService.open(ApplicationComponent, { centered: true, size: 'lg' });
+    // modalRef.componentInstance.property = this.property;
+    // modalRef.result.then(result => {
+    //   if (result) {
+    //     this.router.navigateByUrl('/' + WEB_ROUTES.INVESTMENTS.ROOT + '/' + WEB_ROUTES.INVESTMENTS.DETAILS + '/' + result)
+    //   }
+    // })
   }
 }

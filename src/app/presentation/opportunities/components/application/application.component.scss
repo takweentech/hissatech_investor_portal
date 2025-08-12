@@ -1,5 +1,90 @@
 .step.active {
+    &:active {
+        color: var(--primary-color) !important;
+    }
+
     .bs-stepper-circle {
         background-color: var(--primary-color) !important;
+    }
+}
+
+
+.step-trigger {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+.vertical .content.fade.dstepper-none {
+    display: none;
+}
+
+
+.custom-stepper {
+    flex-direction: column;
+    position: relative;
+
+    .bs-stepper-header {
+        .step {
+            display: flex;
+            align-items: center;
+
+            .step-trigger {
+                position: relative;
+                padding-inline-start: 2.5rem;
+                opacity: 1 !important;
+                z-index: 100;
+            }
+
+            // Active state
+            &.active {
+                .step-trigger {
+                    .bs-stepper-label {
+                        color: var(--bs-primary);
+                    }
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 1rem;
+                    left: 1.2rem;
+                    height: 90%;
+                    border: 1px dashed rgb(233, 232, 232);
+                }
+            }
+
+            // Completed state
+            &.completed {
+                .step-trigger {
+                    .bs-stepper-label {
+                        color: var(--bs-success);
+                    }
+
+                    &::before {
+                        background-color: var(--bs-success);
+                    }
+
+                    &::after {
+                        content: '✓';
+                        background-color: transparent;
+                        color: white;
+                        height: initial;
+                        width: initial;
+                    }
+                }
+            }
+        }
+    }
+
+    .bs-stepper-content {
+        .content {
+            padding: 1rem 0 2rem 3rem;
+            padding-inline-start: 2.5rem;
+
+            &.dstepper-none {
+                display: none !important;
+            }
+        }
     }
 }

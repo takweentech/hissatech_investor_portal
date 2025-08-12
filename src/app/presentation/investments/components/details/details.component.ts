@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Investment } from '../../../../data/investment/investment';
-import { CurrencyPipe, JsonPipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { InvestmentStatusEnum } from '../../../../core/enums/investment.enum';
 import { Location } from '@angular/common';
 @Component({
   selector: 'app-details',
-  imports: [JsonPipe, CurrencyPipe],
+  imports: [CurrencyPipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })

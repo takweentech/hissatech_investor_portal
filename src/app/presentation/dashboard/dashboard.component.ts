@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 import { Investment } from '../../data/investment/investment';
 import { InvestmentService } from '../../data/investment/investment.service';
 import { DatePipe } from '@angular/common';
+import { InvestmentStatusEnum } from '../../core/enums/investment.enum';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,10 +22,12 @@ export class DashboardComponent extends BaseComponent implements OnInit {
 
   private readonly propertyService = inject(PropertyService);
   private readonly investmentService = inject(InvestmentService);
+  InvestmentStatusEnum = InvestmentStatusEnum;
 
   properties = signal<Property[]>([]);
   transactions = signal<Investment[]>([]);
-  total = signal<number>(0);
+  totalProperties = signal<number>(0);
+  totalTransactions = signal<number>(0);
   WEB_ROUTES = WEB_ROUTES;
   ngOnInit(): void {
     this.getProperties();
@@ -33,12 +36,12 @@ export class DashboardComponent extends BaseComponent implements OnInit {
 
 
   getProperties(): void {
-    this.propertyService.getPaged({ pageNumber: 1, pageSize: 5, filter: {} }).pipe(
+    this.propertyService.getPaged({ pageNumber: 1, pageSize: 3, filter: { status: 2 }, orderByValue: [{ colId: "Id", sort: "desc" }] }).pipe(
       takeUntil(this.destroy$),
     ).subscribe({
       next: (response) => {
         this.properties.set(response.data?.data as Property[])
-        this.total.set(response.data?.totalCount)
+        this.totalProperties.set(response.data?.totalCount)
       },
       error: (err) => {
 
@@ -48,12 +51,12 @@ export class DashboardComponent extends BaseComponent implements OnInit {
 
 
   getTransactions(): void {
-    this.investmentService.getPaged({ pageNumber: 1, pageSize: 5, filter: {} }).pipe(
+    this.investmentService.getPaged({ pageNumber: 1, pageSize: 5, filter: {}, orderByValue: [{ colId: "Id", sort: "desc" }] }).pipe(
       takeUntil(this.destroy$),
     ).subscribe({
       next: (response) => {
         this.transactions.set(response.data?.data as Investment[])
-        this.total.set(response.data?.totalCount)
+        this.totalTransactions.set(response.data?.totalCount)
       },
       error: (err) => {
 

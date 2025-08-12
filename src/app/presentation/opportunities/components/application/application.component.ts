@@ -9,10 +9,11 @@ import { Property } from '../../../../data/property/property';
 import { AgreementComponent } from './components/agreement/agreement.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ToastService } from '../../../../shared/components/toast/toast.service';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { TokenService } from '../../../../core/services/token.service';
 import { SuccessComponent } from "./components/success/success.component";
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 enum Mode {
   STEPPER = 'stepper',
@@ -42,12 +43,14 @@ interface Step {
   styleUrl: './application.component.scss'
 })
 export class ApplicationComponent extends BaseComponent implements AfterViewInit, OnInit {
-  @Input() property!: Property;
   private readonly investmentService = inject(InvestmentService);
   private readonly tokenService = inject(TokenService);
-  private readonly ngbActiveModal = inject(NgbActiveModal);
   private readonly fb = inject(FormBuilder);
   private readonly toastService = inject(ToastService);
+  private readonly location = inject(Location);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  property: Property = this.activatedRoute.snapshot.data['property']?.data;
+
   @ViewChild('stepperRef', { static: false }) stepperRef!: ElementRef;
   private stepperInstance!: Stepper;
   form!: FormGroup;
@@ -138,8 +141,6 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
           return
         }
         this.mode = this.modes.SUCCESS;
-        // this.toastService.show({ text: "You have successfully applied for this investment", classname: 'bg-success text-light' });
-        // this.ngbActiveModal.close(response.data.id);
         this.investmentId = response.data.id;
       },
       error: (err) => {
@@ -164,6 +165,9 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
   }
 
 
+  onBack(): void {
+    this.location.back()
+  }
 
 
   ngAfterViewInit(): void {

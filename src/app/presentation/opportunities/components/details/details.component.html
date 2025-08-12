@@ -171,7 +171,7 @@
                         <button class="btn btn-lg btn-outline-primary  fw-semibold col-6">
                             Save for later
                         </button>
-                        <button (click)="onInvest()"
+                        <button [routerLink]="'/'  + WEB_ROUTES.OPPORTUNITIES.ROOT + '/' + WEB_ROUTES.OPPORTUNITIES.APPLICATION + '/' + property.id"
                                 [disabled]="!investment.canInvest"
                                 class="btn btn-lg btn-primary  fw-semibold col">
                             Invest now

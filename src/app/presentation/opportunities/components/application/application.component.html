@@ -1,18 +1,23 @@
-<div class="modal-header">
-    <h4 class="modal-title"
-        id="modal-basic-title">{{property.displayName}}</h4>
-    <button type="button"
-            class="btn-close"
-            aria-label="Close"></button>
-</div>
-<div class="modal-body py-4">
+<div class="p-4 d-flex flex-column gap-3 h-100">
+    <div class="d-flex align-items-center gap-3">
+        <button (click)="onBack()"
+                class="btn btn-sm btn-secondary d-flex gap-3 align-items-center">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back</button>
+
+        <h5 class="mb-0">
+            {{property.displayName}}
+        </h5>
+    </div>
     @if (mode === modes.STEPPER) {
     <div class="d-flex flex-column gap-4 align-items-center justify-content-center">
-        <div class="bs-stepper w-100"
-             #stepperRef>
+        <form [formGroup]="form"
+              class="bs-stepper stepper-outline vertical linear custom-stepper w-100"
+              #stepperRef>
+
+            @for (item of steps; track $index) {
             <div class="bs-stepper-header"
                  role="tablist">
-                @for (item of steps; track $index) {
                 <div class="step"
                      [attr.data-target]="'#step-' + item.id">
                     <button type="button"
@@ -25,14 +30,11 @@
                     </button>
                 </div>
                 @if (($index + 1) !== steps.length) {
-                <div class="line"></div>
-                }
+                <div class="my-2"></div>
                 }
 
             </div>
-            <form [formGroup]="form"
-                  class="bs-stepper-content mt-4 p-0">
-                @for (item of steps; track $index) {
+            <div class="bs-stepper-content p-0 w-100">
                 <div [attr.id]="'step-' + item.id"
                      class="content"
                      role="tabpanel"
@@ -57,17 +59,14 @@
                         </div>
                     </div>
                 </div>
-                }
-            </form>
+            </div>
+            }
 
-        </div>
+        </form>
     </div>
     }
 
     @if (mode === modes.SUCCESS) {
     <app-success [investmentId]="investmentId"></app-success>
     }
-
-
-
 </div>
