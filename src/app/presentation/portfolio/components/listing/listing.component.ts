@@ -10,10 +10,11 @@ import { RouterLink } from '@angular/router';
 import { InvestmentStatusEnum } from '../../../../core/enums/investment.enum';
 import { InvestorService } from '../../../../data/investor/investor.service';
 import { Portfolio } from '../../../../data/investor/investor';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-listing',
-  imports: [NgbPaginationModule, DatePipe, RouterLink, CurrencyPipe],
+  imports: [NgbPaginationModule, DatePipe, RouterLink, CurrencyPipe, TranslatePipe],
   templateUrl: './listing.component.html',
   styleUrl: './listing.component.scss',
 

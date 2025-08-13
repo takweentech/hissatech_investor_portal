@@ -1,30 +1,9 @@
 <section class=" py-4 px-4">
     <div class="d-flex mb-4">
-        <h4>Showing {{filter.pageSize}} of ({{total()}})</h4>
+        <h4> {{ 'TRANSACTIONS.LISTING.SHOWING' | translate:{pageSize: filter.pageSize, total: total()} }}</h4>
 
     </div>
 
-    <!-- <div class="row mb-4">
-        <div class="col">
-            <div class="card bg-secondary p-2 d-flex flex-column justify-content-center align-items-center gap-2">
-                <h5 class="text-primary fw-bold mb-0">Total</h5>
-                <span>200</span>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-secondary p-2 d-flex flex-column justify-content-center align-items-center gap-2">
-                <h5 class="text-primary fw-bold mb-0">Deposit</h5>
-                <span>200</span>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card bg-secondary p-2 d-flex flex-column justify-content-center align-items-center gap-2">
-                <h5 class="text-primary fw-bold mb-0">Withdraw</h5>
-                <span>200</span>
-            </div>
-        </div>
-
-    </div> -->
 
     <ul class="list-group">
         @if (transactions().length) {
@@ -41,10 +20,12 @@
                                 </h6>
                             </a>
                             @if(item.statusName === InvestmentStatusEnum.PENDING_TRANSFER){
-                            <span class="badge bg-warning">{{item.statusName }}</span>
+                            <span class="badge bg-warning"> {{ 'TRANSACTIONS.LISTING.STATUS_PENDING' | translate
+                                }}</span>
                             }
                             @if(item.statusName === InvestmentStatusEnum.COMPLETED){
-                            <span class="badge bg-success">{{item.statusName }}</span>
+                            <span class="badge bg-success">{{ 'TRANSACTIONS.LISTING.STATUS_COMPLETED' | translate
+                                }}</span>
                             }
                         </div>
                         <!-- <small>Deposit</small> -->
@@ -66,7 +47,7 @@
         </div>
         }@else {
         <div class="d-flex justify-content-center align-items-center">
-            <p>No investments yet.</p>
+            <p>{{ 'TRANSACTIONS.LISTING.NO_INVESTMENTS' | translate }}</p>
         </div>
         }
 

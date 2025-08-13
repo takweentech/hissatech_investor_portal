@@ -122,5 +122,37 @@
                 "BUTTON_DOWNLOAD_AGREEMENT": "تحميل الاتفاقية"
             }
         }
+    },
+    "TRANSACTIONS": {
+        "LISTING": {
+            "SHOWING": "عرض {{pageSize}} من ({{total}})",
+            "NO_INVESTMENTS": "لا توجد استثمارات حتى الآن.",
+            "AMOUNT": "المبلغ",
+            "PROPERTY_NAME": "اسم العقار",
+            "STATUS_PENDING": "في انتظار التحويل",
+            "STATUS_COMPLETED": "مكتمل"
+        },
+        "DETAILS": {
+            "TITLE": "تفاصيل الاستثمار",
+            "AMOUNT": "المبلغ",
+            "NET_EQUITY": "صافي حقوق الملكية",
+            "COLLECTED_VALUE": "القيمة المحصلة",
+            "EARNED_RENT": "الإيجار المكتسب",
+            "LAST_EARNED_RENT": "آخر إيجار مكتسب",
+            "OWNER_PERCENT": "نسبة المالك",
+            "BACK_BUTTON": "عودة",
+            "CANCEL_INVESTMENT": "إلغاء الاستثمار",
+            "DOWNLOAD_AGREEMENT": "تحميل الاتفاقية"
+        }
+    },
+    "PORTFOLIO": {
+        "LISTING": {
+            "ACHIEVED_RETURNS": "العائد المحقق",
+            "EXPECTED_RETURNS": "العائد المتوقع",
+            "TRANSFERABLE_RETURNS": "العوائد القابلة للسحب",
+            "GROWTH_RATE": "معدل النمو",
+            "SHOWING": "عرض",
+            "NO_INVESTMENTS": "لا توجد استثمارات بعد."
+        }
     }
 }

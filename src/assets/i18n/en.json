@@ -122,5 +122,37 @@
                 "BUTTON_DOWNLOAD_AGREEMENT": "Download Agreement"
             }
         }
+    },
+    "TRANSACTIONS": {
+        "LISTING": {
+            "SHOWING": "Showing {{pageSize}} of ({{total}})",
+            "NO_INVESTMENTS": "No investments yet.",
+            "AMOUNT": "Amount",
+            "PROPERTY_NAME": "Property Name",
+            "STATUS_PENDING": "Pending Transfer",
+            "STATUS_COMPLETED": "Completed"
+        },
+        "DETAILS": {
+            "TITLE": "Investment Details",
+            "AMOUNT": "Amount",
+            "NET_EQUITY": "Net Equity",
+            "COLLECTED_VALUE": "Collected Value",
+            "EARNED_RENT": "Earned Rent",
+            "LAST_EARNED_RENT": "Last Earned Rent",
+            "OWNER_PERCENT": "Owner Percent",
+            "BACK_BUTTON": "Back",
+            "CANCEL_INVESTMENT": "Cancel Investment",
+            "DOWNLOAD_AGREEMENT": "Download Agreement"
+        }
+    },
+    "PORTFOLIO": {
+        "LISTING": {
+            "ACHIEVED_RETURNS": "Achieved Returns",
+            "EXPECTED_RETURNS": "Expected Returns",
+            "TRANSFERABLE_RETURNS": "Transferable Returns",
+            "GROWTH_RATE": "Growth Rate",
+            "SHOWING": "Showing",
+            "NO_INVESTMENTS": "No transactions yet."
+        }
     }
 }

@@ -7,9 +7,11 @@ import { Location } from '@angular/common';
 import { InvestmentService } from '../../../../data/investment/investment.service';
 import { finalize, takeUntil } from 'rxjs';
 import { BaseComponent } from '../../../../core/base/base.component';
+import { BackButtonComponent } from "../../../../shared/components/back-button/back-button.component";
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-details',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, BackButtonComponent, TranslatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })

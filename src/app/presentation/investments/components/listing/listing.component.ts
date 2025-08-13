@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { takeUntil } from 'rxjs';
-import { Investment, InvestmentFilter, InvestmentFilterRequest } from '../../../../data/investment/investment';
+import { Investment, InvestmentFilterRequest } from '../../../../data/investment/investment';
 import { InvestmentService } from '../../../../data/investment/investment.service';
 import { DatePipe } from '@angular/common';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
@@ -8,10 +8,11 @@ import { BaseComponent } from '../../../../core/base/base.component';
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
 import { RouterLink } from '@angular/router';
 import { InvestmentStatusEnum } from '../../../../core/enums/investment.enum';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-listing',
-  imports: [NgbPaginationModule, DatePipe, RouterLink],
+  imports: [NgbPaginationModule, DatePipe, RouterLink, TranslatePipe],
   templateUrl: './listing.component.html',
   styleUrl: './listing.component.scss',
 

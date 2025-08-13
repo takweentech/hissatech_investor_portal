@@ -1,56 +1,56 @@
-<section class=" py-4 px-4">
-
-
+<section class="py-4 px-4">
     <div class="row flex-wrap g-4 mb-4">
         <div class="col">
-            <div class="card bg-secondary p-2 d-flex flex-row  align-items-center gap-3">
+            <div class="card bg-secondary p-2 d-flex flex-row align-items-center gap-3">
                 <div class="bg-primary rounded p-2 d-flex align-items-center justify-content-center text-center">
                     <i class="fas fa-chart-line text-light fs-4 width-2rem"></i>
                 </div>
                 <div class="d-flex flex-column gap-1">
-                    <h6 class="text-primary fw-semibold mb-0">Achieved Returns</h6>
+                    <h6 class="text-primary fw-semibold mb-0">{{ 'PORTFOLIO.LISTING.ACHIEVED_RETURNS' | translate }}
+                    </h6>
                     <span>{{stats?.earnedReturns | currency: 'SAR '}}</span>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card bg-secondary p-2 d-flex flex-row  align-items-center gap-3">
+            <div class="card bg-secondary p-2 d-flex flex-row align-items-center gap-3">
                 <div class="bg-primary rounded p-2 d-flex align-items-center justify-content-center text-center">
                     <i class="fas fa-chart-bar text-light fs-4 width-2rem"></i>
                 </div>
                 <div class="d-flex flex-column gap-1">
-                    <h6 class="text-primary fw-semibold mb-0">Expected Returns</h6>
+                    <h6 class="text-primary fw-semibold mb-0">{{ 'PORTFOLIO.LISTING.EXPECTED_RETURNS' | translate }}
+                    </h6>
                     <span>{{stats?.expectedReturns | currency: 'SAR '}}</span>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card bg-secondary p-2 d-flex flex-row  align-items-center gap-3">
+            <div class="card bg-secondary p-2 d-flex flex-row align-items-center gap-3">
                 <div class="bg-primary rounded p-2 d-flex align-items-center justify-content-center text-center">
                     <i class="fas fa-arrow-down text-light fs-4 width-2rem"></i>
                 </div>
                 <div class="d-flex flex-column gap-1">
-                    <h6 class="text-primary fw-semibold mb-0">Transaferable Returns</h6>
+                    <h6 class="text-primary fw-semibold mb-0">{{ 'PORTFOLIO.LISTING.TRANSFERABLE_RETURNS' | translate }}
+                    </h6>
                     <span>{{stats?.withdrawableProfits | currency: 'SAR '}}</span>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card bg-secondary p-2 d-flex flex-row  align-items-center gap-3">
+            <div class="card bg-secondary p-2 d-flex flex-row align-items-center gap-3">
                 <div class="bg-primary rounded p-2 d-flex align-items-center justify-content-center text-center">
                     <i class="fas fa-percent text-light fs-4 width-2rem"></i>
                 </div>
                 <div class="d-flex flex-column gap-1">
-                    <h6 class="text-primary fw-semibold mb-0">Growth Rate</h6>
+                    <h6 class="text-primary fw-semibold mb-0">{{ 'PORTFOLIO.LISTING.GROWTH_RATE' | translate }}</h6>
                     <span>{{stats?.growthRate | currency: 'SAR '}}</span>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="d-flex mb-4">
-        <h4>Showing {{filter.pageSize}} of ({{total()}})</h4>
+        <h4>{{ 'PORTFOLIO.LISTING.SHOWING' | translate }}</h4>
     </div>
 
     <ul class="list-group">
@@ -68,10 +68,12 @@
                                 </h6>
                             </a>
                             @if(item.statusName === InvestmentStatusEnum.PENDING_TRANSFER){
-                            <span class="badge bg-warning">{{item.statusName }}</span>
+                            <span class="badge bg-warning"> {{ 'TRANSACTIONS.LISTING.STATUS_PENDING' | translate
+                                }}</span>
                             }
                             @if(item.statusName === InvestmentStatusEnum.COMPLETED){
-                            <span class="badge bg-success">{{item.statusName }}</span>
+                            <span class="badge bg-success">{{ 'TRANSACTIONS.LISTING.STATUS_COMPLETED' | translate
+                                }}</span>
                             }
                         </div>
                         <!-- <small>Deposit</small> -->
@@ -93,7 +95,7 @@
         </div>
         }@else {
         <div class="d-flex justify-content-center align-items-center">
-            <p>No investments yet.</p>
+            <p>{{ 'TRANSACTIONS.LISTING.NO_INVESTMENTS' | translate }}</p>
         </div>
         }
 
