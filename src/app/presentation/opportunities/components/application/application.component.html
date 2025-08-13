@@ -9,7 +9,7 @@
     @if (mode === modes.STEPPER) {
     <div class="d-flex flex-column gap-4 align-items-center justify-content-center">
         <form [formGroup]="form"
-              class="bs-stepper stepper-outline vertical linear custom-stepper w-100"
+              class="bs-stepper stepper-outline vertical linear custom-stepper width-100"
               #stepperRef>
 
             @for (item of steps; track $index) {
@@ -31,7 +31,7 @@
                 }
 
             </div>
-            <div class="bs-stepper-content p-0 w-100">
+            <div class="bs-stepper-content p-0 width-100">
                 <div [attr.id]="'step-' + item.id"
                      class="content"
                      role="tabpanel"
