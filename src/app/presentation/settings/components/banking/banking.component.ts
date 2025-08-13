@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TokenService } from '../../../../core/services/token.service';
 import { TranslationService } from '../../../../core/services/translation.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-banking',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './banking.component.html',
   styleUrl: './banking.component.scss'
 })

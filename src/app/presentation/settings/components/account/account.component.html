@@ -1,46 +1,48 @@
 <form [formGroup]="form">
-    <h4>Account information</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti architecto si</p>
+    <h4>{{ 'SETTINGS.ACCOUNT.TITLE' | translate }}</h4>
+    <p>{{ 'SETTINGS.ACCOUNT.DESCRIPTION' | translate }}</p>
+
     <div class="form-group mb-2">
-        <label for="password"
-               class="form-label">{{'Email'}}</label>
+        <label for="email"
+               class="form-label">{{ 'SETTINGS.ACCOUNT.EMAIL' | translate }}</label>
         <div class="input-group">
             <input type="email"
                    formControlName="newEmail"
                    class="form-control"
-                   id="password">
+                   id="email"
+                   placeholder="{{ 'SETTINGS.ACCOUNT.EMAIL_PLACEHOLDER' | translate }}">
         </div>
     </div>
+
     <div class="form-group mb-2">
-        <label for="userName"
-               class="form-label">{{'Phone number'}}</label>
+        <label for="phoneNumber"
+               class="form-label">{{ 'SETTINGS.ACCOUNT.PHONE' | translate }}</label>
         <div class="input-group">
-
-
-            @if (traslationService.language === 'en') {
-            <span class="input-group-text"
-                  dir="ltr">+966</span>
+            @if (traslationService.language === 'ar') {
+            <ng-container>
+                <span class="input-group-text"
+                      dir="ltr">+966</span>
+            </ng-container>
             }
-
             <input type="tel"
                    dir="ltr"
                    formControlName="phoneNumber"
                    class="form-control"
-                   id="userName">
-
+                   id="phoneNumber"
+                   placeholder="{{ 'SETTINGS.ACCOUNT.PHONE_PLACEHOLDER' | translate }}">
             @if (traslationService.language === 'ar') {
-            <span class="input-group-text"
-                  dir="ltr">+966</span>
+            <ng-container>
+                <span class="input-group-text"
+                      dir="ltr">+966</span>
+            </ng-container>
             }
+
         </div>
     </div>
-
 
     <hr class="my-4">
 
     <div class="d-flex justify-content-end">
-        <button class="btn btn-primary">
-            Save
-        </button>
+        <button class="btn btn-primary">{{ 'SETTINGS.ACCOUNT.SAVE_BTN' | translate }}</button>
     </div>
 </form>

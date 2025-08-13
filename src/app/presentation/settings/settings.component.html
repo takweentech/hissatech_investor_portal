@@ -1,52 +1,53 @@
 <section class="row g-0 h-100 px-4">
-    <div class="col-4 border-right bg-white">
+    <div class="col-4 border-end bg-white">
         <div class="d-flex flex-column">
-            <div class="p-4 d-flex align-items-center ">
-                <h4 class="m-0">Settings</h4>
+            <div class="p-4 d-flex align-items-center">
+                <h4 class="m-0">{{ 'SETTINGS.TITLE' | translate }}</h4>
             </div>
             <ul>
                 <li class="border-bottom">
                     <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.ACCOUNT"
-                       [routerLinkActiveOptions]="{ exact: true }"
                        routerLinkActive="bg-body-tertiary"
-                       class="d-flex gap-3 p-4 ">
+                       [routerLinkActiveOptions]="{ exact: true }"
+                       class="d-flex gap-3 p-4">
                         <i class="fs-5 fa-solid fa-user"></i>
                         <div>
-                            <h6 class="fw-semibold">Account</h6>
-                            <p class="m-0">Manage your public profile and private information</p>
+                            <h6 class="fw-semibold">{{ 'SETTINGS.ACCOUNT.TITLE' | translate }}</h6>
+                            <p class="m-0">{{ 'SETTINGS.ACCOUNT.DESCRIPTION' | translate }}</p>
                         </div>
                     </a>
                 </li>
-                <li class=" border-bottom">
+                <li class="border-bottom">
                     <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.BANKING"
-                       [routerLinkActiveOptions]="{ exact: true }"
                        routerLinkActive="bg-body-tertiary"
+                       [routerLinkActiveOptions]="{ exact: true }"
                        class="d-flex gap-3 p-4">
                         <i class="fs-5 fa-solid fa-bank"></i>
                         <div>
-                            <h6 class="fw-semibold">Banking</h6>
-                            <p class="m-0">Manage your public profile and private information</p>
+                            <h6 class="fw-semibold">{{ 'SETTINGS.BANKING.TITLE' | translate }}</h6>
+                            <p class="m-0">{{ 'SETTINGS.BANKING.DESCRIPTION' | translate }}</p>
                         </div>
                     </a>
                 </li>
                 <li>
                     <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.SECURITY"
-                       [routerLinkActiveOptions]="{ exact: true }"
                        routerLinkActive="bg-body-tertiary"
+                       [routerLinkActiveOptions]="{ exact: true }"
                        class="d-flex gap-3 p-4">
                         <i class="fs-5 fa-solid fa-lock"></i>
                         <div>
-                            <h6 class="fw-semibold">Security</h6>
-                            <p class="m-0">Manage your public profile and private information</p>
+                            <h6 class="fw-semibold">{{ 'SETTINGS.SECURITY.TITLE' | translate }}</h6>
+                            <p class="m-0">{{ 'SETTINGS.SECURITY.DESCRIPTION' | translate }}</p>
                         </div>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
+
     <div class="col-8 bg-body-tertiary">
         <div class="p-4">
-            <router-outlet />
+            <router-outlet></router-outlet>
         </div>
     </div>
 </section>

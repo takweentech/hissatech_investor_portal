@@ -1,66 +1,73 @@
 <form [formGroup]="form">
-    <h4>Security Information</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti architecto si</p>
+    <h4>{{ 'SETTINGS.SECURITY.TITLE' | translate }}</h4>
+    <p>{{ 'SETTINGS.SECURITY.DESCRIPTION' | translate }}</p>
+
     <div class="form-group mb-2">
-        <label for="password"
-               class="form-label">{{'Current Password'}}</label>
+        <label for="currentPassword"
+               class="form-label">{{ 'SETTINGS.SECURITY.CURRENT_PASSWORD' | translate }}</label>
         <div class="input-group">
             <input type="password"
                    formControlName="password"
-                   #password
+                   #currentPassword
                    class="form-control"
-                   id="password">
+                   id="currentPassword">
 
             <span class="input-group-text">
-                @if (password.type === 'password') {
-                <i (click)="password.type = 'text'"
-                   class="fa-solid fa-eye text-primary cursor-pointer"></i>
-                }@else {
-                <i (click)="password.type = 'password'"
-                   class="fa-solid fa-eye-slash text-primary cursor-pointer"></i>
+                @if (currentPassword.type === 'password') {
+                <i class="fa-solid fa-eye text-primary cursor-pointer"
+                   (click)="currentPassword.type = 'text'"></i>
                 }
+                @if(currentPassword.type === 'text'){
+                <i class="fa-solid fa-eye-slash text-primary cursor-pointer"
+                   (click)="currentPassword.type = 'password'"></i>
+                }
+
+
             </span>
         </div>
     </div>
 
     <div class="form-group mb-4">
-        <label for="password"
-               class="form-label">{{'New Password'}}</label>
+        <label for="newPassword"
+               class="form-label">{{ 'SETTINGS.SECURITY.NEW_PASSWORD' | translate }}</label>
         <div class="input-group">
             <input type="password"
-                   formControlName="password"
-                   #password
+                   #newPassword
                    class="form-control"
-                   id="password">
+                   id="newPassword">
 
             <span class="input-group-text">
-                @if (password.type === 'password') {
-                <i (click)="password.type = 'text'"
-                   class="fa-solid fa-eye text-primary cursor-pointer"></i>
-                }@else {
-                <i (click)="password.type = 'password'"
-                   class="fa-solid fa-eye-slash text-primary cursor-pointer"></i>
+                @if(newPassword.type === 'password'){
+                <i class="fa-solid fa-eye text-primary cursor-pointer"
+                   (click)="newPassword.type = 'text'"></i>
                 }
+
+                @if (newPassword.type === 'text') {
+                <i class="fa-solid fa-eye-slash text-primary cursor-pointer"
+                   (click)="newPassword.type = 'password'"></i>
+                }
+
+
             </span>
         </div>
     </div>
 
-    <div class="col-12 ">
+    <div class="col-12">
         <ul class="password-feedback-list">
-            <li [class.completed]="form.value?.password?.match('^(?=.*[A-Z])')">
-                Must contain at least one uppercase letter
+            <li [class.completed]="form.value?.newPassword?.match('^(?=.*[A-Z])')">
+                {{ 'SETTINGS.SECURITY.FEEDBACK.UPPERCASE' | translate }}
             </li>
-            <li [class.completed]="form.value?.password?.match('(?=.*[a-z])')">
-                Must contain at least one lowercase letter.
+            <li [class.completed]="form.value?.newPassword?.match('(?=.*[a-z])')">
+                {{ 'SETTINGS.SECURITY.FEEDBACK.LOWERCASE' | translate }}
             </li>
-            <li [class.completed]="form.value?.password?.match('(.*[0-9].*)')">
-                Must contain at least one number.
+            <li [class.completed]="form.value?.newPassword?.match('(.*[0-9].*)')">
+                {{ 'SETTINGS.SECURITY.FEEDBACK.NUMBER' | translate }}
             </li>
-            <li [class.completed]="form.value?.password?.match('(?=.*[!@#$%^&*])')">
-                Must contain at least one special character.
+            <li [class.completed]="form.value?.newPassword?.match('(?=.*[!@#$%^&*])')">
+                {{ 'SETTINGS.SECURITY.FEEDBACK.SPECIAL' | translate }}
             </li>
-            <li [class.completed]="form.value?.password">
-                Must be at least 8 characters long.
+            <li [class.completed]="form.value?.newPassword?.length >= 8">
+                {{ 'SETTINGS.SECURITY.FEEDBACK.LENGTH' | translate }}
             </li>
         </ul>
     </div>
@@ -68,8 +75,6 @@
     <hr class="my-4">
 
     <div class="d-flex justify-content-end">
-        <button class="btn btn-primary">
-            Save
-        </button>
+        <button class="btn btn-primary">{{ 'SETTINGS.SECURITY.SAVE_BTN' | translate }}</button>
     </div>
 </form>

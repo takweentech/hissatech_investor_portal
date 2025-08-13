@@ -154,5 +154,39 @@
             "SHOWING": "Showing",
             "NO_INVESTMENTS": "No transactions yet."
         }
+    },
+    "SETTINGS": {
+        "TITLE": "Settings",
+        "ACCOUNT": {
+            "TITLE": "Account information",
+            "DESCRIPTION": "Update your email and phone number.",
+            "EMAIL": "Email",
+            "EMAIL_PLACEHOLDER": "Enter your email",
+            "PHONE": "Phone number",
+            "PHONE_PLACEHOLDER": "Enter your phone number",
+            "SAVE_BTN": "Save"
+        },
+        "BANKING": {
+            "TITLE": "Banking information",
+            "DESCRIPTION": "Your bank account details are displayed below.",
+            "BANK_NAME": "Bank name",
+            "IBAN": "IBAN number",
+            "BENEFICIARY": "Beneficiary name",
+            "SAVE_BTN": "Save"
+        },
+        "SECURITY": {
+            "TITLE": "Security Information",
+            "DESCRIPTION": "Update your password and manage account security.",
+            "CURRENT_PASSWORD": "Current Password",
+            "NEW_PASSWORD": "New Password",
+            "FEEDBACK": {
+                "UPPERCASE": "Must contain at least one uppercase letter",
+                "LOWERCASE": "Must contain at least one lowercase letter",
+                "NUMBER": "Must contain at least one number",
+                "SPECIAL": "Must contain at least one special character",
+                "LENGTH": "Must be at least 8 characters long"
+            },
+            "SAVE_BTN": "Save"
+        }
     }
 }

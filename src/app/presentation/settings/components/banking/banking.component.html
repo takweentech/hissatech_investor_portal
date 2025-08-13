@@ -1,51 +1,49 @@
 <form [formGroup]="form">
-    <h4>Banking information</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti architecto si</p>
+    <h4>{{ 'SETTINGS.BANKING.TITLE' | translate }}</h4>
+    <p>{{ 'SETTINGS.BANKING.DESCRIPTION' | translate }}</p>
+
     <div class="form-group mb-2">
-        <label for="password"
-               class="form-label">{{'Bank name'}}</label>
+        <label for="bankName"
+               class="form-label">{{ 'SETTINGS.BANKING.BANK_NAME' | translate }}</label>
         <div class="input-group">
             <input type="text"
                    readonly
                    [disabled]="true"
                    formControlName="bankName"
                    class="form-control"
-                   id="password">
+                   id="bankName">
         </div>
     </div>
 
     <div class="form-group mb-2">
-        <label for="password"
-               class="form-label">{{'IBAN number'}}</label>
+        <label for="iban"
+               class="form-label">{{ 'SETTINGS.BANKING.IBAN' | translate }}</label>
         <div class="input-group">
             <input type="text"
                    readonly
                    [disabled]="true"
                    formControlName="iban"
                    class="form-control"
-                   id="password">
+                   id="iban">
         </div>
     </div>
 
-
     <div class="form-group mb-2">
-        <label for="password"
-               class="form-label">{{'Beneficiary name'}}</label>
+        <label for="beneficiaryName"
+               class="form-label">{{ 'SETTINGS.BANKING.BENEFICIARY' | translate }}</label>
         <div class="input-group">
             <input type="text"
                    readonly
                    [disabled]="true"
                    formControlName="name"
                    class="form-control"
-                   id="password">
+                   id="beneficiaryName">
         </div>
     </div>
 
     <hr class="my-4">
 
     <div class="d-flex justify-content-end">
-        <button class="btn btn-primary">
-            Save
-        </button>
+        <button class="btn btn-primary">{{ 'SETTINGS.BANKING.SAVE_BTN' | translate }}</button>
     </div>
 </form>
