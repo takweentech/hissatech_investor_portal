@@ -23,26 +23,26 @@
                            class="d-flex align-items-center gap-2"
                            [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.ACCOUNT">
                             <i class="fa-solid fa-user"></i>
-                            Profile
+                            {{ 'LAYOUT.SIDEBAR.PROFILE' | translate }}
                         </a>
                         <a ngbDropdownItem
                            class="d-flex align-items-center gap-2"
                            [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT">
                             <i class="fa-solid fa-gear"></i>
-                            Settings
+                            {{ 'LAYOUT.SIDEBAR.SETTINGS' | translate }}
                         </a>
-
                         <a ngbDropdownItem
                            href="javascript:void(0)"
                            (click)="onLogout()"
                            class="d-flex align-items-center gap-2 text-danger">
                             <i class="fa-solid fa-right-from-bracket"></i>
-                            Logout
+                            {{ 'LAYOUT.SIDEBAR.LOGOUT' | translate }}
                         </a>
                     </div>
                 </div>
             </li>
         </ul>
+
     </div>
     <div class="mt-4 d-flex flex-column gap-3">
         <div class="d-flex flex-column align-items-center gap-2">
@@ -60,7 +60,7 @@
                    routerLinkActive="active fw-semibold"
                    class="d-flex align-items-center text-white gap-2">
                     <i [class]="item.icon"></i>
-                    {{item.title}}
+                    {{item.title | translate}}
                 </a>
             </li>
             }

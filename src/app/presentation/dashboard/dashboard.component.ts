@@ -11,10 +11,11 @@ import { Investment } from '../../data/investment/investment';
 import { InvestmentService } from '../../data/investment/investment.service';
 import { DatePipe } from '@angular/common';
 import { InvestmentStatusEnum } from '../../core/enums/investment.enum';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [GreetingComponent, OpportunityCardComponent, RouterLink, DatePipe],
+  imports: [GreetingComponent, OpportunityCardComponent, RouterLink, DatePipe, TranslatePipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

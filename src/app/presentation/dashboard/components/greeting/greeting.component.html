@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center gap-3">
             <app-initials></app-initials>
             <div>
-                <h3>Welcome back, {{user.name}}!</h3>
+                <h3>{{ 'ONBOARDING.WELCOME_BACK' | translate }}, {{ user.name }}!</h3>
             </div>
         </div>
     </div>
@@ -11,10 +11,10 @@
     <div class="col">
         <div class="d-flex gap-2 align-items-center h-100 justify-content-end">
             <a href="">
-                <button class="btn btn-primary">Browse Properties</button>
+                <button class="btn btn-primary">{{ 'ONBOARDING.BROWSE_PROPERTIES' | translate }}</button>
             </a>
             <a href="">
-                <button class="btn btn-outline-primary">View Transactions</button>
+                <button class="btn btn-outline-primary">{{ 'ONBOARDING.VIEW_TRANSACTIONS' | translate }}</button>
             </a>
         </div>
     </div>

@@ -61,7 +61,7 @@
                 <!-- About -->
                 <div class="col-6 d-flex gap-4 flex-column">
                     <div>
-                        <h3 class="mb-0">About this property</h3>
+                        <h3 class="mb-0">{{ 'OPPORTUNITIES.DETAILS.ABOUT_PROPERTY' | translate }}</h3>
                         <hr class="mt-3 mb-0">
                     </div>
                     <p>{{property.about}}</p>
@@ -135,8 +135,10 @@
 
                             </div>
                             <div>
-                                <span class="badge bg-primary justify-self-end">{{property.numberOfInvestors}}
-                                    Investors</span>
+
+                                <span class="badge bg-primary justify-self-end">
+                                    {{property.numberOfInvestors}} {{ 'OPPORTUNITIES.DETAILS.INVESTORS' | translate }}
+                                </span>
 
                             </div>
                         </div>
@@ -153,9 +155,7 @@
 
                     <div class="bg-body-tertiary rounded p-2 row g-3">
                         <div class="col-6 d-flex flex-column gap-1">
-                            <small class="text-black-50">
-                                Annual income
-                            </small>
+                            <small class="text-black-50">{{ 'OPPORTUNITIES.DETAILS.ANNUAL_INCOME' | translate }}</small>
                             <small class="fw-semibold d-flex align-items-center gap-1">
                                 <img class="riyal-symbol"
                                      src="assets/images/riyal.svg"
@@ -164,34 +164,28 @@
                             </small>
                         </div>
                         <div class="col-6 d-flex flex-column gap-1">
-                            <small class="text-black-50">
-                                Total income to opportunity value ratio
-                            </small>
+                            <small class="text-black-50">{{ 'OPPORTUNITIES.DETAILS.ROI' | translate }}</small>
                             <small class="fw-semibold d-flex align-items-center gap-1">
                                 {{property.roi}}%
                             </small>
                         </div>
                         <div class="col-6 d-flex flex-column gap-1">
-                            <small class="text-black-50">
-                                Expected total annual return (rent + property appreciation)
-                            </small>
+                            <small class="text-black-50">{{ 'OPPORTUNITIES.DETAILS.EXPECTED_TOTAL_RETURN' | translate
+                                }}</small>
                             <small class="fw-semibold d-flex align-items-center gap-1">
                                 {{property.annualExpectedReturn}}%
                             </small>
                         </div>
                         <div class="col-6 d-flex flex-column gap-1">
-                            <small class="text-black-50">
-                                Net income after costs
-                            </small>
+                            <small class="text-black-50">{{ 'OPPORTUNITIES.DETAILS.NET_INCOME' | translate }}</small>
                             <small class="fw-semibold d-flex align-items-center gap-1">
                                 {{property.netIncome}}%
                             </small>
                         </div>
 
                         <div class="col-6 d-flex flex-column gap-1">
-                            <small class="text-black-50">
-                                Opportunity rating in terms of return
-                            </small>
+                            <small class="text-black-50">{{ 'OPPORTUNITIES.DETAILS.OPPORTUNITY_RATING' | translate
+                                }}</small>
                             <small class="fw-semibold d-flex align-items-center gap-1">
                                 {{property.classification}}
                             </small>
@@ -201,7 +195,7 @@
                         <button [routerLink]="'/'  + WEB_ROUTES.OPPORTUNITIES.ROOT + '/' + WEB_ROUTES.OPPORTUNITIES.APPLICATION + '/' + property.id"
                                 [disabled]="!investment?.canInvest"
                                 class="btn btn-lg btn-primary  fw-semibold col">
-                            Invest now
+                            {{ 'OPPORTUNITIES.DETAILS.INVEST_NOW' | translate }}
                         </button>
                     </div>
 

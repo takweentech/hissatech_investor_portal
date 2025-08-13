@@ -1,26 +1,27 @@
 import { Component, inject } from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TokenService } from '../../../../core/services/token.service';
-import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
-import { HeaderService } from './header.service';
+import { SidebarService } from '../../../../core/services/sidebar.service';
 import { TranslationService } from '../../../../core/services/translation.service';
 import { filter, map, switchMap } from 'rxjs';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
-  imports: [NgbDropdownModule, RouterLink],
+  imports: [NgbDropdownModule, TranslatePipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   tokenService = inject(TokenService);
-  headerService = inject(HeaderService);
+  SidebarService = inject(SidebarService);
   translationService = inject(TranslationService);
   activatedRoute = inject(ActivatedRoute);
 
   router = inject(Router);
-  menu = this.headerService.getMenu;
+  menu = this.SidebarService.getMenu;
   WEB_ROUTES = WEB_ROUTES;
   userInitials: string = this.tokenService.getUserInitials();
   module: { title?: string, icon?: string } = { title: "", icon: "" };

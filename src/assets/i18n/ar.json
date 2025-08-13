@@ -40,5 +40,87 @@
                 "SIGN_IN": "تسجيل الدخول"
             }
         }
+    },
+    "LAYOUT": {
+        "SIDEBAR": {
+            "HOME": "الرئيسية",
+            "PROPERTIES": "العقارات",
+            "INVESTMENTS": "الاستثمارات",
+            "PORTFOLIO": "المحفظة",
+            "PROFILE": "الملف الشخصي",
+            "SETTINGS": "الإعدادات",
+            "LOGOUT": "تسجيل الخروج"
+        },
+        "BACK_BUTTON": "عودة"
+    },
+    "ONBOARDING": {
+        "WELCOME_BACK": "مرحباً بعودتك",
+        "VIEW_TRANSACTIONS": "عرض المعاملات",
+        "BROWSE_PROPERTIES": "تصفح العقارات",
+        "RECENT_TRANSACTIONS": "أحدث المعاملات",
+        "RECENT_OPPORTUNITIES": "أحدث الفرص"
+    },
+    "OPPORTUNITY_CARD": {
+        "INVESTORS": "المستثمرون",
+        "ANNUAL_RETURN": "العائد السنوي",
+        "DATE": "التاريخ",
+        "VALUE_COSTS": "القيمة والتكاليف",
+        "STARTS_FROM": "يبدأ من"
+    },
+    "TRANSACTION_CARD": {
+        "DEPOSIT": "الوديعة",
+        "PENDING_TRANSFER": "قيد التحويل",
+        "COMPLETED": "مكتمل"
+    },
+    "OPPORTUNITIES": {
+        "LISTING": {
+            "PROPERTY_NAME": "اسم العقار",
+            "AMOUNT": "المبلغ",
+            "CLASSIFICATION": "التصنيف",
+            "SEARCH": "بحث",
+            "SHOWING": "عرض"
+        },
+        "DETAILS": {
+            "ABOUT_PROPERTY": "عن هذا العقار",
+            "DOCUMENTS": "المستندات",
+            "INVESTORS": "المستثمرون",
+            "ANNUAL_INCOME": "الدخل السنوي",
+            "ROI": "نسبة الدخل إلى قيمة الفرصة",
+            "EXPECTED_TOTAL_RETURN": "العائد السنوي المتوقع (الإيجار + ارتفاع قيمة العقار)",
+            "NET_INCOME": "صافي الدخل بعد التكاليف",
+            "OPPORTUNITY_RATING": "تصنيف الفرصة من حيث العائد",
+            "INVEST_NOW": "استثمر الآن",
+            "VIEW_DOCUMENT": "عرض المستند"
+        },
+        "APPLICATION": {
+            "AMOUNT_TITLE": "المبلغ",
+            "AMOUNT_DESCRIPTION": "حدد مبلغ الاستثمار",
+            "AMOUNT_SUBDESCRIPTION": "أدخل المبلغ الذي ترغب في استثماره في هذه الفرصة. يمكنك تعديله وفقًا لميزانيتك والفرص الاستثمارية المتاحة.",
+            "PAYMENT_TITLE": "طريقة الدفع",
+            "PAYMENT_DESCRIPTION": "إكمال الدفع",
+            "PAYMENT_SUBDESCRIPTION": "اختر طريقة الدفع المفضلة لإتمام استثمارك. بمجرد معالجة الدفع، ستتلقى تأكيدًا وإثبات استثمارك.",
+            "NEXT_BUTTON": "التالي",
+            "PREV_BUTTON": "السابق",
+            "CONFIRM_BUTTON": "تأكيد",
+            "AMOUNT": {
+                "LABEL": "المبلغ",
+                "REQUIRED_ERROR": "هذا الحقل مطلوب",
+                "MIN_ERROR": "أدنى مبلغ مسموح هو",
+                "PROMO_CODE_LABEL": "رمز الخصم"
+            },
+            "PAYMENT": {
+                "TITLE": "التحويل البنكي",
+                "BENEFICIARY_NAME": "اسم المستفيد",
+                "BANK_NAME": "اسم البنك",
+                "IBAN_NUMBER": "رقم الآيبان"
+            },
+            "SUCCESS": {
+                "TITLE": "تم استلام طلب الاستثمار الخاص بك وهو الآن قيد الدفع.",
+                "TITLE_STRONG": "قيد الدفع",
+                "DESCRIPTION": "لإكمال استثمارك، يرجى متابعة الدفع باستخدام طريقة الدفع التي اخترتها.",
+                "BUTTON_VIEW_INVESTMENT": "عرض تفاصيل الاستثمار",
+                "BUTTON_DOWNLOAD_AGREEMENT": "تحميل الاتفاقية"
+            }
+        }
     }
 }

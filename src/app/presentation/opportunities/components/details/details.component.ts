@@ -10,10 +10,11 @@ import { InvestmentService } from '../../../../data/investment/investment.servic
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
 import { environment } from '../../../../../environments/environment';
 import { BackButtonComponent } from "../../../../shared/components/back-button/back-button.component";
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-details',
-  imports: [LightgalleryModule, NgStyle, RouterLink, BackButtonComponent],
+  imports: [LightgalleryModule, NgStyle, RouterLink, BackButtonComponent, TranslatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })

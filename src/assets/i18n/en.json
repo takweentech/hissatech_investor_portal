@@ -40,5 +40,87 @@
                 "SIGN_IN": "Sign In"
             }
         }
+    },
+    "LAYOUT": {
+        "SIDEBAR": {
+            "HOME": "Home",
+            "PROPERTIES": "Properties",
+            "INVESTMENTS": "Investments",
+            "PORTFOLIO": "Portfolio",
+            "PROFILE": "Profile",
+            "SETTINGS": "Settings",
+            "LOGOUT": "Logout"
+        },
+        "BACK_BUTTON": "Back"
+    },
+    "ONBOARDING": {
+        "WELCOME_BACK": "Welcome back",
+        "VIEW_TRANSACTIONS": "View transactions",
+        "BROWSE_PROPERTIES": "Browse properties",
+        "RECENT_TRANSACTIONS": "Recent Transactions",
+        "RECENT_OPPORTUNITIES": "Recent Opportunities"
+    },
+    "OPPORTUNITY_CARD": {
+        "INVESTORS": "Investors",
+        "ANNUAL_RETURN": "Annual Return",
+        "DATE": "Date",
+        "VALUE_COSTS": "Value & Costs",
+        "STARTS_FROM": "Starts from"
+    },
+    "TRANSACTION_CARD": {
+        "DEPOSIT": "Deposit",
+        "PENDING_TRANSFER": "Pending Transfer",
+        "COMPLETED": "Completed"
+    },
+    "OPPORTUNITIES": {
+        "LISTING": {
+            "PROPERTY_NAME": "Property Name",
+            "AMOUNT": "Amount",
+            "CLASSIFICATION": "Classification",
+            "SEARCH": "Search",
+            "SHOWING": "Showing"
+        },
+        "DETAILS": {
+            "ABOUT_PROPERTY": "About this property",
+            "DOCUMENTS": "Documents",
+            "INVESTORS": "Investors",
+            "ANNUAL_INCOME": "Annual income",
+            "ROI": "Total income to opportunity value ratio",
+            "EXPECTED_TOTAL_RETURN": "Expected total annual return (rent + property appreciation)",
+            "NET_INCOME": "Net income after costs",
+            "OPPORTUNITY_RATING": "Opportunity rating in terms of return",
+            "INVEST_NOW": "Invest now",
+            "VIEW_DOCUMENT": "View Document"
+        },
+        "APPLICATION": {
+            "AMOUNT_TITLE": "Amount",
+            "AMOUNT_DESCRIPTION": "Specify the investment amount",
+            "AMOUNT_SUBDESCRIPTION": "Enter the amount you wish to invest in this opportunity. You can adjust it based on your budget and the available investment slots.",
+            "PAYMENT_TITLE": "Payment Method",
+            "PAYMENT_DESCRIPTION": "Complete Your Payment",
+            "PAYMENT_SUBDESCRIPTION": "Select your preferred payment method to finalize your investment. Once payment is processed, you will receive a confirmation and proof of your investment.",
+            "NEXT_BUTTON": "Next",
+            "PREV_BUTTON": "Previous",
+            "CONFIRM_BUTTON": "Confirm",
+            "AMOUNT": {
+                "LABEL": "Amount",
+                "REQUIRED_ERROR": "This field is required",
+                "MIN_ERROR": "Minimum allowed amount is",
+                "PROMO_CODE_LABEL": "Promo code"
+            },
+            "PAYMENT": {
+                "TITLE": "Bank transfer",
+                "BENEFICIARY_NAME": "Beneficiary Name",
+                "BANK_NAME": "Bank name",
+                "IBAN_NUMBER": "IBAN number"
+            },
+            "SUCCESS": {
+                "TITLE": "Your investment application has been received and is now pending payment.",
+                "TITLE_STRONG": "pending payment",
+                "DESCRIPTION": "To complete your investment, please proceed with the payment using your chosen method.",
+                "BUTTON_VIEW_INVESTMENT": "View investment details",
+                "BUTTON_DOWNLOAD_AGREEMENT": "Download Agreement"
+            }
+        }
     }
 }

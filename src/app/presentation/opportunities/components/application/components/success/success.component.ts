@@ -4,10 +4,11 @@ import { WEB_ROUTES } from '../../../../../../core/constants/routes.constants';
 import { InvestmentService } from '../../../../../../data/investment/investment.service';
 import { BaseComponent } from '../../../../../../core/base/base.component';
 import { finalize, takeUntil } from 'rxjs';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-success',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './success.component.html',
   styleUrl: './success.component.scss'
 })

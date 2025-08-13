@@ -1,21 +1,24 @@
 <div class="d-flex flex-column align-items-center gap-2 text-center px-4 justify-content-center h-100">
-    <i class="fa-solid fa-circle-check text-primary mb-4"></i>
+    <i class="{{ 'OPPORTUNITIES.APPLICATION.SUCCESS.ICON' | translate }} text-primary mb-4"></i>
 
-    <h4> Your investment application has been received and is now <b>pending payment</b>.</h4>
+    <h4>
+        {{ 'OPPORTUNITIES.APPLICATION.SUCCESS.TITLE' | translate }}
+        <b>{{ 'OPPORTUNITIES.APPLICATION.SUCCESS.TITLE_STRONG' | translate }}</b>.
+    </h4>
 
-    <p> To complete your investment, please proceed with the payment using your chosen method.</p>
+    <p>{{ 'OPPORTUNITIES.APPLICATION.SUCCESS.DESCRIPTION' | translate }}</p>
 
-    <div class="d-flex gap-2 align-items center">
-
+    <div class="d-flex gap-2 align-items-center">
         <button (click)="onNavigateToInvestment()"
-                class="btn btn-outline-primary w-fit">View investment details </button>
+                class="btn btn-outline-primary w-fit">
+            {{ 'OPPORTUNITIES.APPLICATION.SUCCESS.BUTTON_VIEW_INVESTMENT' | translate }}
+        </button>
 
         <button (click)="onDownloadAgreement()"
                 [disabled]="loading()"
                 class="btn btn-primary btn-sm d-flex gap-2 align-items-center">
             <i class="fa-solid fa-download"></i>
-            Download Agreement
+            {{ 'OPPORTUNITIES.APPLICATION.SUCCESS.BUTTON_DOWNLOAD_AGREEMENT' | translate }}
         </button>
-
     </div>
 </div>

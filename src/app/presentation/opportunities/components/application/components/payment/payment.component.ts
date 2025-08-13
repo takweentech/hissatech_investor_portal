@@ -2,10 +2,11 @@ import { Component, inject, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Property } from '../../../../../../data/property/property';
 import { LookupService } from '../../../../../../core/services/lookup.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-payment',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss'
 })

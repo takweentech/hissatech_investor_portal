@@ -1,4 +1,4 @@
-<div class="row h-100 flex-column  mx-0 rounded">
+<div class="row h-100 flex-column mx-0 rounded">
     <div class="col-12">
         <!-- Greeting -->
         <app-greeting></app-greeting>
@@ -9,8 +9,8 @@
             <!-- Recent Transactions -->
             <div class="d-flex flex-column gap-2">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5>Recent Transactions ({{totalTransactions()}})</h5>
-                    <a href="">View All</a>
+                    <h5>{{ 'ONBOARDING.RECENT_TRANSACTIONS' | translate }} ({{ totalTransactions() }})</h5>
+                    <a href="">{{ 'ONBOARDING.VIEW_TRANSACTIONS' | translate }}</a>
                 </div>
                 <ul class="list-group">
                     @for (item of transactions(); track $index) {
@@ -19,32 +19,36 @@
                             <div class="col d-flex align-items-center gap-4">
                                 <i class="fa-solid fa-arrow-down"></i>
                                 <div>
-                                    <h6 class="mb-0 d-flex gap-2">{{item.propertyName}}
-
+                                    <h6 class="mb-0 d-flex gap-2">{{ item.propertyName }}
                                         @if(item.statusName === InvestmentStatusEnum.PENDING_TRANSFER){
-                                        <span class="badge bg-warning">{{item.statusName }}</span>
+                                        <span class="badge bg-warning">{{ 'TRANSACTION_CARD.PENDING_TRANSFER' |
+                                            translate }}</span>
                                         }
                                         @if(item.statusName === InvestmentStatusEnum.COMPLETED){
-                                        <span class="badge bg-success">{{item.statusName }}</span>
+                                        <span class="badge bg-success">{{ 'TRANSACTION_CARD.COMPLETED' | translate
+                                            }}</span>
                                         }
                                     </h6>
-                                    <small>Deposit</small>
+                                    <small>{{ 'TRANSACTION_CARD.DEPOSIT' | translate }}</small>
                                 </div>
                             </div>
                             <div class="col d-flex flex-column align-items-end">
-                                <span class="text-success">${{item.amount}}</span>
-                                <span class="">{{item.createdDate | date }}</span>
+                                <span class="text-success">${{ item.amount }}</span>
+                                <span class="">{{ item.createdDate | date }}</span>
                             </div>
                         </div>
                     </li>
                     }
                 </ul>
             </div>
+
+
             <!-- Recent Opportunities -->
             <div class="d-flex flex-column gap-2">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5>Recent Opportunities ({{totalProperties()}})</h5>
-                    <a [routerLink]="'/' + WEB_ROUTES.OPPORTUNITIES.ROOT">View All</a>
+                    <h5>{{ 'ONBOARDING.RECENT_OPPORTUNITIES' | translate }} ({{ totalProperties() }})</h5>
+                    <a [routerLink]="'/' + WEB_ROUTES.OPPORTUNITIES.ROOT">{{ 'ONBOARDING.BROWSE_PROPERTIES' | translate
+                        }}</a>
                 </div>
                 <div class="row g-4 mb-4">
                     @for (item of properties(); track $index) {
@@ -55,7 +59,6 @@
                     }
                 </div>
             </div>
-
         </section>
     </div>
 </div>

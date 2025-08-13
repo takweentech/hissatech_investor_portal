@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
+import { WEB_ROUTES } from '../constants/routes.constants';
 
 interface MenuItem {
   title: string,
@@ -10,30 +10,30 @@ interface MenuItem {
 @Injectable({
   providedIn: 'root'
 })
-export class HeaderService {
+export class SidebarService {
   private menu: MenuItem[] = [
     {
-      title: "Home",
+      title: 'LAYOUT.SIDEBAR.HOME',
       icon: "fa-solid fa-house",
       routerLink: WEB_ROUTES.DASHBOARD.ROOT
     },
     {
-      title: "Properties",
+      title: 'LAYOUT.SIDEBAR.PROPERTIES',
       icon: "fa-solid fa-list",
       routerLink: WEB_ROUTES.OPPORTUNITIES.ROOT
     },
     {
-      title: "Investments",
+      title: 'LAYOUT.SIDEBAR.INVESTMENTS',
       icon: "fa-solid fa-chart-simple",
       routerLink: WEB_ROUTES.INVESTMENTS.ROOT
     },
     {
-      title: "Portfolio",
+      title: 'LAYOUT.SIDEBAR.PORTFOLIO',
       icon: "fa-solid fa-briefcase",
       routerLink: WEB_ROUTES.PORTFOLIO.ROOT
     },
     {
-      title: "Profile",
+      title: 'LAYOUT.SIDEBAR.PROFILE',
       icon: "fa-solid fa-user",
       routerLink: WEB_ROUTES.SETTINGS.ROOT
     },

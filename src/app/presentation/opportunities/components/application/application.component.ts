@@ -11,9 +11,9 @@ import { ToastService } from '../../../../shared/components/toast/toast.service'
 import { FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { TokenService } from '../../../../core/services/token.service';
 import { SuccessComponent } from "./components/success/success.component";
-import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { BackButtonComponent } from "../../../../shared/components/back-button/back-button.component";
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 enum Mode {
   STEPPER = 'stepper',
@@ -39,7 +39,7 @@ interface Step {
 
 @Component({
   selector: 'app-application',
-  imports: [NgComponentOutlet, ReactiveFormsModule, SuccessComponent, BackButtonComponent],
+  imports: [NgComponentOutlet, ReactiveFormsModule, SuccessComponent, BackButtonComponent, TranslatePipe],
   templateUrl: './application.component.html',
   styleUrl: './application.component.scss'
 })
@@ -49,6 +49,7 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
   private readonly fb = inject(FormBuilder);
   private readonly toastService = inject(ToastService);
   private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly translateService = inject(TranslateService);
   property: Property = this.activatedRoute.snapshot.data['property']?.data;
 
   @ViewChild('stepperRef', { static: false }) stepperRef!: ElementRef;
@@ -62,13 +63,13 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
   ngOnInit(): void {
     this.steps = [
       {
-        title: "Amount",
+        title: this.translateService.instant('OPPORTUNITIES.APPLICATION.AMOUNT_TITLE'),
         key: 'amount',
-        description: "Specify the investment amount",
-        subDescription: "Enter the amount you wish to invest in this opportunity. You can adjust it based on your budget and the available investment slots.",
+        description: this.translateService.instant('OPPORTUNITIES.APPLICATION.AMOUNT_DESCRIPTION'),
+        subDescription: this.translateService.instant('OPPORTUNITIES.APPLICATION.AMOUNT_SUBDESCRIPTION'),
         id: 1,
         component: AmountComponent,
-        buttonLabel: "Next",
+        buttonLabel: this.translateService.instant('OPPORTUNITIES.APPLICATION.NEXT_BUTTON'),
         controls: [
           {
             key: 'amount',
@@ -80,23 +81,14 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
           },
         ]
       },
-      // {
-      //   title: "Agreement",
-      //   key: '',
-      //   description: "Review & Accept the Agreement",
-      //   subDescription: "Please read the investment terms carefully. By accepting, you confirm that you understand the risks, potential returns, and conditions associated with this opportunity.",
-      //   id: 3,
-      //   component: AgreementComponent,
-      //   buttonLabel: "Agree"
-      // },
       {
-        title: "Payment Method",
+        title: this.translateService.instant('OPPORTUNITIES.APPLICATION.PAYMENT_TITLE'),
         key: '',
-        description: "Complete Your Payment",
-        subDescription: "Select your preferred payment method to finalize your investment. Once payment is processed, you will receive a confirmation and proof of your investment.",
+        description: this.translateService.instant('OPPORTUNITIES.APPLICATION.PAYMENT_DESCRIPTION'),
+        subDescription: this.translateService.instant('OPPORTUNITIES.APPLICATION.PAYMENT_SUBDESCRIPTION'),
         id: 2,
         component: PaymentComponent,
-        buttonLabel: "Confirm",
+        buttonLabel: this.translateService.instant('OPPORTUNITIES.APPLICATION.CONFIRM_BUTTON'),
         nextHandler: this.checkInvestment.bind(this),
       },
     ];

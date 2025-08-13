@@ -23,5 +23,9 @@ body {
             right: unset;
             left: 1rem;
         }
+
+        .fa-arrow-left {
+            transform: rotate(180deg);
+        }
     }
 }

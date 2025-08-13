@@ -5,10 +5,11 @@ import { Property, PropertyRequestFilter } from '../../../../data/property/prope
 import { PropertyService } from '../../../../data/property/property.service';
 import { takeUntil } from 'rxjs';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-listing',
-  imports: [OpportunityCardComponent, NgbPaginationModule],
+  imports: [OpportunityCardComponent, NgbPaginationModule, TranslatePipe],
   templateUrl: './listing.component.html',
   styleUrl: './listing.component.scss'
 })

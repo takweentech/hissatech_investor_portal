@@ -4,10 +4,11 @@ import { InvestData } from '../../../../../../data/investment/investment';
 import { ActivatedRoute } from '@angular/router';
 import { Property } from '../../../../../../data/property/property';
 import { CurrencyPipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-amount',
-  imports: [ReactiveFormsModule, CurrencyPipe],
+  imports: [ReactiveFormsModule, CurrencyPipe, TranslatePipe],
   templateUrl: './amount.component.html',
   styleUrl: './amount.component.scss'
 })
