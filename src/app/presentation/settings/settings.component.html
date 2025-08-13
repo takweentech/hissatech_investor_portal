@@ -1,14 +1,14 @@
-<section class="row g-0 h-100">
-    <div class="col-4 border-right">
+<section class="row g-0 h-100 px-4">
+    <div class="col-4 border-right bg-white">
         <div class="d-flex flex-column">
             <div class="p-4 d-flex align-items-center ">
-                <h2 class="m-0">Settings</h2>
+                <h4 class="m-0">Settings</h4>
             </div>
             <ul>
                 <li class="border-bottom">
                     <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.ACCOUNT"
                        [routerLinkActiveOptions]="{ exact: true }"
-                       routerLinkActive="body-bg-grey"
+                       routerLinkActive="bg-body-tertiary"
                        class="d-flex gap-3 p-4 ">
                         <i class="fs-5 fa-solid fa-user"></i>
                         <div>
@@ -20,7 +20,7 @@
                 <li class=" border-bottom">
                     <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.BANKING"
                        [routerLinkActiveOptions]="{ exact: true }"
-                       routerLinkActive="body-bg-grey"
+                       routerLinkActive="bg-body-tertiary"
                        class="d-flex gap-3 p-4">
                         <i class="fs-5 fa-solid fa-bank"></i>
                         <div>
@@ -32,7 +32,7 @@
                 <li>
                     <a [routerLink]="'/' + WEB_ROUTES.SETTINGS.ROOT + '/' + WEB_ROUTES.SETTINGS.SECURITY"
                        [routerLinkActiveOptions]="{ exact: true }"
-                       routerLinkActive="body-bg-grey"
+                       routerLinkActive="bg-body-tertiary"
                        class="d-flex gap-3 p-4">
                         <i class="fs-5 fa-solid fa-lock"></i>
                         <div>
@@ -44,7 +44,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-8 body-bg-grey">
+    <div class="col-8 bg-body-tertiary">
         <div class="p-4">
             <router-outlet />
         </div>

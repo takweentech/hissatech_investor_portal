@@ -1,0 +1,102 @@
+<section class=" py-4 px-4">
+
+
+    <div class="row flex-wrap g-4 mb-4">
+        <div class="col">
+            <div class="card bg-secondary p-2 d-flex flex-row  align-items-center gap-3">
+                <div class="bg-primary rounded p-2 d-flex align-items-center justify-content-center text-center">
+                    <i class="fas fa-chart-line text-light fs-4 width-2rem"></i>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <h6 class="text-primary fw-semibold mb-0">Achieved Returns</h6>
+                    <span>{{stats?.earnedReturns | currency: 'SAR '}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card bg-secondary p-2 d-flex flex-row  align-items-center gap-3">
+                <div class="bg-primary rounded p-2 d-flex align-items-center justify-content-center text-center">
+                    <i class="fas fa-chart-bar text-light fs-4 width-2rem"></i>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <h6 class="text-primary fw-semibold mb-0">Expected Returns</h6>
+                    <span>{{stats?.expectedReturns | currency: 'SAR '}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card bg-secondary p-2 d-flex flex-row  align-items-center gap-3">
+                <div class="bg-primary rounded p-2 d-flex align-items-center justify-content-center text-center">
+                    <i class="fas fa-arrow-down text-light fs-4 width-2rem"></i>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <h6 class="text-primary fw-semibold mb-0">Transaferable Returns</h6>
+                    <span>{{stats?.withdrawableProfits | currency: 'SAR '}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card bg-secondary p-2 d-flex flex-row  align-items-center gap-3">
+                <div class="bg-primary rounded p-2 d-flex align-items-center justify-content-center text-center">
+                    <i class="fas fa-percent text-light fs-4 width-2rem"></i>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                    <h6 class="text-primary fw-semibold mb-0">Growth Rate</h6>
+                    <span>{{stats?.growthRate | currency: 'SAR '}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="d-flex mb-4">
+        <h4>Showing {{filter.pageSize}} of ({{total()}})</h4>
+    </div>
+
+    <ul class="list-group">
+        @if (transactions().length) {
+        @for (item of transactions(); track $index) {
+        <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+                <div class="col d-flex align-items-center gap-4">
+                    <i class="fa-solid fa-arrow-down"></i>
+                    <div>
+                        <div class="d-flex gap-2">
+                            <a
+                               [routerLink]=" '/' + WEB_ROUTES.INVESTMENTS.ROOT + '/' + WEB_ROUTES.INVESTMENTS.DETAILS + '/' + item.id ">
+                                <h6 class="mb-0 d-flex gap-2">{{item.propertyName}}
+                                </h6>
+                            </a>
+                            @if(item.statusName === InvestmentStatusEnum.PENDING_TRANSFER){
+                            <span class="badge bg-warning">{{item.statusName }}</span>
+                            }
+                            @if(item.statusName === InvestmentStatusEnum.COMPLETED){
+                            <span class="badge bg-success">{{item.statusName }}</span>
+                            }
+                        </div>
+                        <!-- <small>Deposit</small> -->
+                    </div>
+                </div>
+                <div class="col d-flex flex-column align-items-end">
+                    <span class="text-success">${{item.amount}}</span>
+                    <span class="">{{item.createdDate | date }}</span>
+                </div>
+            </div>
+        </li>
+
+        }
+        <div class="mt-4 d-flex justify-content-end">
+            <ngb-pagination [collectionSize]="total()"
+                            [page]="filter.pageNumber"
+                            (pageChange)="onPageChange($event)"
+                            aria-label="Default pagination" />
+        </div>
+        }@else {
+        <div class="d-flex justify-content-center align-items-center">
+            <p>No investments yet.</p>
+        </div>
+        }
+
+
+    </ul>
+</section>

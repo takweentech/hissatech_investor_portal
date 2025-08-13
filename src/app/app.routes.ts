@@ -6,6 +6,7 @@ import { AdminComponent } from './layout/admin/admin.component';
 import { OPPORTUNITIES_ROUTES } from './presentation/opportunities/opportunities.routes';
 import { SETTINGS_ROUTES } from './presentation/settings/settings.routes';
 import { INVESTMENTS_ROUTES } from './presentation/investments/investments.routes';
+import { PORTFOLIO_ROUTES } from './presentation/portfolio/portfolio.routes';
 
 export const routes: Routes = [
     {
@@ -67,6 +68,16 @@ export const routes: Routes = [
                     ),
                 children: SETTINGS_ROUTES,
                 data: { title: "Profile", icon: "fa-solid fa-user", }
+            },
+            {
+                path: WEB_ROUTES.PORTFOLIO.ROOT,
+                canActivate: [authGuard],
+                loadComponent: () =>
+                    import("./presentation/portfolio/portfolio.component").then(
+                        (m) => m.PortfolioComponent
+                    ),
+                children: PORTFOLIO_ROUTES,
+                data: { title: "Portfolio", icon: "fa-solid fa-briefcase", }
             },
         ]
     }
