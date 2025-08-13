@@ -5,7 +5,8 @@ export const SETTINGS_ROUTES: Routes = [
     {
         path: "",
         redirectTo: WEB_ROUTES.SETTINGS.ACCOUNT,
-        pathMatch: 'full'
+        pathMatch: 'full',
+
     },
     {
         path: WEB_ROUTES.SETTINGS.ACCOUNT,
@@ -14,6 +15,8 @@ export const SETTINGS_ROUTES: Routes = [
                 (m) => m.AccountComponent
             ),
         providers: [],
+        data: { title: "Profile", icon: "fa-solid fa-user", }
+
     },
     {
         path: WEB_ROUTES.SETTINGS.BANKING,
@@ -22,6 +25,8 @@ export const SETTINGS_ROUTES: Routes = [
                 (m) => m.BankingComponent
             ),
         providers: [],
+        data: { title: "Profile", icon: "fa-solid fa-user", }
+
     },
     {
         path: WEB_ROUTES.SETTINGS.SECURITY,
@@ -30,5 +35,7 @@ export const SETTINGS_ROUTES: Routes = [
                 (m) => m.SecurityComponent
             ),
         providers: [],
+        data: { title: "Profile", icon: "fa-solid fa-user", }
+
     },
 ];

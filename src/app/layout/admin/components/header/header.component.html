@@ -9,11 +9,12 @@
 
             <ul class="d-flex align-items-center gap-2">
                 <li>
-                    <a target="_blank"
-                       [routerLink]="'/' + WEB_ROUTES.OPPORTUNITIES.ROOT "
-                       class="btn text-white btn-primary d-flex gap-2 align-items-center">
-                        <i class="fa-solid fa-list"></i>
-                        Browse Properties</a>
+                    <a href="javascript:void(0)"
+                       (click)="onLangChange()"
+                       class="text-decoration-none cursor-pointer text-primary lang-link d-flex gap-2 align-items-center">
+                        <i class="fa-solid fa-globe"></i>
+                        {{translationService.language === 'en' ? 'Arabic' : 'English'}}
+                    </a>
                 </li>
             </ul>
         </div>

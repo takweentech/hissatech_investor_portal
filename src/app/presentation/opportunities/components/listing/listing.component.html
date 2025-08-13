@@ -1,15 +1,15 @@
 <section class=" py-4 px-4">
     <div class="d-flex justify-content-between mb-4">
-        <h4>Opportunities ({{total()}})</h4>
+        <h4>Showing {{filter.pageSize}} of ({{total()}})</h4>
     </div>
 
-    <!-- 
-    <div class="mb-4 bg-body-tertiary p-3 rounded">
+
+    <div class="mb-4 bg-body-tertiary p-3 border rounded">
         <form action=""
-              class="row">
+              class="row gy-3">
             <div class="form-group col-4">
                 <label for="id"
-                       class="form-label">Search</label>
+                       class="form-label">Property Name</label>
                 <input type="text"
                        class="form-control"
                        id="id">
@@ -34,15 +34,19 @@
                        id="id">
             </div>
 
+            <div class="col-12 d-flex justify-content-end">
+                <button class="btn btn-primary btn-sm">Search</button>
+            </div>
+
         </form>
-    </div> -->
+    </div>
 
 
     <div class="row g-4 mb-4">
         @for (item of properties(); track $index) {
-        <div class="col-12">
+        <div class="col-4">
             <app-opportunity-card [property]="item"
-                                  [variation]="'v-2'"></app-opportunity-card>
+                                  [variation]="'v-1'"></app-opportunity-card>
         </div>
         }
     </div>

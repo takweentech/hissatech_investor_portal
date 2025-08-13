@@ -2,8 +2,10 @@
 
 
     <div class="row gy-4">
-        <div class="d-flex justify-content-between">
-            <h2 class="text-primary fw-semibold">{{property.displayName}}</h2>
+        <div class="d-flex align-items-center gap-2 ">
+            <app-back-button></app-back-button>
+
+            <h5 class="m-0">{{property.displayName}}</h5>
         </div>
 
         <lightgallery [settings]="settings">

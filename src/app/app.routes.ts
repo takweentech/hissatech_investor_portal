@@ -54,7 +54,9 @@ export const routes: Routes = [
                     import("./presentation/opportunities/opportunities.component").then(
                         (m) => m.OpportunitiesComponent
                     ),
-                children: OPPORTUNITIES_ROUTES
+                children: OPPORTUNITIES_ROUTES,
+                data: { title: "Properties", icon: "fa-solid fa-list" }
+
             },
             {
                 path: WEB_ROUTES.SETTINGS.ROOT,

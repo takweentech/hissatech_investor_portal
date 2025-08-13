@@ -6,7 +6,6 @@ import { InvestmentService } from '../../../../data/investment/investment.servic
 import { BaseComponent } from '../../../../core/base/base.component';
 import { takeUntil } from 'rxjs';
 import { Property } from '../../../../data/property/property';
-import { AgreementComponent } from './components/agreement/agreement.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ToastService } from '../../../../shared/components/toast/toast.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
@@ -14,6 +13,7 @@ import { TokenService } from '../../../../core/services/token.service';
 import { SuccessComponent } from "./components/success/success.component";
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { BackButtonComponent } from "../../../../shared/components/back-button/back-button.component";
 
 enum Mode {
   STEPPER = 'stepper',
@@ -39,7 +39,7 @@ interface Step {
 
 @Component({
   selector: 'app-application',
-  imports: [NgComponentOutlet, ReactiveFormsModule, SuccessComponent],
+  imports: [NgComponentOutlet, ReactiveFormsModule, SuccessComponent, BackButtonComponent],
   templateUrl: './application.component.html',
   styleUrl: './application.component.scss'
 })
@@ -48,7 +48,6 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
   private readonly tokenService = inject(TokenService);
   private readonly fb = inject(FormBuilder);
   private readonly toastService = inject(ToastService);
-  private readonly location = inject(Location);
   private readonly activatedRoute = inject(ActivatedRoute);
   property: Property = this.activatedRoute.snapshot.data['property']?.data;
 
@@ -91,7 +90,7 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
       //   buttonLabel: "Agree"
       // },
       {
-        title: "Payment",
+        title: "Payment Method",
         key: '',
         description: "Complete Your Payment",
         subDescription: "Select your preferred payment method to finalize your investment. Once payment is processed, you will receive a confirmation and proof of your investment.",
@@ -169,9 +168,6 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
   }
 
 
-  onBack(): void {
-    this.location.back()
-  }
 
 
   ngAfterViewInit(): void {

@@ -10,6 +10,8 @@ export const OPPORTUNITIES_ROUTES: Routes = [
                 (m) => m.ListingComponent
             ),
         providers: [],
+        data: { title: "Properties", icon: "fa-solid fa-list" }
+
     },
     {
         path: WEB_ROUTES.OPPORTUNITIES.DETAILS + '/:id',
@@ -19,6 +21,8 @@ export const OPPORTUNITIES_ROUTES: Routes = [
                 (m) => m.DetailsComponent
             ),
         providers: [],
+        data: { title: "Properties", icon: "fa-solid fa-list" }
+
     },
     {
         path: WEB_ROUTES.OPPORTUNITIES.APPLICATION + '/:id',
@@ -28,5 +32,7 @@ export const OPPORTUNITIES_ROUTES: Routes = [
                 (m) => m.ApplicationComponent
             ),
         providers: [],
+        data: { title: "Properties", icon: "fa-solid fa-list" }
+
     },
 ];

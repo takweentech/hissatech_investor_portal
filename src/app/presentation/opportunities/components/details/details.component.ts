@@ -9,10 +9,11 @@ import { PropertyService } from '../../../../data/property/property.service';
 import { InvestmentService } from '../../../../data/investment/investment.service';
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
 import { environment } from '../../../../../environments/environment';
+import { BackButtonComponent } from "../../../../shared/components/back-button/back-button.component";
 
 @Component({
   selector: 'app-details',
-  imports: [LightgalleryModule, NgStyle, RouterLink],
+  imports: [LightgalleryModule, NgStyle, RouterLink, BackButtonComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
