@@ -14,6 +14,7 @@ import { SuccessComponent } from "./components/success/success.component";
 import { ActivatedRoute } from '@angular/router';
 import { BackButtonComponent } from "../../../../shared/components/back-button/back-button.component";
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { InvestmentPaymentEnum } from '../../../../core/enums/investment.enum';
 
 enum Mode {
   STEPPER = 'stepper',
@@ -83,13 +84,19 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
       },
       {
         title: this.translateService.instant('OPPORTUNITIES.APPLICATION.PAYMENT_TITLE'),
-        key: '',
+        key: 'payment',
         description: this.translateService.instant('OPPORTUNITIES.APPLICATION.PAYMENT_DESCRIPTION'),
         subDescription: this.translateService.instant('OPPORTUNITIES.APPLICATION.PAYMENT_SUBDESCRIPTION'),
         id: 2,
         component: PaymentComponent,
         buttonLabel: this.translateService.instant('OPPORTUNITIES.APPLICATION.CONFIRM_BUTTON'),
         nextHandler: this.checkInvestment.bind(this),
+        controls: [
+          {
+            key: 'paymentOption',
+            validators: [Validators.required]
+          },
+        ]
       },
     ];
     this.initForm();
@@ -128,6 +135,34 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
   }
 
   checkInvestment(): void {
+    const paymentControl: FormGroup = this.form.controls['payment'] as FormGroup;
+
+    if (paymentControl.value.paymentOption == InvestmentPaymentEnum.BANK_TRANSFER) {
+      this.validateBankTransfer();
+      return
+    }
+    if (paymentControl.value.paymentOption == InvestmentPaymentEnum.HYPER_PAY) {
+
+      this.initHyperPay();
+      return
+    }
+
+  }
+
+  initHyperPay(): void {
+    const amountControl: FormGroup = this.form.controls['amount'] as FormGroup;
+
+    this.investmentService.initializeHyperPay(amountControl.controls['amount'].value, false, this.property.id).subscribe({
+      next: (response) => {
+        const script = document.createElement('script');
+        script.src = `https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=${response.data}`;
+        document.body.appendChild(script);
+
+      }
+    })
+  }
+
+  validateBankTransfer(): void {
     const amountControl: FormGroup = this.form.controls['amount'] as FormGroup;
     this.investmentService.checkInvestment(this.property.id, amountControl.controls['amount'].value, amountControl.controls['promoCode'].value).pipe(takeUntil(this.destroy$)).subscribe({
       next: (response) => {
@@ -137,21 +172,6 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
         }
         this.mode = this.modes.SUCCESS;
         this.investmentId = response.data.id;
-      },
-      error: (err) => {
-        this.toastService.show({ text: err.message, classname: 'bg-danger text-light' });
-      }
-    })
-  }
-
-  confirmInvestment(): void {
-    this.investmentService.confirmInvestment(this.investmentId, this.tokenService.getUser().id).pipe(takeUntil(this.destroy$)).subscribe({
-      next: (response) => {
-        if (response.status === 200) {
-          alert("Investment confirmed")
-        } else {
-          this.toastService.show({ text: response.message, classname: 'bg-danger text-light' });
-        }
       },
       error: (err) => {
         this.toastService.show({ text: err.message, classname: 'bg-danger text-light' });

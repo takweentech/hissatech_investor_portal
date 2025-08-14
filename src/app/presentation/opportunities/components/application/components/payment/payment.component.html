@@ -1,5 +1,22 @@
-<div>
-    <h5>{{ 'OPPORTUNITIES.APPLICATION.PAYMENT.TITLE' | translate }}</h5>
+<form [formGroup]="formGroup"
+      class="d-flex flex-column gap-2">
+    @for (item of paymentOptions; track $index) {
+    <div class="position-relative border p-2 rounded width-100 h-100  d-flex align-items-center gap-2">
+        <input formControlName="paymentOption"
+               type="radio"
+               [value]="item.value"
+               [id]="item.value">
+        <label [for]="item.value"
+               class="width-100 cursor-pointer">
+            {{item.name}}
+            <small>{{item.description}}</small>
+        </label>
+
+
+    </div>
+
+    @if ( formGroup.get('paymentOption')?.value === item.value && item.value == investmentPaymentEnum.BANK_TRANSFER)
+    {
     <div class="bg-body-secondary p-2 rounded d-flex flex-column gap-2">
 
         <div class="d-flex bg-light p-2 rounded justify-content-between">
@@ -27,4 +44,15 @@
         </div>
 
     </div>
-</div>
+    }
+
+    @if ( formGroup.get('paymentOption')?.value === item.value && item.value == investmentPaymentEnum.HYPER_PAY) {
+    <div>
+        <form class="paymentWidgets"
+              action="javascript:void"
+              data-brands="VISA MASTER MADA"></form>
+    </div>
+    }
+
+    }
+</form>

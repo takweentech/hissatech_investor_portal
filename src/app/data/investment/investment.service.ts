@@ -48,6 +48,10 @@ export class InvestmentService {
         return this.http.post<CustomHttpResponse<{}>>(environment.apiUrlV2 + `/${this.baseUrl}/ConfirmInvestment`, {}, { params: { investmentId, investorId } })
     }
 
+    initializeHyperPay(amount: number, isApplePay: boolean, propertyId: number): Observable<CustomHttpResponse<{}>> {
+        return this.http.post<CustomHttpResponse<{}>>(environment.apiUrl + `/${this.baseUrl}/InitializePayment`, { amount, isApplePay, propertyId },)
+    }
+
     downloadAgreement(id: number): Observable<Blob> {
         return this.http.get(
             environment.apiUrl + `/${this.baseUrl}/GetCertificate/${id}`,

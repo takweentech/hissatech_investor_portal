@@ -16,6 +16,7 @@ export class AmountComponent {
   private readonly activatedRoute = inject(ActivatedRoute);
 
   @Input() formGroup!: FormGroup;
+  @Input() form!: FormGroup;
   @Input() property!: Property;
   investment: InvestData = this.activatedRoute.snapshot.data['investment']?.data;
 

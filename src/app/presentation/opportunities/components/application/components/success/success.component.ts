@@ -20,6 +20,10 @@ export class SuccessComponent extends BaseComponent {
 
   loading = signal<boolean>(false);
 
+  constructor() {
+    super();
+  }
+
   onNavigateToInvestment(): void {
     this.router.navigateByUrl('/' + WEB_ROUTES.INVESTMENTS.ROOT + '/' + WEB_ROUTES.INVESTMENTS.DETAILS + '/' + this.investmentId)
   }

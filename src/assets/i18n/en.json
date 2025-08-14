@@ -101,7 +101,7 @@
             "PAYMENT_SUBDESCRIPTION": "Select your preferred payment method to finalize your investment. Once payment is processed, you will receive a confirmation and proof of your investment.",
             "NEXT_BUTTON": "Next",
             "PREV_BUTTON": "Previous",
-            "CONFIRM_BUTTON": "Confirm",
+            "CONFIRM_BUTTON": "Finish",
             "AMOUNT": {
                 "LABEL": "Amount",
                 "REQUIRED_ERROR": "This field is required",

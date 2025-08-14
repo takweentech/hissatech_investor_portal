@@ -17,8 +17,6 @@ export class LookupService {
     ]
   }
 
-
-
   getIncomeAmounts() {
     return [
       { name: "100,000 or Less | 100,000 أو أقل", value: "1" },
@@ -34,5 +32,22 @@ export class LookupService {
 
   getBankInfo(): { beneficiaryName: string, bankName: string, IBAN: string } {
     return { beneficiaryName: "hissaTechCompany", bankName: "Arab National Bank", IBAN: "SA6730100761310000002384" }
+  }
+
+  getPaymentOptions(): { name: string, description: string, value: string, collapsed: boolean }[] {
+    return [
+      {
+        name: "Bank Transfer",
+        description: "",
+        value: 'bankTransfer',
+        collapsed: false
+      },
+      {
+        name: "Hyperpay",
+        description: "",
+        value: 'hyperPay',
+        collapsed: false
+      },
+    ]
   }
 }
