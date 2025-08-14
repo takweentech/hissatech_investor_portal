@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import Stepper from 'bs-stepper';
 import { AmountComponent } from './components/amount/amount.component';
 import { NgComponentOutlet } from '@angular/common';
@@ -9,12 +9,11 @@ import { Property } from '../../../../data/property/property';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ToastService } from '../../../../shared/components/toast/toast.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
-import { TokenService } from '../../../../core/services/token.service';
 import { SuccessComponent } from "./components/success/success.component";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BackButtonComponent } from "../../../../shared/components/back-button/back-button.component";
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { InvestmentPaymentEnum } from '../../../../core/enums/investment.enum';
+import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
 
 enum Mode {
   STEPPER = 'stepper',
@@ -46,9 +45,9 @@ interface Step {
 })
 export class ApplicationComponent extends BaseComponent implements AfterViewInit, OnInit {
   private readonly investmentService = inject(InvestmentService);
-  private readonly tokenService = inject(TokenService);
   private readonly fb = inject(FormBuilder);
   private readonly toastService = inject(ToastService);
+  private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly translateService = inject(TranslateService);
   property: Property = this.activatedRoute.snapshot.data['property']?.data;
@@ -80,7 +79,9 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
             key: 'promoCode',
             validators: []
           },
-        ]
+        ],
+        nextHandler: this.validateInvestment.bind(this),
+
       },
       {
         title: this.translateService.instant('OPPORTUNITIES.APPLICATION.PAYMENT_TITLE'),
@@ -90,13 +91,14 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
         id: 2,
         component: PaymentComponent,
         buttonLabel: this.translateService.instant('OPPORTUNITIES.APPLICATION.CONFIRM_BUTTON'),
-        nextHandler: this.checkInvestment.bind(this),
         controls: [
           {
             key: 'paymentOption',
             validators: [Validators.required]
           },
-        ]
+        ],
+        nextHandler: this.finalizeInvestment.bind(this),
+
       },
     ];
     this.initForm();
@@ -134,35 +136,9 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
     this.stepperInstance.previous();
   }
 
-  checkInvestment(): void {
-    const paymentControl: FormGroup = this.form.controls['payment'] as FormGroup;
 
-    if (paymentControl.value.paymentOption == InvestmentPaymentEnum.BANK_TRANSFER) {
-      this.validateBankTransfer();
-      return
-    }
-    if (paymentControl.value.paymentOption == InvestmentPaymentEnum.HYPER_PAY) {
 
-      this.initHyperPay();
-      return
-    }
-
-  }
-
-  initHyperPay(): void {
-    const amountControl: FormGroup = this.form.controls['amount'] as FormGroup;
-
-    this.investmentService.initializeHyperPay(amountControl.controls['amount'].value, false, this.property.id).subscribe({
-      next: (response) => {
-        const script = document.createElement('script');
-        script.src = `https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=${response.data}`;
-        document.body.appendChild(script);
-
-      }
-    })
-  }
-
-  validateBankTransfer(): void {
+  validateInvestment(): void {
     const amountControl: FormGroup = this.form.controls['amount'] as FormGroup;
     this.investmentService.checkInvestment(this.property.id, amountControl.controls['amount'].value, amountControl.controls['promoCode'].value).pipe(takeUntil(this.destroy$)).subscribe({
       next: (response) => {
@@ -170,7 +146,8 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
           this.toastService.show({ text: response.message, classname: 'bg-danger text-light' });
           return
         }
-        this.mode = this.modes.SUCCESS;
+        // this.mode = this.modes.SUCCESS;
+        this.stepperInstance.next();
         this.investmentId = response.data.id;
       },
       error: (err) => {
@@ -178,6 +155,13 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
       }
     })
   }
+
+
+  finalizeInvestment(): void {
+    this.router.navigateByUrl('/' + WEB_ROUTES.OPPORTUNITIES.ROOT + '/' + WEB_ROUTES.OPPORTUNITIES.SUCCESS + '/' + this.investmentId)
+  }
+
+
 
 
 

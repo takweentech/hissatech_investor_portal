@@ -35,4 +35,14 @@ export const OPPORTUNITIES_ROUTES: Routes = [
         data: { title: "Properties", icon: "fa-solid fa-list" }
 
     },
+    {
+        path: WEB_ROUTES.OPPORTUNITIES.SUCCESS + '/:id',
+        loadComponent: () =>
+            import("./components/application/components/success/success.component").then(
+                (m) => m.SuccessComponent
+            ),
+        providers: [],
+        data: { title: "Properties", icon: "fa-solid fa-list" }
+
+    },
 ];

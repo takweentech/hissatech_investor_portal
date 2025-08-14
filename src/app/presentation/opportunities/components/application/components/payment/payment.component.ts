@@ -51,11 +51,10 @@ export class PaymentComponent extends BaseComponent implements OnChanges {
                   onError: function (err: any) {
                     console.error('Payment error', err);
                   },
-                  paymentTarget: "_top", // or "_self"
-                  locale: "en",
+                  shopperResultUrl: `/${WEB_ROUTES.OPPORTUNITIES.ROOT}/${WEB_ROUTES.OPPORTUNITIES.SUCCESS} /${this.investmentId}`
                 };
                 const script = document.createElement('script');
-                script.src = `https://eu-test.oppwa.com/v1/paymentWidgets.js?checkoutId=${response.data}`;
+                script.src = `https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=${response.data}`;
                 document.body.appendChild(script);
               }
             })

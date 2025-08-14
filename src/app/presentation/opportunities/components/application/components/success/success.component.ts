@@ -1,5 +1,5 @@
 import { Component, inject, Input, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WEB_ROUTES } from '../../../../../../core/constants/routes.constants';
 import { InvestmentService } from '../../../../../../data/investment/investment.service';
 import { BaseComponent } from '../../../../../../core/base/base.component';
@@ -16,21 +16,31 @@ export class SuccessComponent extends BaseComponent {
   @Input() investmentId!: number;
   WEB_ROUTES = WEB_ROUTES;
   private readonly router = inject(Router);
+  private readonly activatedRoute = inject(ActivatedRoute);
   private readonly investmentService = inject(InvestmentService);
 
   loading = signal<boolean>(false);
 
   constructor() {
     super();
+    if (this.activatedRoute.snapshot.queryParams['id']) {
+      this.investmentService.finishInvestment(
+        this.activatedRoute.snapshot.queryParams['id'],
+        this.activatedRoute.snapshot.queryParams['propertyId'],
+        this.activatedRoute.snapshot.queryParams['amount'],
+        false,
+      ).subscribe();
+    }
+
   }
 
   onNavigateToInvestment(): void {
-    this.router.navigateByUrl('/' + WEB_ROUTES.INVESTMENTS.ROOT + '/' + WEB_ROUTES.INVESTMENTS.DETAILS + '/' + this.investmentId)
+    this.router.navigateByUrl('/' + WEB_ROUTES.INVESTMENTS.ROOT + '/' + WEB_ROUTES.INVESTMENTS.DETAILS + '/' + this.activatedRoute.snapshot.params['id'])
   }
 
   onDownloadAgreement(): void {
     this.loading.set(true);
-    this.investmentService.downloadAgreement(this.investmentId).pipe(
+    this.investmentService.downloadAgreement(this.activatedRoute.snapshot.params['id']).pipe(
       finalize(() => this.loading.set(false)),
       takeUntil(this.destroy$)).subscribe({
         next: (response: Blob) => {
