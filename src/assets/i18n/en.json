@@ -55,7 +55,8 @@
     },
     "ONBOARDING": {
         "WELCOME_BACK": "Welcome back",
-        "VIEW_TRANSACTIONS": "View transactions",
+        "VIEW_TRANSACTIONS": "View investments",
+        "VIEW_ALL": "View all",
         "BROWSE_PROPERTIES": "Browse properties",
         "RECENT_TRANSACTIONS": "Recent Transactions",
         "RECENT_OPPORTUNITIES": "Recent Opportunities"

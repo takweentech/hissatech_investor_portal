@@ -42,11 +42,13 @@ export class SignUpComponent implements AfterViewInit, OnInit {
   initForm() {
     this.signUpForm = this.fb.group({
       step_1: this.fb.group({
-        idNumber: ['1532626785', [Validators.required]],
+        idNumber: ['1532626785', [Validators.required, Validators.minLength(10),
+        Validators.maxLength(10),
+        Validators.pattern('^(1|2)[0-9]{9}$'),]],
       }),
       step_2: this.fb.group({
         fullName: [''],
-        email: ['', Validators.required],
+        email: ['', Validators.required, Validators.email],
         phoneNumber: ['', [Validators.pattern(/^5\d{8}$/), Validators.required]],
         sourceIncome: [null, Validators.required],
         incomeAmount: [null, Validators.required]

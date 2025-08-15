@@ -49,7 +49,7 @@ export class InvestmentService {
     }
 
     finishInvestment(checkoutId: string, propertyId: number, amount: number, isApplePay: boolean): Observable<CustomHttpResponse<{}>> {
-        return this.http.post<CustomHttpResponse<{}>>(environment.apiUrlV2 + `/${this.baseUrl}/FinishPayment`, { checkoutId, propertyId, amount, isApplePay })
+        return this.http.post<CustomHttpResponse<{}>>(environment.apiUrl + `/${this.baseUrl}/FinishPayment`, { checkoutId, propertyId, amount, isApplePay })
     }
 
 

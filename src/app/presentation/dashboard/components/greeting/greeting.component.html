@@ -10,10 +10,10 @@
 
     <div class="col">
         <div class="d-flex gap-2 align-items-center h-100 justify-content-end">
-            <a href="">
+            <a [routerLink]="'/' + WEB_ROUTES.OPPORTUNITIES.ROOT">
                 <button class="btn btn-primary">{{ 'ONBOARDING.BROWSE_PROPERTIES' | translate }}</button>
             </a>
-            <a href="">
+            <a [routerLink]="'/' + WEB_ROUTES.INVESTMENTS.ROOT">
                 <button class="btn btn-outline-primary">{{ 'ONBOARDING.VIEW_TRANSACTIONS' | translate }}</button>
             </a>
         </div>
