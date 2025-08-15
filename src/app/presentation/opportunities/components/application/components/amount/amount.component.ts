@@ -14,10 +14,11 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class AmountComponent {
   private readonly activatedRoute = inject(ActivatedRoute);
-
   @Input() formGroup!: FormGroup;
   @Input() form!: FormGroup;
   @Input() property!: Property;
+  @Input() investmentId!: number;
+
   investment: InvestData = this.activatedRoute.snapshot.data['investment']?.data;
 
 }

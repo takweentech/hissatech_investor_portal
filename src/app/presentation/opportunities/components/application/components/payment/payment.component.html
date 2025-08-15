@@ -49,7 +49,7 @@
     @if ( formGroup.get('paymentOption')?.value === item.value && item.value == investmentPaymentEnum.HYPER_PAY) {
     <div>
         <form class="paymentWidgets"
-              [action]="'/' + WEB_ROUTES.OPPORTUNITIES.ROOT + '/' + WEB_ROUTES.OPPORTUNITIES.SUCCESS + '/' + investmentId"
+              [action]="'/' + WEB_ROUTES.OPPORTUNITIES.ROOT + '/' + WEB_ROUTES.OPPORTUNITIES.SUCCESS + '/' + investmentId + '?propertyId=' + property.id"
               data-brands="VISA MASTER MADA"></form>
     </div>
     }

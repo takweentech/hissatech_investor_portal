@@ -23,6 +23,8 @@ export class SuccessComponent extends BaseComponent {
 
   constructor() {
     super();
+    console.log(this.activatedRoute.snapshot.queryParams);
+
     if (this.activatedRoute.snapshot.queryParams['id']) {
       this.investmentService.finishInvestment(
         this.activatedRoute.snapshot.queryParams['id'],
