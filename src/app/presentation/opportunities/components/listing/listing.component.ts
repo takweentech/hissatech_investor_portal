@@ -19,7 +19,7 @@ export class ListingComponent extends BaseComponent implements OnInit {
   properties = signal<Property[]>([]);
   total = signal<number>(0);
   filter: PropertyRequestFilter = {
-    pageNumber: 1, pageSize: 5, filter: { status: 2 },
+    pageNumber: 1, pageSize: 6, filter: { status: 2 },
     orderByValue: [
       {
         colId: 'Id',
@@ -52,6 +52,18 @@ export class ListingComponent extends BaseComponent implements OnInit {
   onPageChange(event: number) {
     this.filter.pageNumber = event;
     this.getProperties();
+  }
+
+  get startIndex(): number {
+    const pageSize = this.filter?.pageSize || 0;
+    const pageNumber = this.filter?.pageNumber || 0;
+    return (pageSize * (pageNumber - 1)) + 1;
+  }
+
+  get endIndex(): number {
+    const pageSize = this.filter?.pageSize || 0;
+    const pageNumber = this.filter?.pageNumber || 0;
+    return pageSize * pageNumber;
   }
 
 }

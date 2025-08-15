@@ -189,5 +189,10 @@
             },
             "SAVE_BTN": "Save"
         }
+    },
+    "SHARED": {
+        "SHOWING": "Showing",
+        "OF": "of",
+        "RESULT": "result"
     }
 }

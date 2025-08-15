@@ -1,43 +1,17 @@
 <section class="py-4 px-4">
     <div class="d-flex justify-content-between mb-4">
-        <h4>{{ 'OPPORTUNITIES.LISTING.SHOWING' | translate }} {{filter.pageSize}} {{ 'OPPORTUNITIES.LISTING.SHOWING' |
-            translate }} ({{total()}})</h4>
+        <h4>
+            {{ 'SHARED.SHOWING' | translate }}
+            {{ startIndex }}
+            -
+            {{ endIndex }}
+            {{ 'SHARED.OF' | translate }}
+            {{ total() }}
+            {{ 'SHARED.RESULT' | translate }}
+        </h4>
     </div>
 
-    <div class="mb-4 bg-body-tertiary p-3 border rounded">
-        <form action=""
-              class="row gy-3">
-            <div class="form-group col-4">
-                <label for="id"
-                       class="form-label">{{ 'OPPORTUNITIES.LISTING.PROPERTY_NAME' | translate }}</label>
-                <input type="text"
-                       class="form-control"
-                       id="id">
-            </div>
-            <div class="form-group col-4">
-                <label for="id"
-                       class="form-label">{{ 'OPPORTUNITIES.LISTING.AMOUNT' | translate }}</label>
-                <div class="input-group">
-                    <span class="input-group-text">SAR</span>
-                    <input type="tel"
-                           dir="ltr"
-                           class="form-control"
-                           id="phoneNumber">
-                </div>
-            </div>
-            <div class="form-group col-4">
-                <label for="id"
-                       class="form-label">{{ 'OPPORTUNITIES.LISTING.CLASSIFICATION' | translate }}</label>
-                <input type="text"
-                       class="form-control"
-                       id="id">
-            </div>
 
-            <div class="col-12 d-flex justify-content-end">
-                <button class="btn btn-primary btn-sm">{{ 'OPPORTUNITIES.LISTING.SEARCH' | translate }}</button>
-            </div>
-        </form>
-    </div>
 
     <div class="row g-4 mb-4">
         @for (item of properties(); track $index) {

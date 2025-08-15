@@ -1,8 +1,16 @@
 <section class=" py-4 px-4">
-    <div class="d-flex mb-4">
-        <h4> {{ 'TRANSACTIONS.LISTING.SHOWING' | translate:{pageSize: filter.pageSize, total: total()} }}</h4>
-
+    <div class="d-flex justify-content-between mb-4">
+        <h4>
+            {{ 'SHARED.SHOWING' | translate }}
+            {{ startIndex }}
+            -
+            {{ endIndex }}
+            {{ 'SHARED.OF' | translate }}
+            {{ total() }}
+            {{ 'SHARED.RESULT' | translate }}
+        </h4>
     </div>
+
 
 
     <ul class="list-group">

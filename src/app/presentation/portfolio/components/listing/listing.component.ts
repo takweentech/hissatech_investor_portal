@@ -75,4 +75,17 @@ export class ListingComponent extends BaseComponent {
   }
 
 
+  get startIndex(): number {
+    const pageSize = this.filter?.pageSize || 0;
+    const pageNumber = this.filter?.pageNumber || 0;
+    return (pageSize * (pageNumber - 1)) + 1;
+  }
+
+  get endIndex(): number {
+    const pageSize = this.filter?.pageSize || 0;
+    const pageNumber = this.filter?.pageNumber || 0;
+    return pageSize * pageNumber;
+  }
+
+
 }
