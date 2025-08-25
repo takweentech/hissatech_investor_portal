@@ -1,4 +1,4 @@
-<div class="p-4 d-flex flex-column gap-4">
+<div class="d-flex flex-column gap-4">
     <div class="d-flex justify-content-between">
         <div class="d-flex gap-2 align-items-center">
             <app-back-button></app-back-button>
@@ -17,14 +17,20 @@
         </div>
 
         <div class="d-flex gap-2 align-items-center">
-            <button class="btn btn-danger btn-sm">
+            <button (click)="onCancelInvestment()"
+                    class="btn btn-danger btn-sm">
                 {{ 'TRANSACTIONS.DETAILS.CANCEL_INVESTMENT' | translate }}
             </button>
 
             <button (click)="onDownloadAgreement()"
                     [disabled]="loading()"
                     class="btn btn-primary btn-sm d-flex gap-2 align-items-center">
+                @if(loading()){
+                <i class="fa-solid fa-spinner"></i>
+
+                }@else{
                 <i class="fa-solid fa-download"></i>
+                }
                 {{ 'TRANSACTIONS.DETAILS.DOWNLOAD_AGREEMENT' | translate }}
             </button>
         </div>

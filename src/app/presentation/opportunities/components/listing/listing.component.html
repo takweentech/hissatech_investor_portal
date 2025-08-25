@@ -1,4 +1,4 @@
-<section class="py-4 px-4">
+<section>
     <div class="d-flex justify-content-between mb-4">
         <h4>
             {{ 'SHARED.SHOWING' | translate }}
@@ -15,7 +15,7 @@
 
     <div class="row g-4 mb-4">
         @for (item of properties(); track $index) {
-        <div class="col-4">
+        <div class="col-md-6 col-lg-6 col-xl-4 col">
             <app-opportunity-card [property]="item"
                                   [variation]="'v-1'"></app-opportunity-card>
         </div>
