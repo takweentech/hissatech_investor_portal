@@ -1,5 +1,5 @@
 <div class="d-flex flex-column gap-4">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between flex-wrap gap-4">
         <div class="d-flex gap-2 align-items-center">
             <app-back-button></app-back-button>
             <h5 class="mb-0">{{ investment.property.displayName }}</h5>
@@ -40,31 +40,31 @@
         <h5>{{ 'TRANSACTIONS.DETAILS.TITLE' | translate }}</h5>
 
         <div class="row g-2">
-            <div class="col-4 d-flex flex-column gap-1">
+            <div class="col-6 col-md-4 d-flex flex-column gap-1">
                 <span>{{ 'TRANSACTIONS.DETAILS.AMOUNT' | translate }}</span>
                 <span>{{ investment.amount | currency: 'SAR ' }}</span>
             </div>
-            <div class="col-4 d-flex flex-column gap-1">
+            <div class="col-6 col-md-4 d-flex flex-column gap-1">
                 <span>{{ 'TRANSACTIONS.DETAILS.NET_EQUITY' | translate }}</span>
                 <span>{{ investment.netEquity | currency: 'SAR ' }}</span>
             </div>
-            <div class="col-4 d-flex flex-column gap-1">
+            <div class="col-6 col-md-4 d-flex flex-column gap-1">
                 <span>{{ 'TRANSACTIONS.DETAILS.COLLECTED_VALUE' | translate }}</span>
                 <span>{{ investment.collectedValue | currency: 'SAR ' }}</span>
             </div>
-            <div class="col-4 d-flex flex-column gap-1">
+            <div class="col-6 col-md-4 d-flex flex-column gap-1">
                 <span>{{ 'TRANSACTIONS.DETAILS.EARNED_RENT' | translate }}</span>
                 <span>{{ investment.earnedRent | currency: 'SAR ' }}</span>
             </div>
-            <div class="col-4 d-flex flex-column gap-1">
+            <div class="col-6 col-md-4 d-flex flex-column gap-1">
                 <span>{{ 'TRANSACTIONS.DETAILS.LAST_EARNED_RENT' | translate }}</span>
                 <span>{{ investment.lastEarnedRent | currency: 'SAR ' }}</span>
             </div>
-            <div class="col-4 d-flex flex-column gap-1">
+            <div class="col-6 col-md-4 d-flex flex-column gap-1">
                 <span>{{ 'TRANSACTIONS.DETAILS.OWNER_PERCENT' | translate }}</span>
                 <span>{{ investment.excpectPercentRent }}%</span>
             </div>
-            <div class="col-4 d-flex flex-column gap-1">
+            <div class="col-6 col-md-4 d-flex flex-column gap-1">
                 <span>{{ 'TRANSACTIONS.DETAILS.OWNER_PERCENT' | translate }}</span>
                 <span>{{ investment.ownerPerccent }}%</span>
             </div>

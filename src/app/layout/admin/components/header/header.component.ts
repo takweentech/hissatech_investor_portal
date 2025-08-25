@@ -56,6 +56,6 @@ export class HeaderComponent {
   }
 
   onToggleSidebar(): void {
-    this.SidebarService.toggleMenu()
+    this.SidebarService.toggleMenu(true)
   }
 }

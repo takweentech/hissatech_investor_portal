@@ -7,7 +7,7 @@
                class="form-label">{{ 'SETTINGS.SECURITY.CURRENT_PASSWORD' | translate }}</label>
         <div class="input-group">
             <input type="password"
-                   formControlName="password"
+                   formControlName="oldPassword"
                    #currentPassword
                    class="form-control"
                    id="currentPassword">
@@ -34,6 +34,7 @@
             <input type="password"
                    #newPassword
                    class="form-control"
+                   formControlName="password"
                    id="newPassword">
 
             <span class="input-group-text">
@@ -52,29 +53,33 @@
         </div>
     </div>
 
+    @if (form.value?.password) {
     <div class="col-12">
         <ul class="password-feedback-list">
-            <li [class.completed]="form.value?.newPassword?.match('^(?=.*[A-Z])')">
-                {{ 'SETTINGS.SECURITY.FEEDBACK.UPPERCASE' | translate }}
+            <li [class.completed]="form.value?.password?.match('^(?=.*[A-Z])')">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_1' | translate }}
             </li>
-            <li [class.completed]="form.value?.newPassword?.match('(?=.*[a-z])')">
-                {{ 'SETTINGS.SECURITY.FEEDBACK.LOWERCASE' | translate }}
+            <li [class.completed]="form.value?.password?.match('(?=.*[a-z])')">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_2' | translate }}
             </li>
-            <li [class.completed]="form.value?.newPassword?.match('(.*[0-9].*)')">
-                {{ 'SETTINGS.SECURITY.FEEDBACK.NUMBER' | translate }}
+            <li [class.completed]="form.value?.password?.match('(.*[0-9].*)')">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_3' | translate }}
             </li>
-            <li [class.completed]="form.value?.newPassword?.match('(?=.*[!@#$%^&*])')">
-                {{ 'SETTINGS.SECURITY.FEEDBACK.SPECIAL' | translate }}
+            <li [class.completed]="form.value?.password?.match('(?=.*[!@#$%^&*])')">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_4' | translate }}
             </li>
-            <li [class.completed]="form.value?.newPassword?.length >= 8">
-                {{ 'SETTINGS.SECURITY.FEEDBACK.LENGTH' | translate }}
+            <li [class.completed]="form.value.password">
+                {{ 'AUTH.FORM.SIGN_UP.FEEDBACK.FEEDBACK_5' | translate }}
             </li>
         </ul>
     </div>
 
+    }
     <hr class="my-4">
 
     <div class="d-flex justify-content-end">
-        <button class="btn btn-primary">{{ 'SETTINGS.SECURITY.SAVE_BTN' | translate }}</button>
+        <button (click)="onSave()"
+                [disabled]="loading()"
+                class="btn btn-primary">{{ 'SETTINGS.SECURITY.SAVE_BTN' | translate }}</button>
     </div>
 </form>

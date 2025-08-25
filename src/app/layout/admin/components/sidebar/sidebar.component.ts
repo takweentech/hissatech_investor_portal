@@ -24,8 +24,14 @@ export class SidebarComponent {
   userInitials: string = this.tokenService.getUserInitials();
   user: User = this.tokenService.getUser();
 
-  onLogout() {
+  onLogout(): void {
     this.tokenService.clearSession();
     this.router.navigate(['/' + WEB_ROUTES.AUTH.ROOT])
+  }
+
+  onMenuItemClick(): void {
+    console.log(123);
+
+    this.SidebarService.toggleMenu(false);
   }
 }

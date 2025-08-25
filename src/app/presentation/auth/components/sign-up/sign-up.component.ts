@@ -48,7 +48,7 @@ export class SignUpComponent implements AfterViewInit, OnInit {
       }),
       step_2: this.fb.group({
         fullName: [''],
-        email: ['', Validators.required, Validators.email],
+        email: ['', [Validators.required, Validators.email]],
         phoneNumber: ['', [Validators.pattern(/^5\d{8}$/), Validators.required]],
         sourceIncome: [null, Validators.required],
         incomeAmount: [null, Validators.required]

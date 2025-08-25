@@ -75,6 +75,7 @@
 
         @if (mode == modes.OTP) {
         <app-otp [token]="tempToken"
+                 (otpCompleted)="onLogin($event)"
                  (resendOtp)="onSubmit()"></app-otp>
         }
 

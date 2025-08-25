@@ -43,8 +43,8 @@ export class SidebarService {
   private menuDisplaySource = new BehaviorSubject<boolean>(false);
   menuDisplay$ = this.menuDisplaySource.asObservable();
 
-  toggleMenu() {
-    this.menuDisplaySource.next(!this.menuDisplaySource.getValue());
+  toggleMenu(state: boolean) {
+    this.menuDisplaySource.next(state);
   }
 
   get getMenu(): MenuItem[] {

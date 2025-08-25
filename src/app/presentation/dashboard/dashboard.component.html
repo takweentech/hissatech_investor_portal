@@ -19,14 +19,18 @@
                         <div class="d-flex justify-content-between">
                             <div class="col d-flex align-items-center gap-4">
                                 <i class="fa-solid fa-arrow-down"></i>
-                                <div>
-                                    <h6 class="mb-0 d-flex gap-2">{{ item.propertyName }}
+                                <div class="">
+                                    <h6 class="mb-0 d-flex gap-2 d-flex flex-column flex-md-row justify-content-center">
+                                        {{ item.propertyName }}
                                         @if(item.statusName === InvestmentStatusEnum.PENDING_TRANSFER){
-                                        <span class="badge bg-warning">{{ 'TRANSACTION_CARD.PENDING_TRANSFER' |
+                                        <span class="badge width-fit h-fit bg-warning">{{
+                                            'TRANSACTION_CARD.PENDING_TRANSFER'
+                                            |
                                             translate }}</span>
                                         }
                                         @if(item.statusName === InvestmentStatusEnum.COMPLETED){
-                                        <span class="badge bg-success">{{ 'TRANSACTION_CARD.COMPLETED' | translate
+                                        <span class="badge width-fit h-fit bg-success">{{ 'TRANSACTION_CARD.COMPLETED' |
+                                            translate
                                             }}</span>
                                         }
                                     </h6>

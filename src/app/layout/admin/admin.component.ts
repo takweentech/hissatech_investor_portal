@@ -16,13 +16,15 @@ import { takeUntil } from 'rxjs';
 export class AdminComponent extends BaseComponent implements OnInit {
   private readonly sidebarService = inject(SidebarService);
   private offcanvasService = inject(NgbOffcanvas);
-  sidebarDisplay = signal<boolean>(false);
 
 
   ngOnInit(): void {
     this.sidebarService.menuDisplay$.pipe(takeUntil(this.destroy$)).subscribe((val) => {
-      this.sidebarDisplay.set(val);
-      if (val) this.open();
+      if (val) {
+        this.open()
+      } else {
+        this.offcanvasService.dismiss()
+      };
     })
   }
 
@@ -32,7 +34,7 @@ export class AdminComponent extends BaseComponent implements OnInit {
       (result) => {
       },
       (reason) => {
-        this.sidebarService.toggleMenu()
+        this.sidebarService.toggleMenu(false)
       },
     );
   }

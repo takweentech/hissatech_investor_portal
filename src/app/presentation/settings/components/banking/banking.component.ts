@@ -16,8 +16,12 @@ export class BankingComponent {
   private readonly fb = inject(FormBuilder);
 
   form: FormGroup = this.fb.group({
-    bankName: [this.tokenService.getUser().bankName],
-    iban: [this.tokenService.getUser().iban],
-    name: [this.tokenService.getUser().name],
+    bankName: [{ value: this.tokenService.getUser().bankName, disabled: true }],
+    iban: [{ value: this.tokenService.getUser().iban, disabled: true }],
+    name: [{ value: this.tokenService.getUser().name, disabled: true }],
   });
+
+  onSave(): void {
+
+  }
 }

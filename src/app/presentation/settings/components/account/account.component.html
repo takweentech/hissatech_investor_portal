@@ -1,48 +1,58 @@
-<form [formGroup]="form">
-    <h4>{{ 'SETTINGS.ACCOUNT.TITLE' | translate }}</h4>
-    <p>{{ 'SETTINGS.ACCOUNT.DESCRIPTION' | translate }}</p>
-
-    <div class="form-group mb-2">
-        <label for="email"
-               class="form-label">{{ 'SETTINGS.ACCOUNT.EMAIL' | translate }}</label>
-        <div class="input-group">
-            <input type="email"
-                   formControlName="newEmail"
-                   class="form-control"
-                   id="email"
-                   placeholder="{{ 'SETTINGS.ACCOUNT.EMAIL_PLACEHOLDER' | translate }}">
-        </div>
+<section>
+    <div class="mb-4">
+        <h4>{{ 'SETTINGS.ACCOUNT.TITLE' | translate }}</h4>
+        <p>{{ 'SETTINGS.ACCOUNT.DESCRIPTION' | translate }}</p>
     </div>
+    @if (mode === modes.FORM) {
 
-    <div class="form-group mb-2">
-        <label for="phoneNumber"
-               class="form-label">{{ 'SETTINGS.ACCOUNT.PHONE' | translate }}</label>
-        <div class="input-group">
-            @if (traslationService.language === 'ar') {
-            <ng-container>
+    <form [formGroup]="form">
+
+        <div class="form-group mb-2">
+            <label for="email"
+                   class="form-label">{{ 'SETTINGS.ACCOUNT.EMAIL' | translate }}</label>
+            <div class="input-group">
+                <input type="email"
+                       formControlName="newEmail"
+                       class="form-control"
+                       id="email"
+                       placeholder="{{ 'SETTINGS.ACCOUNT.EMAIL_PLACEHOLDER' | translate }}">
+            </div>
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="phoneNumber"
+                   class="form-label">{{ 'SETTINGS.ACCOUNT.PHONE' | translate }}</label>
+            <div class="input-group">
+                @if (transaltionService.language === 'en') {
                 <span class="input-group-text"
                       dir="ltr">+966</span>
-            </ng-container>
-            }
-            <input type="tel"
-                   dir="ltr"
-                   formControlName="phoneNumber"
-                   class="form-control"
-                   id="phoneNumber"
-                   placeholder="{{ 'SETTINGS.ACCOUNT.PHONE_PLACEHOLDER' | translate }}">
-            @if (traslationService.language === 'ar') {
-            <ng-container>
+                }
+                <input type="tel"
+                       dir="ltr"
+                       formControlName="phoneNumber"
+                       class="form-control"
+                       id="phoneNumber"
+                       placeholder="{{ 'SETTINGS.ACCOUNT.PHONE_PLACEHOLDER' | translate }}">
+                @if (transaltionService.language === 'ar') {
                 <span class="input-group-text"
                       dir="ltr">+966</span>
-            </ng-container>
-            }
+                }
 
+            </div>
         </div>
-    </div>
 
-    <hr class="my-4">
+        <hr class="my-4">
 
-    <div class="d-flex justify-content-end">
-        <button class="btn btn-primary">{{ 'SETTINGS.ACCOUNT.SAVE_BTN' | translate }}</button>
-    </div>
-</form>
+        <div class="d-flex justify-content-end">
+            <button (click)="onSave()"
+                    [disabled]="loading()"
+                    class="btn btn-primary">{{ 'SETTINGS.ACCOUNT.SAVE_BTN' | translate }}</button>
+        </div>
+    </form>
+    }
+
+    @if (mode === modes.OTP) {
+    <app-otp (otpCompleted)="onSubmit($event)"></app-otp>
+    }
+
+</section>

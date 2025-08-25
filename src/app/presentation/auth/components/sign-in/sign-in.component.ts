@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../../core/services/auth.service';
 import { ToastService } from '../../../../shared/components/toast/toast.service';
@@ -8,7 +8,8 @@ import { finalize } from 'rxjs';
 import { TranslatePipe } from '@ngx-translate/core';
 import { TranslationService } from '../../../../core/services/translation.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { OtpComponent } from '../otp/otp.component';
+import { OtpComponent } from '../../../../shared/components/otp/otp.component';
+import { TokenService } from '../../../../core/services/token.service';
 
 enum Modes {
   FORM = 'form',
@@ -22,8 +23,10 @@ enum Modes {
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent implements OnInit {
-  private toastService = inject(ToastService);
+  private router = inject(Router);
+  private tokenService = inject(TokenService);
   private authService = inject(AuthService);
+  private toastService = inject(ToastService);
   public traslationService = inject(TranslationService);
   private modalService = inject(NgbModal);
   private fb = inject(FormBuilder);
@@ -72,6 +75,21 @@ export class SignInComponent implements OnInit {
     } else {
       this.signInForm.markAllAsTouched()
     }
+  }
+
+  onLogin(otp: string | number): void {
+    this.authService.checkOtpLogin(otp, this.tempToken).subscribe({
+      next: (response) => {
+        if (response.status == 200) {
+          // Set token
+          this.tokenService.setToken(response.data?.token);
+          this.tokenService.setUser(response.data?.profileInfo);
+          this.router.navigate(['/' + WEB_ROUTES.DASHBOARD.ROOT]);
+        } else {
+          this.toastService.show({ text: response.message, classname: 'bg-danger text-light' });
+        }
+      }
+    })
   }
 
 }

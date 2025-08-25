@@ -16,7 +16,8 @@
 
     }
     @else {
-    <img src="assets/images/fallback.svg"
+    <img class="fallback"
+         src="assets/images/fallback.svg"
          alt="">
     }
 
@@ -102,7 +103,7 @@
 
     }@else {
     <div class="row h-100">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             @if (property.sliderImages.length) {
             <ngb-carousel class="h-100">
                 @for (item of property.sliderImages; track $index) {
@@ -118,13 +119,12 @@
             }@else {
             <img src="assets/images/fallback.svg"
                  alt=""
-                 width="100%"
-                 height="100%">
+                 class="fallback">
             }
 
         </div>
 
-        <div class="col-8 h-100">
+        <div class="col-12 col-md-8 h-100">
             <div class="py-4 px-2 d-flex justify-content-center gap-4 flex-column">
                 <div class="d-flex gap-4 align-items-center">
                     <a
