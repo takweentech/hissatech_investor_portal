@@ -5,6 +5,7 @@ import { InvestmentService } from '../../../../../../data/investment/investment.
 import { BaseComponent } from '../../../../../../core/base/base.component';
 import { finalize, takeUntil } from 'rxjs';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ToastService } from '../../../../../../shared/components/toast/toast.service';
 
 @Component({
   selector: 'app-success',
@@ -18,6 +19,7 @@ export class SuccessComponent extends BaseComponent {
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly investmentService = inject(InvestmentService);
+  private readonly toastService = inject(ToastService);
 
   loading = signal<boolean>(false);
 
@@ -31,7 +33,13 @@ export class SuccessComponent extends BaseComponent {
         this.activatedRoute.snapshot.queryParams['propertyId'],
         this.activatedRoute.snapshot.queryParams['amount'],
         false,
-      ).subscribe();
+      ).pipe(takeUntil(this.destroy$)).subscribe((response) => {
+        if (response.status === 200) {
+
+        } else {
+          this.toastService.show({ text: response.message, classname: 'bg-danger text-light' });
+        }
+      });
     }
 
   }

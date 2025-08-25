@@ -1,6 +1,6 @@
 <header class="border-bottom">
     <section class="bg-white py-4">
-        <div class="d-flex align-items-center justify-content-between px-5">
+        <div class="d-flex align-items-center justify-content-between px-3 px-md-5">
 
             <div class="d-flex gap-2 align-items-center text-primary">
                 <i [class]="module.icon"></i>
@@ -15,6 +15,12 @@
                         <i class="fa-solid fa-globe"></i>
                         {{translationService.language === 'en' ? 'Arabic' : 'English'}}
                     </a>
+                </li>
+                <li class="d-flex d-md-none">
+                    <button (click)="onToggleSidebar()"
+                            class="btn btn-primary btn-sm d-flex align-items-center">
+                        <i class="fa-solid fa-bars fs-5"></i>
+                    </button>
                 </li>
             </ul>
         </div>

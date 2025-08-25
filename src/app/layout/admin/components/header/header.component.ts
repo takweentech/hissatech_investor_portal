@@ -54,4 +54,8 @@ export class HeaderComponent {
   onLangChange(): void {
     this.translationService.onLangChange();
   }
+
+  onToggleSidebar(): void {
+    this.SidebarService.toggleMenu()
+  }
 }

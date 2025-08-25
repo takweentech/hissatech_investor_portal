@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WEB_ROUTES } from '../constants/routes.constants';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 interface MenuItem {
   title: string,
@@ -39,6 +40,12 @@ export class SidebarService {
     },
   ];
 
+  private menuDisplaySource = new BehaviorSubject<boolean>(false);
+  menuDisplay$ = this.menuDisplaySource.asObservable();
+
+  toggleMenu() {
+    this.menuDisplaySource.next(!this.menuDisplaySource.getValue());
+  }
 
   get getMenu(): MenuItem[] {
     return this.menu;
