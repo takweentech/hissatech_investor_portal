@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { takeUntil } from 'rxjs';
+import { finalize, takeUntil } from 'rxjs';
 import { Investment, InvestmentFilterRequest } from '../../../../data/investment/investment';
 import { InvestmentService } from '../../../../data/investment/investment.service';
 import { CurrencyPipe, DatePipe } from '@angular/common';
@@ -24,6 +24,7 @@ export class ListingComponent extends BaseComponent {
   private readonly investorService = inject(InvestorService);
   transactions = signal<Investment[]>([]);
   total = signal<number>(0);
+  loading = signal<boolean>(false);
   WEB_ROUTES = WEB_ROUTES;
   InvestmentStatusEnum = InvestmentStatusEnum;
   filter: InvestmentFilterRequest = {
@@ -56,8 +57,10 @@ export class ListingComponent extends BaseComponent {
   }
 
   getTransactions(): void {
+    this.loading.set(true);
     this.investmentService.getPaged(this.filter).pipe(
       takeUntil(this.destroy$),
+      finalize(() => this.loading.set(false)),
     ).subscribe({
       next: (response) => {
         this.transactions.set(response.data?.data as Investment[])

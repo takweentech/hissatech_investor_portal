@@ -22,6 +22,11 @@
         }
     </div>
 
+    @if (loading()) {
+    <div class="d-flex justify-content-center width-100 text-center">
+        <p>Loading...</p>
+    </div>
+    }@else {
     <div class="mt-4 d-flex justify-content-end">
         <ngb-pagination [collectionSize]="total()"
                         [page]="filter.pageNumber"
@@ -29,4 +34,7 @@
                         aria-label="Default pagination">
         </ngb-pagination>
     </div>
+    }
+
+
 </section>

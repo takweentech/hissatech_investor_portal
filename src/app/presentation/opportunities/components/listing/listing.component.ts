@@ -3,7 +3,7 @@ import { OpportunityCardComponent } from "../../../../shared/components/opportun
 import { BaseComponent } from '../../../../core/base/base.component';
 import { Property, PropertyRequestFilter } from '../../../../data/property/property';
 import { PropertyService } from '../../../../data/property/property.service';
-import { takeUntil } from 'rxjs';
+import { finalize, takeUntil } from 'rxjs';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslatePipe } from '@ngx-translate/core';
 
@@ -18,6 +18,7 @@ export class ListingComponent extends BaseComponent implements OnInit {
   private readonly propertyService = inject(PropertyService);
   properties = signal<Property[]>([]);
   total = signal<number>(0);
+  loading = signal<boolean>(false);
   filter: PropertyRequestFilter = {
     pageNumber: 1, pageSize: 6, filter: { status: 2 },
     orderByValue: [
@@ -35,8 +36,10 @@ export class ListingComponent extends BaseComponent implements OnInit {
 
 
   getProperties(): void {
+    this.loading.set(true);
     this.propertyService.getPaged(this.filter).pipe(
       takeUntil(this.destroy$),
+      finalize(() => this.loading.set(false)),
     ).subscribe({
       next: (response) => {
         this.properties.set(response.data?.data as Property[])
