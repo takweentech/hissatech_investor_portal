@@ -49,12 +49,14 @@
                                     class="btn btn-outline-primary col-2">
                                 {{'OPPORTUNITIES.APPLICATION.PREV_BUTTON'| translate}}
                             </button>
+                            @if (payment !== investmentPaymentEnum.HYPER_PAY) {
                             <button (click)="onNext(item)"
                                     type="button"
                                     [disabled]="form.get(item.key)?.invalid"
                                     class="btn btn-primary col-2">
                                 {{item.buttonLabel}}
                             </button>
+                            }
                         </div>
                     </div>
                 </div>

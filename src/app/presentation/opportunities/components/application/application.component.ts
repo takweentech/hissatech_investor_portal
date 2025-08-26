@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import Stepper from 'bs-stepper';
 import { AmountComponent } from './components/amount/amount.component';
-import { NgComponentOutlet } from '@angular/common';
+import { JsonPipe, NgComponentOutlet } from '@angular/common';
 import { InvestmentService } from '../../../../data/investment/investment.service';
 import { BaseComponent } from '../../../../core/base/base.component';
 import { takeUntil } from 'rxjs';
@@ -14,6 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BackButtonComponent } from "../../../../shared/components/back-button/back-button.component";
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { WEB_ROUTES } from '../../../../core/constants/routes.constants';
+import { InvestmentPaymentEnum } from '../../../../core/enums/investment.enum';
 
 enum Mode {
   STEPPER = 'stepper',
@@ -39,7 +40,7 @@ interface Step {
 
 @Component({
   selector: 'app-application',
-  imports: [NgComponentOutlet, ReactiveFormsModule, SuccessComponent, BackButtonComponent, TranslatePipe],
+  imports: [NgComponentOutlet, ReactiveFormsModule, SuccessComponent, BackButtonComponent, TranslatePipe, JsonPipe],
   templateUrl: './application.component.html',
   styleUrl: './application.component.scss'
 })
@@ -60,6 +61,13 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
   refId!: string;
   modes = Mode;
   mode: Mode = Mode.STEPPER;
+  investmentPaymentEnum = InvestmentPaymentEnum;
+
+  get payment(): string {
+    const paymentControl: FormGroup = this.form.controls['payment'] as FormGroup;
+    return paymentControl.controls['paymentOption']?.value
+  }
+
 
   ngOnInit(): void {
     this.steps = [
