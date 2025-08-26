@@ -57,6 +57,7 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
   form!: FormGroup;
   steps!: Step[];
   investmentId!: number;
+  refId!: string;
   modes = Mode;
   mode: Mode = Mode.STEPPER;
 
@@ -149,6 +150,7 @@ export class ApplicationComponent extends BaseComponent implements AfterViewInit
         // this.mode = this.modes.SUCCESS;
         this.stepperInstance.next();
         this.investmentId = response.data.id;
+        this.refId = response.data.refId;
       },
       error: (err) => {
         this.toastService.show({ text: err.message, classname: 'bg-danger text-light' });

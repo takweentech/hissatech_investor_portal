@@ -52,8 +52,8 @@ export class InvestmentService {
         return this.http.delete<CustomHttpResponse<{}>>(environment.apiUrl + `/${this.baseUrl}/Delete/${id}`)
     }
 
-    finishInvestment(checkoutId: string, propertyId: number, amount: number, isApplePay: boolean): Observable<CustomHttpResponse<{}>> {
-        return this.http.post<CustomHttpResponse<{}>>(environment.apiUrl + `/${this.baseUrl}/FinishPayment`, { checkoutId, propertyId, amount, isApplePay })
+    finishInvestment(investmentId: number, checkoutId: string, propertyId: number, amount: number, isApplePay: boolean, refId: string): Observable<CustomHttpResponse<{}>> {
+        return this.http.post<CustomHttpResponse<{}>>(environment.apiUrl + `/${this.baseUrl}/FinishPayment`, { investmentId, checkoutId, propertyId, amount, isApplePay, refId })
     }
 
     initializeHyperPay(amount: number, isApplePay: boolean, propertyId: number): Observable<CustomHttpResponse<{}>> {

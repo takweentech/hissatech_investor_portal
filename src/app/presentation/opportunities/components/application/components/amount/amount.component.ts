@@ -18,6 +18,7 @@ export class AmountComponent {
   @Input() form!: FormGroup;
   @Input() property!: Property;
   @Input() investmentId!: number;
+  @Input() refId!: string;
 
   investment: InvestData = this.activatedRoute.snapshot.data['investment']?.data;
 

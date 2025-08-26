@@ -25,14 +25,16 @@ export class SuccessComponent extends BaseComponent {
 
   constructor() {
     super();
-    console.log(this.activatedRoute.snapshot.queryParams);
+    console.log(this.activatedRoute.snapshot.queryParams['propertyId']);
 
     if (this.activatedRoute.snapshot.queryParams['id']) {
       this.investmentService.finishInvestment(
+        this.activatedRoute.snapshot.params['id'],
         this.activatedRoute.snapshot.queryParams['id'],
         this.activatedRoute.snapshot.queryParams['propertyId'],
         this.activatedRoute.snapshot.queryParams['amount'],
         false,
+        this.activatedRoute.snapshot.queryParams['refId'],
       ).pipe(takeUntil(this.destroy$)).subscribe((response) => {
         if (response.status === 200) {
 

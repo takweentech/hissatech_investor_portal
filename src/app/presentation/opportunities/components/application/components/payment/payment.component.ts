@@ -20,6 +20,7 @@ export class PaymentComponent extends BaseComponent implements OnChanges {
   @Input() formGroup!: FormGroup;
   @Input() form!: FormGroup;
   @Input() investmentId!: number;
+  @Input() refId!: string;
   private readonly lookupService = inject(LookupService);
   private readonly investmentService = inject(InvestmentService);
   bankInfo = this.lookupService.getBankInfo();
@@ -30,9 +31,14 @@ export class PaymentComponent extends BaseComponent implements OnChanges {
     super();
   }
 
+  get amount(): number {
+    const amountControl: FormGroup = this.form.controls['amount'] as FormGroup;
+
+    return amountControl.controls['amount'].value
+  }
+
 
   ngOnChanges(): void {
-
     if (this.formGroup) {
       this.formGroup.valueChanges.pipe(takeUntil(this.destroy$)).subscribe({
         next: (val) => {

@@ -116,7 +116,7 @@
                 "IBAN_NUMBER": "IBAN number"
             },
             "SUCCESS": {
-                "TITLE": "Your investment application has been received and is now pending payment.",
+                "TITLE": "Your investment application has been received and is now",
                 "TITLE_STRONG": "pending payment",
                 "DESCRIPTION": "To complete your investment, please proceed with the payment using your chosen method.",
                 "BUTTON_VIEW_INVESTMENT": "View investment details",
