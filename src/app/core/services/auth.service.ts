@@ -29,8 +29,8 @@ export class AuthService {
 
   }
 
-  nafathRequest(nationalId: number): Observable<CustomHttpResponse> {
-    return this.http.get<CustomHttpResponse>(environment.apiUrl + `/Accounts/NafathRequest?nationalId=${nationalId}`)
+  nafathRequest(nationalId: number): Observable<CustomHttpResponse<{ transId: string, random: string }>> {
+    return this.http.get<CustomHttpResponse<{ transId: string, random: string }>>(environment.apiUrl + `/Accounts/NafathRequest?nationalId=${nationalId}`)
   }
 
   nafathCallback(transId: string): Observable<CustomHttpResponse<NafathData>> {

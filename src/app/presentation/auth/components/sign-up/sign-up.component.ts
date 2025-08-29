@@ -7,11 +7,12 @@ import { AuthService } from '../../../../core/services/auth.service';
 import { AblyService } from '../../../../core/services/ably.service';
 import { InvestorSignUp } from '../../../../core/models/investor.model';
 import { LookupService } from '../../../../core/services/lookup.service';
-import { finalize } from 'rxjs';
+import { finalize, takeUntil } from 'rxjs';
 import { ToastService } from '../../../../shared/components/toast/toast.service';
 import { TokenService } from '../../../../core/services/token.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { TranslationService } from '../../../../core/services/translation.service';
+import { BaseComponent } from '../../../../core/base/base.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,7 @@ import { TranslationService } from '../../../../core/services/translation.servic
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
-export class SignUpComponent implements AfterViewInit, OnInit {
+export class SignUpComponent extends BaseComponent implements AfterViewInit, OnInit {
   private router = inject(Router);
   private tokenService = inject(TokenService);
   private toastService = inject(ToastService);
@@ -29,6 +30,7 @@ export class SignUpComponent implements AfterViewInit, OnInit {
   public traslationService = inject(TranslationService);
   PRIMARY_INCOME_SOURCES = this.lookupService.getIncomeSources();
   PRIMARY_INCOME_AMOUNTS = this.lookupService.getIncomeAmounts();
+  nafathRandomNumber!: string;
   private fb = inject(FormBuilder);
 
   ROUTES = WEB_ROUTES;
@@ -42,7 +44,7 @@ export class SignUpComponent implements AfterViewInit, OnInit {
   initForm() {
     this.signUpForm = this.fb.group({
       step_1: this.fb.group({
-        idNumber: ['1532626785', [Validators.required, Validators.minLength(10),
+        idNumber: ['1532626743', [Validators.required, Validators.minLength(10),
         Validators.maxLength(10),
         Validators.pattern('^(1|2)[0-9]{9}$'),]],
       }),
@@ -66,42 +68,51 @@ export class SignUpComponent implements AfterViewInit, OnInit {
   }
 
 
-  onNext(step: number) {
-    const stepControl = this.signUpForm.controls['step_' + step]
+  onNext(step: string) {
+    const stepControl = this.signUpForm.controls[step];
+
     if (stepControl.valid) {
       // Handle step one submission
-      if (step == 1) {
+      if (step == 'step_1') {
         this.loading.set(true);
         this.authService.nafathRequest(stepControl.value.idNumber).subscribe({
-          next: (response: any) => {
+          next: (response) => {
             if (response.status !== 200) {
               this.toastService.show({ text: response.message, classname: 'bg-danger text-light' });
               this.loading.set(false)
               return
             };
-            // Integrate Ably once Nafath integration is approved
-            this.loading.set(true);
-            this.authService.nafathCallback(response?.data?.transId).pipe(
-              finalize(() => this.loading.set(false))
-            ).subscribe({
-              next: (nafathData) => {
-                const fullNameControl = (this.signUpForm.controls['step_' + 2] as FormGroup).controls['fullName'];
-                fullNameControl.setValue(`${nafathData.data?.englishFirstName} ${nafathData.data?.englishLastName}`)
-                fullNameControl.disable();
-                this.stepperInstance.next();
-              },
-              error: (err) => {
-              }
-            })
+            this.nafathRandomNumber = response.data.random;
+            this.stepperInstance.next();
+            this.ablyService.initAbly(response?.data?.transId, (message) => {
+              console.log(message);
+            });
+
+            // Temporary
+            setTimeout(() => {
+              this.authService.nafathCallback(response?.data?.transId).pipe(
+                finalize(() => this.loading.set(false))
+              ).pipe(takeUntil(this.destroy$)).subscribe({
+                next: (nafathData) => {
+                  const fullNameControl = (this.signUpForm.controls['step_' + 2] as FormGroup).controls['fullName'];
+                  fullNameControl.setValue(`${nafathData.data?.englishFirstName} ${nafathData.data?.englishLastName}`)
+                  fullNameControl.disable();
+                  this.stepperInstance.next();
+                },
+                error: (err) => {
+                }
+              })
+            }, 1000);
           }
         })
       }
+
       // Handle step two submission
-      if (step == 2) {
+      if (step == 'step_2') {
         this.stepperInstance.next();
       }
       // Handle step three submission
-      if (step == 3) {
+      if (step == 'step_3') {
         this.loading.set(true)
         this.finishRegistration();
       }
@@ -119,6 +130,7 @@ export class SignUpComponent implements AfterViewInit, OnInit {
 
     investor.phoneNumber = '966' + investor.phoneNumber
     this.authService.signupInvestor(investor).pipe(
+      takeUntil(this.destroy$),
       finalize(() => this.loading.set(false))
     ).subscribe({
       next: (response) => {
@@ -145,7 +157,7 @@ export class SignUpComponent implements AfterViewInit, OnInit {
     setTimeout(() => {
       if (this.stepperRef && !this.stepperInstance) {
         this.stepperInstance = new Stepper(this.stepperRef.nativeElement, {
-          linear: false,
+          linear: true,
           animation: true,
         });
       }
