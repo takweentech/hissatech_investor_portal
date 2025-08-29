@@ -80,19 +80,21 @@
                                 form['step_1'].get('idNumber')?.touched) {
                                 <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                     <i class="fa-solid fa-circle-exclamation"></i>
-                                    {{ 'This field is mandatory' | translate }}
+                                    {{ 'VALIDATORS.MANDATORY' | translate }}
                                 </small>
                                 }
                                 @if (form['step_1'].get('idNumber')?.errors?.['minlength']) {
                                 <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                     <i class="fa-solid fa-circle-exclamation"></i>
-                                    {{ 'Invalid id number' | translate }}
+                                    {{ 'VALIDATORS.INVALID_ID' | translate }}
+
                                 </small>
                                 }
                                 @if (form['step_1'].get('idNumber')?.errors?.['maxlength']) {
                                 <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                     <i class="fa-solid fa-circle-exclamation"></i>
-                                    {{ 'Invalid id number' | translate }}
+                                    {{ 'VALIDATORS.INVALID_ID' | translate }}
+
                                 </small>
                                 }
                             </div>
@@ -116,9 +118,9 @@
                                 <i class="fa-solid fa-mobile"></i>
                             </div>
 
-                            <h5 class="m-0">Approve Nafath Request</h5>
+                            <h5 class="m-0">{{"AUTH.FORM.SIGN_UP.NAFATH_TITLE" | translate}}</h5>
 
-                            <p class="m-0">Open your Nafath app and select the numbers shown below:</p>
+                            <p class="m-0">{{"AUTH.FORM.SIGN_UP.NAFATH_SUBTITLE" | translate}}</p>
 
                             <div class="bg-primary text-white p-2 rounded w-fit fs-1">
                                 {{nafathRandomNumber}}
@@ -155,13 +157,13 @@
                                     form['step_2'].get('email')?.touched) {
                                     <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                         <i class="fa-solid fa-circle-exclamation"></i>
-                                        {{ 'This field is mandatory' | translate }}
+                                        {{ 'VALIDATORS.MANDATORY' | translate }}
                                     </small>
                                     }
                                     @if (form['step_2'].get('email')?.errors?.['email']) {
                                     <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                         <i class="fa-solid fa-circle-exclamation"></i>
-                                        {{ 'Invalid email address' | translate }}
+                                        {{ 'VALIDATORS.INVALID_EMAIL' | translate }}
                                     </small>
                                     }
                                 </div>
@@ -177,6 +179,8 @@
                                         <input type="tel"
                                                dir="ltr"
                                                class="form-control"
+                                               [maxLength]="9"
+                                               [minLength]="9"
                                                formControlName="phoneNumber"
                                                id="phoneNumber">
 
@@ -190,14 +194,15 @@
                                     form['step_2'].get('phoneNumber')?.touched) {
                                     <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                         <i class="fa-solid fa-circle-exclamation"></i>
-                                        {{ 'This field is mandatory' | translate }}
+                                        {{ 'VALIDATORS.MANDATORY' | translate }}
                                     </small>
                                     }
                                     @if (form['step_2'].get('phoneNumber')?.errors?.['pattern'] &&
                                     form['step_2'].get('phoneNumber')?.touched) {
                                     <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                         <i class="fa-solid fa-circle-exclamation"></i>
-                                        {{ 'Invalid phone number' | translate }}
+                                        {{ 'VALIDATORS.INVALID_PHONE_NUMBER' | translate }}
+
                                     </small>
                                     }
                                 </div>
@@ -214,7 +219,7 @@
                                     form['step_2'].get('sourceIncome')?.touched) {
                                     <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                         <i class="fa-solid fa-circle-exclamation"></i>
-                                        {{ 'This field is mandatory' | translate }}
+                                        {{ 'VALIDATORS.MANDATORY' | translate }}
                                     </small>
                                     }
                                 </div>
@@ -231,7 +236,7 @@
                                     form['step_2'].get('incomeAmount')?.touched) {
                                     <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                         <i class="fa-solid fa-circle-exclamation"></i>
-                                        {{ 'This field is mandatory' | translate }}
+                                        {{ 'VALIDATORS.MANDATORY' | translate }}
                                     </small>
                                     }
                                 </div>
@@ -276,7 +281,7 @@
                                     form['step_3'].get('password')?.touched) {
                                     <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                         <i class="fa-solid fa-circle-exclamation"></i>
-                                        {{ 'This field is mandatory' | translate }}
+                                        {{ 'VALIDATORS.MANDATORY' | translate }}
                                     </small>
                                     }
                                 </div>
@@ -306,7 +311,7 @@
                                     form['step_3'].get('confirmPassword')?.touched) {
                                     <small class="text-danger d-flex gap-2 align-items-center mt-2">
                                         <i class="fa-solid fa-circle-exclamation"></i>
-                                        {{ 'This field is mandatory' | translate }}
+                                        {{ 'VALIDATORS.MANDATORY' | translate }}
                                     </small>
                                     }
                                 </div>

@@ -37,7 +37,9 @@
                     "FEEDBACK_5": "Must be at least 8 characters long."
                 },
                 "NO_ACCOUNT": "Already have an account?",
-                "SIGN_IN": "Sign In"
+                "SIGN_IN": "Sign In",
+                "NAFATH_TITLE": "Approve Nafath Request",
+                "NAFATH_SUBTITLE": "Open your Nafath app and select the numbers shown below:"
             }
         }
     },
@@ -194,5 +196,11 @@
         "SHOWING": "Showing",
         "OF": "of",
         "RESULT": "result"
+    },
+    "VALIDATORS": {
+        "MANDATORY": "This field is mandatory",
+        "INVALID_ID": "Invalid id number",
+        "INVALID_PHONE_NUMBER": "Invalid phone number",
+        "INVALID_EMAIL": "Invalid email address"
     }
 }

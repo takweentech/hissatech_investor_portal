@@ -44,7 +44,7 @@ export class SignUpComponent extends BaseComponent implements AfterViewInit, OnI
   initForm() {
     this.signUpForm = this.fb.group({
       step_1: this.fb.group({
-        idNumber: ['1532626743', [Validators.required, Validators.minLength(10),
+        idNumber: ['', [Validators.required, Validators.minLength(10),
         Validators.maxLength(10),
         Validators.pattern('^(1|2)[0-9]{9}$'),]],
       }),
@@ -126,6 +126,7 @@ export class SignUpComponent extends BaseComponent implements AfterViewInit, OnI
       ...this.signUpForm.controls['step_' + 1].value,
       ...this.signUpForm.controls['step_' + 2].value,
       ...this.signUpForm.controls['step_' + 3].value,
+      referralCode: ""
     }
 
     investor.phoneNumber = '966' + investor.phoneNumber
